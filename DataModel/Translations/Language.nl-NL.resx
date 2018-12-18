@@ -1,0 +1,1506 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Enum_ResultType_AverageFlowRate" xml:space="preserve">
+    <value>Gemiddeld debiet (Qavg)</value>
+  </data>
+  <data name="Enum_ResultType_Bci" xml:space="preserve">
+    <value>Bladder Contractility Index (BCI)</value>
+  </data>
+  <data name="Enum_ResultType_BladderVolumeFillingPhaseEnd" xml:space="preserve">
+    <value>Bladder Volume at Filling End</value>
+  </data>
+  <data name="Enum_ResultType_BladderVolumeFillingPhaseStart" xml:space="preserve">
+    <value>Bladder Volume at Filling Start</value>
+  </data>
+  <data name="Enum_ResultType_BladderVolumeVoidingPhaseEnd" xml:space="preserve">
+    <value>Bladder Volume at Voiding End</value>
+  </data>
+  <data name="Enum_ResultType_BladderVolumeVoidingPhaseStart" xml:space="preserve">
+    <value>Bladder Volume at Voiding Start</value>
+  </data>
+  <data name="Enum_ResultType_Booi" xml:space="preserve">
+    <value>Bladder Outlet Obstruction Index (BOOI)</value>
+  </data>
+  <data name="Enum_ResultType_CorrectedQmax" xml:space="preserve">
+    <value>Corrected Max Flow</value>
+  </data>
+  <data name="Enum_ResultType_ExtraInfusedVolume" xml:space="preserve">
+    <value>Extra Infused Volume during Voiding</value>
+  </data>
+  <data name="Enum_ResultType_FlowTime" xml:space="preserve">
+    <value>Doorstroomtijd</value>
+  </data>
+  <data name="Enum_ResultType_Hesitancy" xml:space="preserve">
+    <value>Hesitancy</value>
+  </data>
+  <data name="Enum_ResultType_InfusedVolume" xml:space="preserve">
+    <value>Infused Volume at Filling End</value>
+  </data>
+  <data name="Enum_ResultType_VolumeLeaked" xml:space="preserve">
+    <value>Volume Leaked during Filling</value>
+  </data>
+  <data name="Enum_ResultType_PdetClos" xml:space="preserve">
+    <value>Closing Pdet</value>
+  </data>
+  <data name="Enum_ResultType_PdetOpen" xml:space="preserve">
+    <value>Opening Pdet</value>
+  </data>
+  <data name="Enum_ResultType_PdetQmax" xml:space="preserve">
+    <value>Pdet at Max Flow</value>
+  </data>
+  <data name="Enum_ResultType_PhaseMaxChannelsValue" xml:space="preserve">
+    <value>Phase Max Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_PhaseMinChannelsValue" xml:space="preserve">
+    <value>Phase Min Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_PhaseMinMaxMeanChannelsValue" xml:space="preserve">
+    <value>Phase Min Max Mean Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_Pmuo" xml:space="preserve">
+    <value>Min Urethral Opening Pressure (Pmuo)</value>
+  </data>
+  <data name="Enum_ResultType_PumpSpeedMax" xml:space="preserve">
+    <value>Max Pump Speed</value>
+  </data>
+  <data name="Enum_ResultType_PumpSpeedMin" xml:space="preserve">
+    <value>Min Pump Speed</value>
+  </data>
+  <data name="Enum_ResultType_PvesOpen" xml:space="preserve">
+    <value>Opening Pves</value>
+  </data>
+  <data name="Enum_ResultType_PVesQmax" xml:space="preserve">
+    <value>Pves at Max Flow</value>
+  </data>
+  <data name="Enum_ResultType_Qmax" xml:space="preserve">
+    <value>Max Flow Rate (Qmax)</value>
+  </data>
+  <data name="Enum_ResultType_StimulationValues" xml:space="preserve">
+    <value>Stimulation Values</value>
+  </data>
+  <data name="Enum_ResultType_TimeRelaxTillFlowStarts" xml:space="preserve">
+    <value>Time Relax Till Flow Starts</value>
+  </data>
+  <data name="Enum_ResultType_TimeToQmax" xml:space="preserve">
+    <value>Time To Max Flow</value>
+  </data>
+  <data name="Enum_ResultType_TotalBladderCapacity" xml:space="preserve">
+    <value>Total Bladder Capacity</value>
+  </data>
+  <data name="Enum_ResultType_TotalVoidedVolume" xml:space="preserve">
+    <value>Total Voided Volume</value>
+  </data>
+  <data name="Enum_ResultType_TotalPhasesPlannedAndExecuted" xml:space="preserve">
+    <value>Total Phases Planned And Executed</value>
+  </data>
+  <data name="Enum_ResultType_VoidedVolume" xml:space="preserve">
+    <value>Voided Volume</value>
+  </data>
+  <data name="Enum_ResultType_VoidingTime" xml:space="preserve">
+    <value>Voiding Time</value>
+  </data>
+  <data name="Enum_ImageSubType_ICSNomogram" xml:space="preserve">
+    <value>ICS Nomogram</value>
+  </data>
+  <data name="Enum_ImageSubType_LiverpoolAverageFlowRateNomogram" xml:space="preserve">
+    <value>Liverpool Average Flow Rate Nomogram</value>
+  </data>
+  <data name="Enum_ImageSubType_LiverpoolMaximumFlowRateNomogram" xml:space="preserve">
+    <value>Liverpool Maximum Flow Rate Nomogram</value>
+  </data>
+  <data name="Enum_ImageSubType_MiskolcAverageFlowRateNomogram" xml:space="preserve">
+    <value>Miskolc Average Flow Rate Nomogram</value>
+  </data>
+  <data name="Enum_ImageSubType_MiskolcMaximumFlowRateNomogram" xml:space="preserve">
+    <value>Miskolc Maximum Flow Rate Nomogram</value>
+  </data>
+  <data name="Enum_ImageSubType_SchaferNomogram" xml:space="preserve">
+    <value>Schafer Nomogram</value>
+  </data>
+  <data name="Enum_ResultType_Dampf" xml:space="preserve">
+    <value>Schäfer DAMPF</value>
+  </data>
+  <data name="Enum_ResultType_OneOverC" xml:space="preserve">
+    <value>Schäfer 1/C</value>
+  </data>
+  <data name="Enum_ResultType_AGValue" xml:space="preserve">
+    <value>AG Number</value>
+  </data>
+  <data name="Enum_ResultType_ICSClassification" xml:space="preserve">
+    <value>ICS Classification</value>
+  </data>
+  <data name="Enum_ResultType_Pvr" xml:space="preserve">
+    <value>Post Void Residual (PVR) Volume</value>
+  </data>
+  <data name="QCBeakerVolumeCriteriaDescription0Points" xml:space="preserve">
+    <value>Beaker not empty at start of flow</value>
+  </data>
+  <data name="QCBeakerVolumeCriteriaDescription10Points" xml:space="preserve">
+    <value>Beaker empty at the start of flow</value>
+  </data>
+  <data name="QCInfusionRateAdultCriteriaDescription0Points" xml:space="preserve">
+    <value>Infused Volume &lt; 10% EBC (Expected Bladder Capacity)</value>
+  </data>
+  <data name="QCInfusionRateAdultCriteriaDescription10Points" xml:space="preserve">
+    <value>Infused Volume &gt;= 10% EBC (Expected Bladder Capacity)</value>
+  </data>
+  <data name="QCInfusionRatePediatricCriteriaDescription0Points" xml:space="preserve">
+    <value>Infused Volume  &lt; 10% EBC (Estimated Bladder Capacity)</value>
+  </data>
+  <data name="QCInfusionRatePediatricCriteriaDescription10Points" xml:space="preserve">
+    <value>Infused Volume &gt;= 10% EBC (Estimated Bladder Capacity)</value>
+  </data>
+  <data name="QCNumberOfProfilesCriteriaDescription0Points" xml:space="preserve">
+    <value>1 or less profiles performed</value>
+  </data>
+  <data name="QCNumberOfProfilesCriteriaDescription10Points" xml:space="preserve">
+    <value>3 or more profiles performed</value>
+  </data>
+  <data name="QCNumberOfProfilesCriteriaDescription5Points" xml:space="preserve">
+    <value>2 profiles performed</value>
+  </data>
+  <data name="QCPclosCriteriaDescription0Points" xml:space="preserve">
+    <value>Pclo &gt; 0 cmH2O &lt; 90% of profile period</value>
+  </data>
+  <data name="QCPclosCriteriaDescription10Points" xml:space="preserve">
+    <value>Pclo &gt; 0 cmH2O for 100% of profile period</value>
+  </data>
+  <data name="QCPclosCriteriaDescription5Points" xml:space="preserve">
+    <value>Pclo &gt; 0 cmH2O &gt; 90% of profile period</value>
+  </data>
+  <data name="QCPdetCriteriaDescription0Points" xml:space="preserve">
+    <value>Pdet &gt; 0 cmH2O &lt; 80% of the phase</value>
+  </data>
+  <data name="QCPdetCriteriaDescription10Points" xml:space="preserve">
+    <value>Pdet &gt; 0 cmH2O for the entire phase</value>
+  </data>
+  <data name="QCPdetCriteriaDescription5Points" xml:space="preserve">
+    <value>Pdet &gt; 0 cmH2O &gt; 80% of the phase</value>
+  </data>
+  <data name="QCPermissionToVoidCriteriaDescription0Points" xml:space="preserve">
+    <value>Not marked</value>
+  </data>
+  <data name="QCPermissionToVoidCriteriaDescription10Points" xml:space="preserve">
+    <value>Marked</value>
+  </data>
+  <data name="QCProfileConsistencyCriteriaDescription0Points" xml:space="preserve">
+    <value>Otherwise</value>
+  </data>
+  <data name="QCProfileConsistencyCriteriaDescription10Points" xml:space="preserve">
+    <value>3+ x MUCP range &lt; 10 cmH2O</value>
+  </data>
+  <data name="QCProfileConsistencyCriteriaDescription5Points" xml:space="preserve">
+    <value>2 x MUCP range &lt; 10 cmH2O</value>
+  </data>
+  <data name="QCPVRCriteriaDescription0Points" xml:space="preserve">
+    <value>No PVR value entered</value>
+  </data>
+  <data name="QCPVRCriteriaDescription10Points" xml:space="preserve">
+    <value>PVR value &gt; 0 ml</value>
+  </data>
+  <data name="QCSensationsCriteriaDescription0Points" xml:space="preserve">
+    <value>None marked</value>
+  </data>
+  <data name="QCSensationsCriteriaDescription10Points" xml:space="preserve">
+    <value>3+ marked</value>
+  </data>
+  <data name="QCSensationsCriteriaDescription5Points" xml:space="preserve">
+    <value>2 marked</value>
+  </data>
+  <data name="QCStressTestCriteriaDescription0Points" xml:space="preserve">
+    <value>Performed at Infused volume &gt; 150 ml</value>
+  </data>
+  <data name="QCStressTestCriteriaDescription10Points" xml:space="preserve">
+    <value>Max Pves &gt; 30 cmH2O if Leak, &gt; 60 cmH2O if no Leak</value>
+  </data>
+  <data name="QCVoidedVolumeAdultCriteriaDescription10Points" xml:space="preserve">
+    <value>Volume voided &gt; 150 ml</value>
+  </data>
+  <data name="QCVoidedVolumeCriteriaDescription0Points" xml:space="preserve">
+    <value>No uroflow volume recorded</value>
+  </data>
+  <data name="QCVoidedVolumeCriteriaDescription5Points" xml:space="preserve">
+    <value>Volume voided &gt; 0</value>
+  </data>
+  <data name="QCVoidedVolumePediatricCriteriaDescription10Points" xml:space="preserve">
+    <value>Volume voided &gt; 50% EBC (Estimated Bladder Capacity)</value>
+  </data>
+  <data name="QCZeroAllPressureCriteriaDescription0Points" xml:space="preserve">
+    <value>Used during the phase</value>
+  </data>
+  <data name="QCZeroAllPressureCriteriaDescription10Points" xml:space="preserve">
+    <value>Not used during the phase</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCBeakerVolume" xml:space="preserve">
+    <value>Beaker volume</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCInfusionRate" xml:space="preserve">
+    <value>Infustion rate</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCNumberOfProfiles" xml:space="preserve">
+    <value>Number of profiles</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCPclos" xml:space="preserve">
+    <value>Pclos</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCPdet" xml:space="preserve">
+    <value>Pdet</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCPermissionToVoid" xml:space="preserve">
+    <value>Permission to void</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCProfileConsistency" xml:space="preserve">
+    <value>Profile consistency</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCPVRValueEntered" xml:space="preserve">
+    <value>PVR value entered</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCSensationsMarked" xml:space="preserve">
+    <value>Sensations marked</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCStressTest" xml:space="preserve">
+    <value>Stress test</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCVoidedVolume" xml:space="preserve">
+    <value>Voided volume</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCZeroAllPressure" xml:space="preserve">
+    <value>Zero all pressure</value>
+  </data>
+  <data name="Enum_ResultType_BladderVolume" xml:space="preserve">
+    <value>Bladder Volume</value>
+  </data>
+  <data name="BladderObstructionClass0" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="BladderObstructionClassI" xml:space="preserve">
+    <value>I</value>
+  </data>
+  <data name="BladderObstructionClassII" xml:space="preserve">
+    <value>II</value>
+  </data>
+  <data name="BladderObstructionClassIII" xml:space="preserve">
+    <value>III</value>
+  </data>
+  <data name="BladderObstructionClassIV" xml:space="preserve">
+    <value>IV</value>
+  </data>
+  <data name="BladderObstructionClassV" xml:space="preserve">
+    <value>V</value>
+  </data>
+  <data name="BladderObstructionClassVI" xml:space="preserve">
+    <value>VI</value>
+  </data>
+  <data name="BladderPowerNormalMinus" xml:space="preserve">
+    <value>Normal-</value>
+  </data>
+  <data name="BladderPowerNormalPlus" xml:space="preserve">
+    <value>Normal+</value>
+  </data>
+  <data name="BladderPowerStrong" xml:space="preserve">
+    <value>Strong</value>
+  </data>
+  <data name="BladderPowerVeryWeak" xml:space="preserve">
+    <value>Very Weak</value>
+  </data>
+  <data name="BladderPowerWeakMinus" xml:space="preserve">
+    <value>Weak-</value>
+  </data>
+  <data name="BladderPowerWeakPlus" xml:space="preserve">
+    <value>Weak+</value>
+  </data>
+  <data name="Enum_ResultType_BladderObstruction" xml:space="preserve">
+    <value>Schäfer Bladder Obstruction</value>
+  </data>
+  <data name="Enum_ResultType_BladderPower" xml:space="preserve">
+    <value>Schäfer Bladder Power</value>
+  </data>
+  <data name="Enum_ResultType_A" xml:space="preserve">
+    <value>Schäfer A</value>
+  </data>
+  <data name="Enum_ResultType_RestDistalAreaAfterPeak" xml:space="preserve">
+    <value>Distal Area after Peak at Rest</value>
+  </data>
+  <data name="Enum_ResultType_RestProximalAreaToPeak" xml:space="preserve">
+    <value>Continence Area at Rest</value>
+  </data>
+  <data name="Enum_ResultType_RestTotalProfileArea" xml:space="preserve">
+    <value>Functional Area at Rest</value>
+  </data>
+  <data name="Enum_ResultType_StressTransmissionPercentage" xml:space="preserve">
+    <value>Transmission Ratio</value>
+  </data>
+  <data name="Enum_ResultType_UrethralContinenceZone" xml:space="preserve">
+    <value>Continence Length at Rest</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressure" xml:space="preserve">
+    <value>Leak Point Pressure</value>
+  </data>
+  <data name="Enum_ResultType_TransmissionBladderFilling" xml:space="preserve">
+    <value>Bladder Volume at UPP Phase End</value>
+  </data>
+  <data name="Enum_ResultType_StressTransmissionDistance" xml:space="preserve">
+    <value>Distance of Stress from Start</value>
+  </data>
+  <data name="Enum_ResultType_Mucp" xml:space="preserve">
+    <value>Max Urethral Closure Pressure (MUCP) outside Profile</value>
+  </data>
+  <data name="Enum_ResultType_Mup" xml:space="preserve">
+    <value>Max Urethral Pressure (MUP) outside Profile</value>
+  </data>
+  <data name="Enum_ResultType_FunctionalLength" xml:space="preserve">
+    <value>Functional Length</value>
+  </data>
+  <data name="Enum_ResultType_TotalProfileLength" xml:space="preserve">
+    <value>Total Profile Length</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileAverageTransmission" xml:space="preserve">
+    <value>Average Transmission Ratio</value>
+  </data>
+  <data name="Enum_ResultType_ProfileInfusedVolume" xml:space="preserve">
+    <value>Infused Volume</value>
+  </data>
+  <data name="Enum_ResultType_ProfileMucp" xml:space="preserve">
+    <value>Max Urethral Closure Pressure (MUCP)</value>
+  </data>
+  <data name="Enum_ResultType_ProfileMup" xml:space="preserve">
+    <value>Max Urethral Pressure (MUP)</value>
+  </data>
+  <data name="Enum_ResultType_Delay" xml:space="preserve">
+    <value>Time between Cough and Leak</value>
+  </data>
+  <data name="Enum_ResultType_StressTotalProfileLength" xml:space="preserve">
+    <value>Total Profile Length during Stress</value>
+  </data>
+  <data name="Enum_ResultType_RestingBladderPressure" xml:space="preserve">
+    <value>Resting Bladder Pressure</value>
+  </data>
+  <data name="Enum_ResultType_CoughLeak" xml:space="preserve">
+    <value>Cough Leak (Yes/No)</value>
+  </data>
+  <data name="Enum_ResultType_CoughPabd" xml:space="preserve">
+    <value>Max Pabd at Cough Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_CoughPdet" xml:space="preserve">
+    <value>Max Pdet at Cough Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_CoughPves" xml:space="preserve">
+    <value>Max Pves at Cough Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_CoughVolume" xml:space="preserve">
+    <value>Bladder Volume at Cough Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressurePabd" xml:space="preserve">
+    <value>Leak Point Pressure (Pabd)</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressurePdet" xml:space="preserve">
+    <value>Leak Point Pressure (Pdet)</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressurePves" xml:space="preserve">
+    <value>Leak Point Pressure (Pves)</value>
+  </data>
+  <data name="Enum_ResultType_RestProfileInfusedVolume" xml:space="preserve">
+    <value>Infused Volume at Start Resting</value>
+  </data>
+  <data name="Enum_ResultType_RestProfileMucp" xml:space="preserve">
+    <value>Max Urethral Closure Pressure (MUCP) at Rest</value>
+  </data>
+  <data name="Enum_ResultType_RestProfileMup" xml:space="preserve">
+    <value>Max Urethral Pressure (MUP) at Rest</value>
+  </data>
+  <data name="Enum_ResultType_RestFunctionalProfileLength" xml:space="preserve">
+    <value>Functional Length at Rest</value>
+  </data>
+  <data name="Enum_ResultType_RestProfileLength" xml:space="preserve">
+    <value>Total Profile Length at Rest</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileInfusedVolume" xml:space="preserve">
+    <value>Infused Volume at Start Stress</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileMucp" xml:space="preserve">
+    <value>Max Urethral Closure Pressure (MUCP) during Stress</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileMup" xml:space="preserve">
+    <value>Max Urethral Pressure (MUP) during Stress</value>
+  </data>
+  <data name="Enum_ResultType_StressFunctionalProfileLength" xml:space="preserve">
+    <value>Functional Length during Stress</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileLength" xml:space="preserve">
+    <value>Total Profile Length during Stress</value>
+  </data>
+  <data name="Enum_ResultType_StressProfileRestingBladder" xml:space="preserve">
+    <value>Resting Bladder Pressure during Stress</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaBaseLinePressure" xml:space="preserve">
+    <value>Baseline Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeak" xml:space="preserve">
+    <value>Valsalva Leak (Yes/No)</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeakPointPressure" xml:space="preserve">
+    <value>Valsalva Leak Point Pressure</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaMaximumPressure" xml:space="preserve">
+    <value>Max at Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaPressureChange" xml:space="preserve">
+    <value>Valsalva Stress Test Pressure Change</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaVolume" xml:space="preserve">
+    <value>Bladder Volume at Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_FirstDesireBladderVolume" xml:space="preserve">
+    <value>Bladder Volume at First Desire</value>
+  </data>
+  <data name="Enum_ResultType_FirstSensationBladderVolume" xml:space="preserve">
+    <value>Bladder Volume at First Sensation</value>
+  </data>
+  <data name="Enum_ResultType_MaxCapacityBladderVolume" xml:space="preserve">
+    <value>Bladder Volume at Max Capacity</value>
+  </data>
+  <data name="Enum_ResultType_StrongDesireBladderVolume" xml:space="preserve">
+    <value>Bladder Volume at Strong Desire</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressureVolume" xml:space="preserve">
+    <value>Bladder Volume at Leak</value>
+  </data>
+  <data name="Enum_ResultType_RestTotalProfileLength" xml:space="preserve">
+    <value>Total Profile Length at Rest</value>
+  </data>
+  <data name="Enum_ResultType_StressRestingBladderPressure" xml:space="preserve">
+    <value>Resting Bladder Pressure during Stress</value>
+  </data>
+  <data name="Enum_ResultType_PullerDistance" xml:space="preserve">
+    <value>Puller Distance</value>
+  </data>
+  <data name="Enum_ResultType_PullerSpeed" xml:space="preserve">
+    <value>Puller Speed</value>
+  </data>
+  <data name="Enum_ResultType_ProfileProstaticOrUrethra" xml:space="preserve">
+    <value>Continence Length at Rest</value>
+  </data>
+  <data name="Enum_ResultType_ProfileRestingArea" xml:space="preserve">
+    <value>Resting Area</value>
+  </data>
+  <data name="Enum_ResultType_LeakPointPressurePressureChange" xml:space="preserve">
+    <value>Cough Leak Point Pressure Change</value>
+  </data>
+  <data name="Enum_ResultType_Baseline" xml:space="preserve">
+    <value>Baseline</value>
+  </data>
+  <data name="Enum_ResultType_Maximum" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="Enum_ResultType_PressureChange" xml:space="preserve">
+    <value>Pressure Change</value>
+  </data>
+  <data name="Enum_ResultType_FunctionalProfileLength" xml:space="preserve">
+    <value>Functional Length</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaMaxPves" xml:space="preserve">
+    <value>Max Pves at Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaMaxPabd" xml:space="preserve">
+    <value>Max Pabd at Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaMaxPdet" xml:space="preserve">
+    <value>Max Pdet at Valsalva Stress Test</value>
+  </data>
+  <data name="Enum_ResultType_ProfileBladderFilling" xml:space="preserve">
+    <value>Bladder Volume at UPP Phase End</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeakPointPressureChange" xml:space="preserve">
+    <value>Valsalva Leak Point Pressure Change</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeakPointPressurePabd" xml:space="preserve">
+    <value>Valsalva Leak Point Pressure (Pabd)</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeakPointPressurePdet" xml:space="preserve">
+    <value>Valsalva Leak Point Pressure (Pdet)</value>
+  </data>
+  <data name="Enum_ResultType_ValsalvaLeakPointPressurePves" xml:space="preserve">
+    <value>Valsalva Leak Point Pressure (Pves)</value>
+  </data>
+  <data name="Enum_ResultType_VoidingPabdMax" xml:space="preserve">
+    <value>Max Voiding Pabd</value>
+  </data>
+  <data name="Enum_ResultType_VoidingPdetMax" xml:space="preserve">
+    <value>Max Voiding Pdet</value>
+  </data>
+  <data name="Enum_ResultType_VoidingPuraMax" xml:space="preserve">
+    <value>Max Voiding Pura</value>
+  </data>
+  <data name="Enum_ResultType_VoidingPvesMax" xml:space="preserve">
+    <value>Max Voiding Pves</value>
+  </data>
+  <data name="Enum_ResultType_FillingPabdMax" xml:space="preserve">
+    <value>Max Filling Pabd</value>
+  </data>
+  <data name="Enum_ResultType_FillingPdetMax" xml:space="preserve">
+    <value>Max Filling Pdet</value>
+  </data>
+  <data name="Enum_ResultType_FillingPuraMax" xml:space="preserve">
+    <value>Max Filling Pura</value>
+  </data>
+  <data name="Enum_ResultType_FillingPvesMax" xml:space="preserve">
+    <value>Max Filling Pves</value>
+  </data>
+  <data name="Enum_ResultType_FlowPabdMax" xml:space="preserve">
+    <value>Max Flow Pabd</value>
+  </data>
+  <data name="Enum_ResultType_FlowPdetMax" xml:space="preserve">
+    <value>Max Flow Pdet</value>
+  </data>
+  <data name="Enum_ResultType_FlowPuraMax" xml:space="preserve">
+    <value>Max Flow Pura</value>
+  </data>
+  <data name="Enum_ResultType_FlowPvesMax" xml:space="preserve">
+    <value>Max Flow Pves</value>
+  </data>
+  <data name="Enum_ResultType_Pabd" xml:space="preserve">
+    <value>Pabd</value>
+  </data>
+  <data name="Enum_ResultType_Pdet" xml:space="preserve">
+    <value>Pdet</value>
+  </data>
+  <data name="Enum_ResultType_Pves" xml:space="preserve">
+    <value>Pves</value>
+  </data>
+  <data name="Enum_ResultType_BladderSpecificGravity" xml:space="preserve">
+    <value>Bladder Specific Gravity</value>
+  </data>
+  <data name="Enum_ResultType_Compliance" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="Enum_ResultType_FatigueMarker" xml:space="preserve">
+    <value>Fatigue Marker</value>
+  </data>
+  <data name="Enum_ResultType_InfusedVol_ComplianceStart" xml:space="preserve">
+    <value>Infused Volume at Compliance Start</value>
+  </data>
+  <data name="Enum_ResultType_InfusedVol_ComplianceStop" xml:space="preserve">
+    <value>Infused Volume at Compliance End</value>
+  </data>
+  <data name="Enum_ResultType_Leak" xml:space="preserve">
+    <value>Leak</value>
+  </data>
+  <data name="Enum_ResultType_MaxStimulationLevel" xml:space="preserve">
+    <value>Max Stimulation Level</value>
+  </data>
+  <data name="Enum_ResultType_MeanPclo" xml:space="preserve">
+    <value>Mean Pclos</value>
+  </data>
+  <data name="Enum_ResultType_MeanPura" xml:space="preserve">
+    <value>Mean Pura</value>
+  </data>
+  <data name="Enum_ResultType_MeanStimulationLevel" xml:space="preserve">
+    <value>Mean Stimulation Level</value>
+  </data>
+  <data name="Enum_ResultType_NumberOfRepeatsPerformed" xml:space="preserve">
+    <value>Number of Repeats Performed</value>
+  </data>
+  <data name="Enum_ResultType_OverallMaxChannelsValue" xml:space="preserve">
+    <value>Overall Max Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_OverallMinChannelsValue" xml:space="preserve">
+    <value>Overall Min Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_PabdMax" xml:space="preserve">
+    <value>Max Pabd</value>
+  </data>
+  <data name="Enum_ResultType_PclosAt30" xml:space="preserve">
+    <value>Pclos at 30</value>
+  </data>
+  <data name="Enum_ResultType_PclosAt70" xml:space="preserve">
+    <value>Pclos at 70</value>
+  </data>
+  <data name="Enum_ResultType_PdetMax" xml:space="preserve">
+    <value>Max Pet</value>
+  </data>
+  <data name="Enum_ResultType_Pdet_ComplianceStart" xml:space="preserve">
+    <value>Pdet at Compliance Start</value>
+  </data>
+  <data name="Enum_ResultType_Pdet_ComplianceStop" xml:space="preserve">
+    <value>Pdet at Compliance Stop</value>
+  </data>
+  <data name="Enum_ResultType_PhaseMeanChannelsValue" xml:space="preserve">
+    <value>Phase Mean Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_PhaseScoreChannelsValue" xml:space="preserve">
+    <value>Phase Score Channels Value</value>
+  </data>
+  <data name="Enum_ResultType_PuraMax" xml:space="preserve">
+    <value>Max Pura</value>
+  </data>
+  <data name="Enum_ResultType_PvesMax" xml:space="preserve">
+    <value>Max Pves</value>
+  </data>
+  <data name="Enum_ResultType_TotalPhasesExecuted" xml:space="preserve">
+    <value>Total Phases Executed</value>
+  </data>
+  <data name="Enum_ResultType_TotalPhasesPlanned" xml:space="preserve">
+    <value>Total Phases Planned</value>
+  </data>
+  <data name="Enum_ResultType_Transmission" xml:space="preserve">
+    <value>Transmission</value>
+  </data>
+  <data name="Enum_ResultType_Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Enum_EventType_Flow" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="Enum_EventType_FlowMaximum" xml:space="preserve">
+    <value>Flow Maximum</value>
+  </data>
+  <data name="Enum_EventType_RestProfile" xml:space="preserve">
+    <value>Rest Profile</value>
+  </data>
+  <data name="Enum_EventType_StressProfile" xml:space="preserve">
+    <value>Stress Profile</value>
+  </data>
+  <data name="Enum_EventType_Profile" xml:space="preserve">
+    <value>Profile</value>
+  </data>
+  <data name="Enum_EventType_Transmission" xml:space="preserve">
+    <value>Transmission</value>
+  </data>
+  <data name="Enum_EventType_Valsalva" xml:space="preserve">
+    <value>Valsalva</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_BluetoothError" xml:space="preserve">
+    <value>Bluetooth Error</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_CommunicationError" xml:space="preserve">
+    <value>Communication Error</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Connected" xml:space="preserve">
+    <value>Connected</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Connecting" xml:space="preserve">
+    <value>Connecting</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Disconnected" xml:space="preserve">
+    <value>Disconnected</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Failed" xml:space="preserve">
+    <value>Failed</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Unknown" xml:space="preserve">
+    <value>Unknown</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_USBError" xml:space="preserve">
+    <value>USB Error</value>
+  </data>
+  <data name="Enum_DeviceConnectionType_Bluetooth" xml:space="preserve">
+    <value>Bluetooth</value>
+  </data>
+  <data name="Enum_DeviceConnectionType_BluetoothLE" xml:space="preserve">
+    <value>BluetoothLE</value>
+  </data>
+  <data name="Enum_DeviceConnectionType_Simulator" xml:space="preserve">
+    <value>SIMULATOR</value>
+  </data>
+  <data name="Enum_DeviceConnectionType_TCP" xml:space="preserve">
+    <value>TCP</value>
+  </data>
+  <data name="Enum_DeviceConnectionType_USB" xml:space="preserve">
+    <value>USB</value>
+  </data>
+  <data name="Enum_EventType_EmgRelaxation" xml:space="preserve">
+    <value>Emg Relaxation</value>
+  </data>
+  <data name="Enum_EventType_MissingDataArtifact" xml:space="preserve">
+    <value>Missing Data Artifact</value>
+  </data>
+  <data name="QCBeakerWeightCriteria0Points" xml:space="preserve">
+    <value>Beaker weight &gt;= 25 grams</value>
+  </data>
+  <data name="QCBeakerWeightCriteria5Points" xml:space="preserve">
+    <value>Beaker weight &lt; 25 grams</value>
+  </data>
+  <data name="Enum_ControlAction_AutoScaleEmgChannels" xml:space="preserve">
+    <value>Auto Scale EMG Channels</value>
+  </data>
+  <data name="Enum_ControlAction_AutoScalePressureChannels" xml:space="preserve">
+    <value>Auto Scale Pressure Channels</value>
+  </data>
+  <data name="Enum_ControlAction_ChangeWaterbag" xml:space="preserve">
+    <value>Change Waterbag</value>
+  </data>
+  <data name="Enum_ControlAction_CreateFixedText" xml:space="preserve">
+    <value>Create Fixed Text</value>
+  </data>
+  <data name="Enum_ControlAction_CreateFreeText" xml:space="preserve">
+    <value>Create New Event Marker</value>
+  </data>
+  <data name="Enum_ControlAction_FastPumpSpeed" xml:space="preserve">
+    <value>Fast Pump Speed</value>
+  </data>
+  <data name="Enum_ControlAction_MediumPumpSpeed" xml:space="preserve">
+    <value>Medium Pump Speed</value>
+  </data>
+  <data name="Enum_ControlAction_PrimePumpTubeOff" xml:space="preserve">
+    <value>Prime Pump Tube Off</value>
+  </data>
+  <data name="Enum_ControlAction_PrimePumpTubeOn" xml:space="preserve">
+    <value>Prime Pump Tube On</value>
+  </data>
+  <data name="Enum_ControlAction_PullerOff" xml:space="preserve">
+    <value>Puller Off</value>
+  </data>
+  <data name="Enum_ControlAction_PullerOn" xml:space="preserve">
+    <value>Puller On</value>
+  </data>
+  <data name="Enum_ControlAction_PullerReturn" xml:space="preserve">
+    <value>Puller Return</value>
+  </data>
+  <data name="Enum_ControlAction_PumpDown" xml:space="preserve">
+    <value>Pump Down</value>
+  </data>
+  <data name="Enum_ControlAction_PumpOff" xml:space="preserve">
+    <value>Pump Off</value>
+  </data>
+  <data name="Enum_ControlAction_PumpOn" xml:space="preserve">
+    <value>Pump On</value>
+  </data>
+  <data name="Enum_ControlAction_PumpUp" xml:space="preserve">
+    <value>Pump Up</value>
+  </data>
+  <data name="Enum_ControlAction_Questionnaire" xml:space="preserve">
+    <value>Questionnaire</value>
+  </data>
+  <data name="Enum_ControlAction_Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Enum_ControlAction_ResetEmgScalesToDefault" xml:space="preserve">
+    <value>Reset EMG Scales To Default</value>
+  </data>
+  <data name="Enum_ControlAction_ResetPressureScalesToDefault" xml:space="preserve">
+    <value>Reset Pressure Scales To Default</value>
+  </data>
+  <data name="Enum_ControlAction_Results" xml:space="preserve">
+    <value>Results</value>
+  </data>
+  <data name="Enum_ControlAction_SetStimulationLevel" xml:space="preserve">
+    <value>Set Stimulation Level</value>
+  </data>
+  <data name="Enum_ControlAction_SlowPumpSpeed" xml:space="preserve">
+    <value>Slow Pump Speed</value>
+  </data>
+  <data name="Enum_ControlAction_SmartPumpDown" xml:space="preserve">
+    <value>Smart Pump Down</value>
+  </data>
+  <data name="Enum_ControlAction_SmartPumpUp" xml:space="preserve">
+    <value>Smart Pump Up</value>
+  </data>
+  <data name="Enum_ControlAction_StopStimulation" xml:space="preserve">
+    <value>Stop Stimulation</value>
+  </data>
+  <data name="Enum_ControlAction_ZeroAllPressureChannels" xml:space="preserve">
+    <value>Zero All Pressure Channels</value>
+  </data>
+  <data name="Enum_ControlAction_ZeroPclos" xml:space="preserve">
+    <value>Equalize Pclos</value>
+  </data>
+  <data name="Enum_ControlAction_ZeroPdet" xml:space="preserve">
+    <value>Equalize Pdet</value>
+  </data>
+  <data name="Enum_ControlAction_ZeroUroflowVolume" xml:space="preserve">
+    <value>Zero uroflow volume</value>
+  </data>
+  <data name="Enum_ControlAction_ZoomOut" xml:space="preserve">
+    <value>Zoom 100%</value>
+  </data>
+  <data name="Enum_ControlAction_ZoomPrevious" xml:space="preserve">
+    <value>Previous zoom</value>
+  </data>
+  <data name="Enum_FunctionKey_Unassigned" xml:space="preserve">
+    <value>Unassigned</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceClppEndMarker" xml:space="preserve">
+    <value>Place CLPP End Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceEmgRelaxationMarker" xml:space="preserve">
+    <value>Place EMG Relaxation Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceFatiguePointMarker" xml:space="preserve">
+    <value>Place Fatigue Point Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceFirstDesireMarker" xml:space="preserve">
+    <value>First Desire</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceFirstSensationMarker" xml:space="preserve">
+    <value>First Sensation</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceFixedTextMarker" xml:space="preserve">
+    <value>Place Fixed Text Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceFreeTextMarker" xml:space="preserve">
+    <value>Place Free Text Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceLeakpointPressureMarker" xml:space="preserve">
+    <value>Leak point pressure</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceMaximumCystometricCapacityMarker" xml:space="preserve">
+    <value>Max CC</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceMictionMarker" xml:space="preserve">
+    <value>Place Miction Marker</value>
+  </data>
+  <data name="Enum_ControlAction_PlacePermissionToVoidMarker" xml:space="preserve">
+    <value>Permission To Void</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceRestProfileEndMarker" xml:space="preserve">
+    <value>Rest profile</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceRestProfileMarker" xml:space="preserve">
+    <value>Rest profile</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceSittingFreeTextMarker" xml:space="preserve">
+    <value>Sitting</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStandingFreeTextMarker" xml:space="preserve">
+    <value>Standing</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStressProfileEndMarker" xml:space="preserve">
+    <value>Stress profile</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStressProfileMarker" xml:space="preserve">
+    <value>Stress profile</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStressTestEndMarker" xml:space="preserve">
+    <value>Stress Test</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStressTestMarker" xml:space="preserve">
+    <value>Stress Test</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceStrongDesireMarker" xml:space="preserve">
+    <value>Strong Desire</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceSupineFreeTextMarker" xml:space="preserve">
+    <value>Supine</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceValsalvaEndMarker" xml:space="preserve">
+    <value>Valsalva</value>
+  </data>
+  <data name="Enum_ControlAction_PlaceValsalvaMarker" xml:space="preserve">
+    <value>Valsalva</value>
+  </data>
+  <data name="Enum_ControlAction_StartCineloopDiskVideo" xml:space="preserve">
+    <value>Start cineloop to disk video</value>
+  </data>
+  <data name="Enum_ControlAction_StopCineloopDiskVideo" xml:space="preserve">
+    <value>Stop cineloop to disk video</value>
+  </data>
+  <data name="Enum_ControlAction_TakeSnapshot" xml:space="preserve">
+    <value>Save Image</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_UPP" xml:space="preserve">
+    <value>UPP</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_UroFlow" xml:space="preserve">
+    <value>Uroflow</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Urogynecology2PUrodynamics" xml:space="preserve">
+    <value>Urogynecology 2P Urodynamics</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Urogynecology3PUrodynamics" xml:space="preserve">
+    <value>Urogynecology 3P Urodynamics</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_UrologyUrodynamics" xml:space="preserve">
+    <value>Urology Urodynamics</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_VideoUrodynamics" xml:space="preserve">
+    <value>Video Urodynamics</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_AUASI" xml:space="preserve">
+    <value>AUASI</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_BladderDiary" xml:space="preserve">
+    <value>Bladder Diary</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_ICIQ" xml:space="preserve">
+    <value>ICIQ</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_ICS" xml:space="preserve">
+    <value>ICS Male/Female</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_ICS_Female" xml:space="preserve">
+    <value>ICS Female</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_ICS_Male" xml:space="preserve">
+    <value>ICS Male</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_IPSS" xml:space="preserve">
+    <value>IPSS</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_PFR" xml:space="preserve">
+    <value>PFR Questionnaire</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Qnr_PQOL" xml:space="preserve">
+    <value>PQOL</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_UroFlowReport" xml:space="preserve">
+    <value>Uroflow Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Urogynecology2PUrodynamicsReport" xml:space="preserve">
+    <value>Urogynecology 2P Urodynamics Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Urogynecology3PUrodynamicsReport" xml:space="preserve">
+    <value>Urogynecology 3P Urodynamics Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_UrologyUrodynamicsReport" xml:space="preserve">
+    <value>Urology Urodynamics Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_VideoUrodynamicsReport" xml:space="preserve">
+    <value>Video Urodynamics Report</value>
+  </data>
+  <data name="Enum_ChallengeTemplateModel_FiftyPercent" xml:space="preserve">
+    <value>50%</value>
+  </data>
+  <data name="Enum_ChallengeTemplateModel_Null" xml:space="preserve">
+    <value />
+  </data>
+  <data name="Enum_ChallengeTemplateModel_Rest" xml:space="preserve">
+    <value>Rest</value>
+  </data>
+  <data name="Enum_ChallengeTemplateModel_SeventyFivePercent" xml:space="preserve">
+    <value>75%</value>
+  </data>
+  <data name="Enum_ChallengeTemplateModel_TwentyFivePercent" xml:space="preserve">
+    <value>25%</value>
+  </data>
+  <data name="Enum_ChannelName_BladderVolume" xml:space="preserve">
+    <value>Bladder volume</value>
+  </data>
+  <data name="Enum_ChannelName_Distance" xml:space="preserve">
+    <value>Distance</value>
+  </data>
+  <data name="Enum_ChannelName_Emg" xml:space="preserve">
+    <value>EMG</value>
+  </data>
+  <data name="Enum_ChannelName_Emg1" xml:space="preserve">
+    <value>EMG1</value>
+  </data>
+  <data name="Enum_ChannelName_Emg2" xml:space="preserve">
+    <value>EMG2</value>
+  </data>
+  <data name="Enum_ChannelName_EmgAbd" xml:space="preserve">
+    <value>EMG Abdominal</value>
+  </data>
+  <data name="Enum_ChannelName_EmgPelvic" xml:space="preserve">
+    <value>EMG Pelvic</value>
+  </data>
+  <data name="Enum_ChannelName_ErrorIcon" xml:space="preserve">
+    <value>Missing or Incomplete Field(s)</value>
+  </data>
+  <data name="Enum_ChannelName_Flow" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="Enum_ChannelName_FlowRate" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="Enum_ChannelName_FlowVolume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Enum_ChannelName_InfusedVolume" xml:space="preserve">
+    <value>Infused Volume</value>
+  </data>
+  <data name="Enum_ChannelName_Manometry" xml:space="preserve">
+    <value>Manometry</value>
+  </data>
+  <data name="Enum_ChannelName_NotSet" xml:space="preserve">
+    <value>Not Set</value>
+  </data>
+  <data name="Enum_ChannelName_P4" xml:space="preserve">
+    <value>P4</value>
+  </data>
+  <data name="Enum_ChannelName_Pabd" xml:space="preserve">
+    <value>Pabd</value>
+  </data>
+  <data name="Enum_ChannelName_Pclos" xml:space="preserve">
+    <value>Pclos</value>
+  </data>
+  <data name="Enum_ChannelName_Pdet" xml:space="preserve">
+    <value>Pdet</value>
+  </data>
+  <data name="Enum_ChannelName_Pressure" xml:space="preserve">
+    <value>Pressure</value>
+  </data>
+  <data name="Enum_ChannelName_Pura" xml:space="preserve">
+    <value>Pura</value>
+  </data>
+  <data name="Enum_ChannelName_Pves" xml:space="preserve">
+    <value>Pves</value>
+  </data>
+  <data name="Enum_ChannelName_Stimulation" xml:space="preserve">
+    <value>Stimulation</value>
+  </data>
+  <data name="Enum_Phase_Container" xml:space="preserve">
+    <value>Container</value>
+  </data>
+  <data name="Enum_Phase_Filling" xml:space="preserve">
+    <value>Filling</value>
+  </data>
+  <data name="Enum_Phase_FillingCystometry" xml:space="preserve">
+    <value>Filling Cystometry</value>
+  </data>
+  <data name="Enum_Phase_FillingCystometryIceWater" xml:space="preserve">
+    <value>Filling Cystometry Ice Water</value>
+  </data>
+  <data name="Enum_Phase_FillingCystometryNormalWater" xml:space="preserve">
+    <value>Filling Cystometry Normal Water</value>
+  </data>
+  <data name="Enum_Phase_Flow" xml:space="preserve">
+    <value>Flow</value>
+  </data>
+  <data name="Enum_Phase_FlowEMG" xml:space="preserve">
+    <value>Flow-EMG</value>
+  </data>
+  <data name="Enum_Phase_GentleEndurance" xml:space="preserve">
+    <value>Gentle endurance</value>
+  </data>
+  <data name="Enum_Phase_MediumEndurance" xml:space="preserve">
+    <value>Medium endurance</value>
+  </data>
+  <data name="Enum_Phase_PFR" xml:space="preserve">
+    <value>PFR</value>
+  </data>
+  <data name="Enum_Phase_Preview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="Enum_Phase_Preview2" xml:space="preserve">
+    <value>Preview 2</value>
+  </data>
+  <data name="Enum_Phase_ProcedurePhases" xml:space="preserve">
+    <value>Procedure phases</value>
+  </data>
+  <data name="Enum_Phase_Rest" xml:space="preserve">
+    <value>Rest</value>
+  </data>
+  <data name="Enum_Phase_Rest_Template" xml:space="preserve">
+    <value>Rest activity template</value>
+  </data>
+  <data name="Enum_Phase_Root" xml:space="preserve">
+    <value>Protocol</value>
+  </data>
+  <data name="Enum_Phase_Stimulation" xml:space="preserve">
+    <value>Stimulation</value>
+  </data>
+  <data name="Enum_Phase_Stimulation_Settings" xml:space="preserve">
+    <value>Stimulation settings</value>
+  </data>
+  <data name="Enum_Phase_StressIncontinence" xml:space="preserve">
+    <value>Stress incontinence</value>
+  </data>
+  <data name="Enum_Phase_StrongEndurance" xml:space="preserve">
+    <value>Strong endurance</value>
+  </data>
+  <data name="Enum_Phase_UPP" xml:space="preserve">
+    <value>UPP</value>
+  </data>
+  <data name="Enum_Phase_Voiding" xml:space="preserve">
+    <value>Voiding</value>
+  </data>
+  <data name="Enum_Phase_VoidingCystometry" xml:space="preserve">
+    <value>Voiding Cystometry</value>
+  </data>
+  <data name="Enum_Phase_VoidingIceWater" xml:space="preserve">
+    <value>Voiding Cystometry Ice Water</value>
+  </data>
+  <data name="Enum_Phase_VoidingNormalWater" xml:space="preserve">
+    <value>Voiding Cystometry Normal Water</value>
+  </data>
+  <data name="Enum_Phase_Work" xml:space="preserve">
+    <value>Work</value>
+  </data>
+  <data name="Enum_ChartDownSamplerType_Max" xml:space="preserve">
+    <value>Max</value>
+  </data>
+  <data name="Enum_ChartDownSamplerType_Median" xml:space="preserve">
+    <value>Median</value>
+  </data>
+  <data name="Enum_ChartDownSamplerType_MinMax" xml:space="preserve">
+    <value>MinMax</value>
+  </data>
+  <data name="Enum_ChartDownSamplerType_None" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Enum_ServiceType_Acquisition" xml:space="preserve">
+    <value>Acquisition</value>
+  </data>
+  <data name="Enum_ServiceType_Connection" xml:space="preserve">
+    <value>Connection</value>
+  </data>
+  <data name="Enum_ServiceType_Pim" xml:space="preserve">
+    <value>Pim</value>
+  </data>
+  <data name="Enum_ServiceType_Puller" xml:space="preserve">
+    <value>Puller</value>
+  </data>
+  <data name="Enum_ServiceType_Pump" xml:space="preserve">
+    <value>Pump</value>
+  </data>
+  <data name="Enum_ServiceType_RemoteControl" xml:space="preserve">
+    <value>Remote Control</value>
+  </data>
+  <data name="Enum_ServiceType_Resistance" xml:space="preserve">
+    <value>Resistance</value>
+  </data>
+  <data name="Enum_ServiceType_Stimulation" xml:space="preserve">
+    <value>Stimulation</value>
+  </data>
+  <data name="Enum_ChannelName_Volume" xml:space="preserve">
+    <value>Volume</value>
+  </data>
+  <data name="Enum_WorkflowStepType_Procedure" xml:space="preserve">
+    <value>Procedure</value>
+  </data>
+  <data name="Enum_WorkflowStepType_Questionnaire" xml:space="preserve">
+    <value>Questionnaire</value>
+  </data>
+  <data name="Enum_WorkflowStepType_Report" xml:space="preserve">
+    <value>Report</value>
+  </data>
+  <data name="Enum_WorkflowStepType_Review" xml:space="preserve">
+    <value>Review</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FlowEMG" xml:space="preserve">
+    <value>Flow-EMG</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FlowWithEMG" xml:space="preserve">
+    <value>Flow with EMG</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FreeFlow" xml:space="preserve">
+    <value>FreeFlow</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_IceWaterTest" xml:space="preserve">
+    <value>Ice water test</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_IcewaterUrodynamics" xml:space="preserve">
+    <value>Icewater Urodynamics</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1Emg" xml:space="preserve">
+    <value>PFR 1 EMG</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1EmgAndPressure" xml:space="preserve">
+    <value>PFR 1 EMG and Pressure</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1Pressure" xml:space="preserve">
+    <value>PFR 1 Pressure</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr2Emg" xml:space="preserve">
+    <value>PFR 2 EMG</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr2EmgAndPressure" xml:space="preserve">
+    <value>PFR 2 EMG and Pressure</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_PfrStimulation" xml:space="preserve">
+    <value>PFR Stimulation</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_PressureFlow" xml:space="preserve">
+    <value>Pressure-Flow</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FlowEMGReport" xml:space="preserve">
+    <value>Flow-EMG Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FreeFlowReport" xml:space="preserve">
+    <value>FreeFlow Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_IceWaterTestReport" xml:space="preserve">
+    <value>Ice water test Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr2EmgReport" xml:space="preserve">
+    <value>PFR 2 EMG Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_PressureFlowReport" xml:space="preserve">
+    <value>Pressure-Flow Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_FlowWithEmgReport" xml:space="preserve">
+    <value>Flow with EMG Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1EmgAndPressureReport" xml:space="preserve">
+    <value>PFR 1 EMG and Pressure Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1EmgReport" xml:space="preserve">
+    <value>PFR 1 EMG Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr1PressureReport" xml:space="preserve">
+    <value>PFR 1 Pressure Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_Pfr2EmgAndPressureReport" xml:space="preserve">
+    <value>PFR 2 EMG and Pressure Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_PfrStimulationReport" xml:space="preserve">
+    <value>PFR Stimulation Report</value>
+  </data>
+  <data name="Enum_WorkflowConfiguration_IcewaterUrodynamicsReport" xml:space="preserve">
+    <value>Icewater Urodynamics Report</value>
+  </data>
+  <data name="Enum_EventType_Artefact" xml:space="preserve">
+    <value>Artefact</value>
+  </data>
+  <data name="Enum_EventType_Cough" xml:space="preserve">
+    <value>Cough</value>
+  </data>
+  <data name="Enum_EventType_PermissionToVoid" xml:space="preserve">
+    <value>Permission To Void</value>
+  </data>
+  <data name="Enum_EventType_Compliance" xml:space="preserve">
+    <value>Compliance</value>
+  </data>
+  <data name="Enum_EventType_CustomEvent" xml:space="preserve">
+    <value>Custom Event</value>
+  </data>
+  <data name="Enum_EventType_DeviceConnectionLost" xml:space="preserve">
+    <value>Device Connection Lost</value>
+  </data>
+  <data name="Enum_EventType_FirstDesire" xml:space="preserve">
+    <value>First Desire</value>
+  </data>
+  <data name="Enum_EventType_FirstSensation" xml:space="preserve">
+    <value>First Sensation</value>
+  </data>
+  <data name="Enum_EventType_FlowArtifact" xml:space="preserve">
+    <value>Flow Artifact</value>
+  </data>
+  <data name="Enum_EventType_MaximumCystometricCapacity" xml:space="preserve">
+    <value>Maximum Cystometric Capacity</value>
+  </data>
+  <data name="Enum_EventType_StressTest" xml:space="preserve">
+    <value>Stress Test</value>
+  </data>
+  <data name="Enum_EventType_StrongDesire" xml:space="preserve">
+    <value>Strong Desire</value>
+  </data>
+  <data name="UnitNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Enum_EventType_InfusionBagSpecificGravityChange" xml:space="preserve">
+    <value>Infusion Bag Specific Gravity Change</value>
+  </data>
+  <data name="Enum_EventType_MUCP" xml:space="preserve">
+    <value>MUCP</value>
+  </data>
+  <data name="Enum_EventType_MUP" xml:space="preserve">
+    <value>MUP</value>
+  </data>
+  <data name="Enum_EventType_Pause" xml:space="preserve">
+    <value>Pause</value>
+  </data>
+  <data name="Enum_EventType_PullerActive" xml:space="preserve">
+    <value>Puller Active</value>
+  </data>
+  <data name="Enum_EventType_PumpActive" xml:space="preserve">
+    <value>Pump Active</value>
+  </data>
+  <data name="Enum_EventType_SingleImage" xml:space="preserve">
+    <value>Single Image</value>
+  </data>
+  <data name="Enum_EventType_StimulationMaximum" xml:space="preserve">
+    <value>Stimulation Maximum</value>
+  </data>
+  <data name="Enum_EventType_Video" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="Enum_QCSCoreType_QCBeakerWeight" xml:space="preserve">
+    <value>Beaker weight</value>
+  </data>
+  <data name="QCBeakerWeightCriteriaDescription0Points" xml:space="preserve">
+    <value>Beaker not empty at start of flow</value>
+  </data>
+  <data name="QCBeakerWeightCriteriaDescription10Points" xml:space="preserve">
+    <value>Beaker empty at the start of flow</value>
+  </data>
+  <data name="Enum_ResultType_BladderObstructionClass" xml:space="preserve">
+    <value>Schäfer Bladder Obstruction</value>
+  </data>
+  <data name="Enum_ResultType_BladderPowerClass" xml:space="preserve">
+    <value>Schäfer Bladder Power</value>
+  </data>
+  <data name="Enum_EventType_ClippedDataArtifact" xml:space="preserve">
+    <value>Clipped Data Artifact</value>
+  </data>
+  <data name="Enum_EventType_PullerReturn" xml:space="preserve">
+    <value>Puller Return</value>
+  </data>
+  <data name="Enum_DeviceConnectionStatus_Disconnecting" xml:space="preserve">
+    <value>Disconnecting</value>
+  </data>
+  <data name="Enum_Roles_DomainAdmins" xml:space="preserve">
+    <value>Domain Admins</value>
+  </data>
+  <data name="Enum_Roles_DomainUsers" xml:space="preserve">
+    <value>Domain Users</value>
+  </data>
+  <data name="Enum_Roles_LocalAdmins" xml:space="preserve">
+    <value>Local Admins</value>
+  </data>
+  <data name="Enum_Roles_LocalUsers" xml:space="preserve">
+    <value>Local Users</value>
+  </data>
+  <data name="Enum_RoleType_Ad" xml:space="preserve">
+    <value>AD</value>
+  </data>
+  <data name="Enum_RoleType_Local" xml:space="preserve">
+    <value>Local</value>
+  </data>
+  <data name="Enum_Roles_IsDefaultN" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="Enum_Roles_IsDefaultY" xml:space="preserve">
+    <value>Y</value>
+  </data>
+  <data name="Enum_PermissionNames_AddPatient" xml:space="preserve">
+    <value>Add Patient</value>
+  </data>
+  <data name="Enum_PermissionNames_ChangePassword" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="Enum_PermissionNames_DeletePatient" xml:space="preserve">
+    <value>Delete Patient</value>
+  </data>
+  <data name="Enum_PermissionNames_ReassignStudy" xml:space="preserve">
+    <value>Re-assign Study</value>
+  </data>
+  <data name="Enum_PermissionNames_RecordStudy" xml:space="preserve">
+    <value>Record Study</value>
+  </data>
+  <data name="Enum_PermissionNames_UpdatePatient" xml:space="preserve">
+    <value>Update Patient</value>
+  </data>
+  <data name="Enum_PermissionNames_UserManagement" xml:space="preserve">
+    <value>User Management</value>
+  </data>
+  <data name="Enum_PermissionNames_ViewAuditLog" xml:space="preserve">
+    <value>View Audit Log</value>
+  </data>
+  <data name="Enum_PermissionNames_ViewPatient" xml:space="preserve">
+    <value>View Patient</value>
+  </data>
+  <data name="Enum_PermissionNames_ViewSavedStudy" xml:space="preserve">
+    <value>View Saved Study</value>
+  </data>
+  <data name="Enum_PermissionNames_WorkflowConfiguration" xml:space="preserve">
+    <value>Workflow Configuration</value>
+  </data>
+</root>

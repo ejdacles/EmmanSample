@@ -1,0 +1,699 @@
+﻿<UserControl x:Class="Laborie.Synergy.BarcodeTraceability.Views.BarcodeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:common="clr-namespace:Laborie.Synergy.Common;assembly=Laborie.Synergy.Common"
+             xmlns:ui="clr-namespace:Laborie.Synergy.Common.UI;assembly=Laborie.Synergy.Common.UI"
+             xmlns:local="clr-namespace:Laborie.Synergy.BarcodeTraceability.Views"
+             xmlns:viewModel="clr-namespace:Laborie.Synergy.BarcodeTraceability.ViewModel"
+             xmlns:model="clr-namespace:Laborie.Synergy.BarcodeTraceability.Model"
+             xmlns:translation="clr-namespace:Laborie.Synergy.BarcodeTraceability.Translations"
+             xmlns:converters="clr-namespace:Laborie.Synergy.BarcodeTraceability.Converters"
+             xmlns:commonConverter="clr-namespace:Laborie.Synergy.Common.Converters;assembly=Laborie.Synergy.Common"
+             xmlns:numberTextBox="clr-namespace:Laborie.Synergy.BarcodeTraceability.Behaviors"
+             xmlns:automation="clr-namespace:Laborie.Synergy.Common.Automation;assembly=Laborie.Synergy.Common"
+             xmlns:help="clr-namespace:Laborie.Synergy.Common.HelpProvider;assembly=Laborie.Synergy.Common"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             help:Help.HelpId="{x:Static help:HelpIds.ConsumableTraceability}"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModel:BarcodeViewModel}"
+             IsEnabled="{Binding IsPatientSelected}"
+             d:DesignHeight="480" d:DesignWidth="1300">
+
+    <UserControl.Resources>
+        <Style x:Key="{x:Type CheckBox}" TargetType="{x:Type CheckBox}" x:Name="CheckBoxStyle">
+            <Style.Triggers>
+                <Trigger Property="IsChecked" Value="true">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type CheckBox}">
+                                <BulletDecorator Background="Transparent">
+                                    <BulletDecorator.Bullet>
+                                        <Grid Width="13" Height="13">
+                                            <Image Source="/Images/ic_checkbox-selected.png"></Image>
+                                        </Grid>
+                                    </BulletDecorator.Bullet>
+                                </BulletDecorator>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+                <Trigger Property="IsChecked" Value="false">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="{x:Type CheckBox}">
+                                <BulletDecorator Background="Transparent">
+                                    <BulletDecorator.Bullet>
+                                        <Grid Width="13" Height="13">
+                                            <Image Source="/Images/ic_checkbox.png" ></Image>
+                                        </Grid>
+                                    </BulletDecorator.Bullet>
+                                </BulletDecorator>
+
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+
+        <Style x:Key="ButtonStyle.CommonGrayButton" TargetType="{x:Type Button}">
+            <Setter Property ="Foreground" Value="{StaticResource DarkGrey}"/>
+            <Setter Property="Background" Value="{StaticResource LightGrey}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource LightGrey}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="IsTabStop" Value="True"/>
+            <Setter Property="FontFamily" Value="Segoe UI Regular"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="SnapsToDevicePixels" Value="True"/>
+
+            <Setter Property ="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType ="{x:Type Button}">
+                        <Border CornerRadius="0"
+                                Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness ="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Content ="{TemplateBinding Content}"
+                                    ContentStringFormat ="{TemplateBinding ContentStringFormat}"
+                                    HorizontalAlignment ="{TemplateBinding HorizontalContentAlignment}"
+                                    VerticalAlignment ="{TemplateBinding VerticalContentAlignment}"
+                                    Margin ="{TemplateBinding Padding}"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property ="IsDefault" Value ="True"/>
+                                    <Condition Property ="IsMouseOver" Value ="True"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" Value="#c4c4c4"></Setter>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property ="IsDefault" Value ="True"/>
+                                    <Condition Property ="IsMouseOver" Value ="False"/>
+                                </MultiTrigger.Conditions>
+                                <Setter Property ="Background" Value ="{StaticResource LaborieBlue}"/>
+                            </MultiTrigger>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#c4c4c4"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="BorderBrush" Value="#4d4d4f"></Setter>
+                                <Setter Property="Background" Value="#c4c4c4"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#ececec"></Setter>
+                                <Setter Property="Foreground" Value="{StaticResource DarkGrey}"/>
+                                <Setter Property="BorderBrush" Value="#ececec"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <SolidColorBrush x:Key="LowBackgroundBrush">White</SolidColorBrush>
+        <Style TargetType="Border"
+               x:Key="MediumBorder">
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="Gray" />
+            <Setter Property="CornerRadius"
+                    Value="3" />
+        </Style>
+        <Style TargetType="TextBox"
+               x:Key="dateFormat"
+               xmlns:sys="clr-namespace:System;assembly=mscorlib">
+            <Style.Resources>
+                <VisualBrush x:Key="hintDate"
+                             AlignmentX="Left"
+                             AlignmentY="Center"
+                             Stretch="None">
+                    <VisualBrush.Transform>
+                        <TranslateTransform X="0"
+                                            Y="0"></TranslateTransform>
+                    </VisualBrush.Transform>
+                    <VisualBrush.Visual>
+                        <Grid Background="White"
+                              Width="120"
+                              Height="25">
+                            <Label Content="yy/mm/dd"
+                                   Foreground="LightGray"
+                                   VerticalAlignment="Center"
+                                   Margin="0,-5,0,0" />
+                        </Grid>
+                    </VisualBrush.Visual>
+                </VisualBrush>
+            </Style.Resources>
+            <Style.Triggers>
+                <Trigger Property="Text"
+                         Value="{x:Static sys:String.Empty}">
+                    <Setter Property="Background"
+                            Value="{StaticResource hintDate}" />
+                </Trigger>
+                <Trigger Property="Text"
+                         Value="{x:Null}">
+                    <Setter Property="Background"
+                            Value="{StaticResource hintDate}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <CollectionViewSource x:Key="CollectionViewSource" Source="{Binding BarcodeList}">
+            <CollectionViewSource.GroupDescriptions>
+                <PropertyGroupDescription PropertyName="QualifyLevelType"/>
+            </CollectionViewSource.GroupDescriptions>
+        </CollectionViewSource>
+        <converters:DateConverter x:Key="dateConverter" />
+        <converters:ConsumableIconConverter x:Key="ConsumableIconConverter" />
+        <converters:StringEmptyConverter x:Key="StringEmptyConverter" />
+        <converters:ConsumableLevelTypeConverter x:Key="ConsumableLevelConverter" />
+        <converters:ConsumableLevelTypeToVisibilityConverter x:Key="ConsumableLevelToVisibilityConverter" />
+
+        <commonConverter:ButtonDisabledReasonTooltipVisibilityConverter x:Key="ButtonDisabledReasonTooltipVisibilityConverter" />
+
+        <ControlTemplate x:Key="DataGridControlTemplate1" TargetType="{x:Type DataGrid}">
+            <Border BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="Transparent" Padding="{TemplateBinding Padding}" SnapsToDevicePixels="True">
+                <ScrollViewer x:Name="DG_ScrollViewer" Focusable="False">
+                    <ScrollViewer.Template>
+                        <ControlTemplate TargetType="{x:Type ScrollViewer}">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="*"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Button Command="ApplicationCommands.SelectAll" Focusable="False" Style="{DynamicResource {ComponentResourceKey ResourceId=DataGridSelectAllButtonStyle, TypeInTargetAssembly={x:Type DataGrid}}}" Width="{Binding CellsPanelHorizontalOffset, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}}">
+                                    <Button.Visibility>
+                                        <Binding Path="HeadersVisibility" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}">
+                                            <Binding.ConverterParameter>
+                                                <DataGridHeadersVisibility>All</DataGridHeadersVisibility>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </Button.Visibility>
+                                </Button>
+                                <DataGridColumnHeadersPresenter x:Name="PART_ColumnHeadersPresenter" Grid.Column="1">
+                                    <DataGridColumnHeadersPresenter.Visibility>
+                                        <Binding Path="HeadersVisibility" RelativeSource="{RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}">
+                                            <Binding.ConverterParameter>
+                                                <DataGridHeadersVisibility>Column</DataGridHeadersVisibility>
+                                            </Binding.ConverterParameter>
+                                        </Binding>
+                                    </DataGridColumnHeadersPresenter.Visibility>
+                                </DataGridColumnHeadersPresenter>
+                                <ScrollContentPresenter x:Name="PART_ScrollContentPresenter" CanContentScroll="{TemplateBinding CanContentScroll}" CanHorizontallyScroll="False" Grid.ColumnSpan="2" CanVerticallyScroll="False" ContentTemplate="{TemplateBinding ContentTemplate}" Content="{TemplateBinding Content}" ContentStringFormat="{TemplateBinding ContentStringFormat}" Grid.Row="1"/>
+                                <ScrollBar x:Name="PART_VerticalScrollBar" Grid.Column="2" Maximum="{TemplateBinding ScrollableHeight}" Orientation="Vertical" Grid.Row="1" Visibility="{TemplateBinding ComputedVerticalScrollBarVisibility}" Value="{Binding VerticalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportHeight}"/>
+                                <Grid Grid.Column="1" Grid.Row="2">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="{Binding NonFrozenColumnsViewportHorizontalOffset, RelativeSource={RelativeSource FindAncestor, AncestorLevel=1, AncestorType={x:Type DataGrid}}}"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <ScrollBar x:Name="PART_HorizontalScrollBar" Grid.Column="1" Maximum="{TemplateBinding ScrollableWidth}" Orientation="Horizontal" Visibility="{TemplateBinding ComputedHorizontalScrollBarVisibility}" Value="{Binding HorizontalOffset, Mode=OneWay, RelativeSource={RelativeSource TemplatedParent}}" ViewportSize="{TemplateBinding ViewportWidth}"/>
+                                </Grid>
+                            </Grid>
+                        </ControlTemplate>
+                    </ScrollViewer.Template>
+                    <ItemsPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                </ScrollViewer>
+            </Border>
+        </ControlTemplate>
+
+    </UserControl.Resources>
+
+    <Border Margin="0,0,0,0"
+            BorderThickness="0"
+            Style="{StaticResource MediumBorder}"
+            Background="{StaticResource LowBackgroundBrush}" >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="42" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ScrollViewer x:Name="ScrollViewer" VerticalScrollBarVisibility="Auto" BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1" Margin="0,0,-17,5" Grid.Row="0">
+                <Grid Margin="0,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Name="StackPanel1" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="3" Margin="0,2,0,0">
+                        <Grid Margin="6,0,5,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Label Grid.Row="1"
+                                  Grid.ColumnSpan="3" Margin="01,-7,0,0" Grid.Column="0"
+                                  Content="{x:Static translation:Language.Label_Consumables}"
+                                  HorizontalContentAlignment="Left" Foreground="#4D4D4F" FontFamily="Segoe UI Semibold" FontSize="14" />
+                            <ItemsControl Grid.Row="2"
+                                          Grid.ColumnSpan="3" Grid.Column="0"
+                                          ItemsSource="{Binding RequiredConsumables}"
+                                          MinHeight="30" Margin="0,8,-15,0">
+                                <ItemsControl.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="184" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="145" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Border Grid.Column="0" Height="40"
+                                                   Width="25"
+                                                   Margin="03,0,0,0"  BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1" HorizontalAlignment="Left">
+                                                <Image Grid.Column="0" Source="{Binding Path=DisplayImagePath}"
+                                                       Height="13"
+                                                       Width="13"
+                                                       Margin="0" 
+                                                       AutomationProperties.AutomationId="{Binding Path=IsScanned, StringFormat=CScanned_{0}}"
+                                                       HorizontalAlignment="Left" />
+                                            </Border>
+
+                                            <Label Grid.Column="2" Margin="0,0,0,0" Padding="0,0,0,0"
+                                                   Content="{Binding Path=ChannelName}"
+                                                   AutomationProperties.AutomationId="{Binding Path=RequiredCategory.ChannelType, StringFormat=ChannelName_{0}}" BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#4D4D4F" FontFamily="Segoe UI Regular" FontSize="13" />
+                                            <Border Grid.Column="3" Height="40" Width="268"
+                                                    Margin="0,0,0,0"  BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1" HorizontalAlignment="Right">
+                                                <Image Grid.Column="3"
+                                                       Source="{Binding Path=RequiredCategory.Category, Converter={StaticResource ConsumableIconConverter}}"
+                                                       Height="40" Width="130" Stretch="Fill"
+                                                       Margin="-1,0,0,0" HorizontalAlignment="Right"/>
+                                            </Border>
+
+                                            <Label Grid.Column="4"
+                                                   Content="{Binding Path=CategoryName}"
+                                                   AutomationProperties.AutomationId="{Binding Path=RequiredCategory.Category, StringFormat=CName_{0}}" BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" Foreground="#4D4D4F" FontFamily="Segoe UI Regular" Padding="14,0,0,0" Margin="0,0,0,0" FontSize="11" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </ItemsControl.ItemTemplate>
+                            </ItemsControl>
+                            <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Margin="5,20" BorderThickness="2" CornerRadius="5" BorderBrush="#FF139E13" >
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                    <Image  Margin="5" HorizontalAlignment="Right"  Source="/Laborie.Synergy.BarcodeTraceability;component/Resources/rfidscan.png" Stretch="Fill"  Width="40px" Height="52px"/>
+                                    <TextBlock AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ScanningMessage}" Text="{x:Static translation:Language.IsScanningMessage}"  VerticalAlignment="Center" FontSize="20"/>
+                                </StackPanel>
+                                <Border.Style>
+                                    <Style>
+                                        <Setter Property="Border.Visibility" Value="Collapsed"/>
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding DisplayScanningMessage}" Value="true">
+                                                <Setter Property="Border.Visibility" Value="Visible"/>
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Border.Style>
+                            </Border>
+                        </Grid>
+                    </StackPanel>
+                    <ui:SmartDataGrid Grid.Row="2" Grid.ColumnSpan="3" Grid.Column="0"
+                                      Margin="3,22,-12,0"
+                                      SelectionMode="Single" BorderBrush="{StaticResource LightGrey}" BorderThickness="0,0,0,1"
+                                      IsReadOnly="True" VerticalGridLinesBrush="Transparent"
+                                      ItemsSource="{Binding Source={StaticResource CollectionViewSource}}"
+                                      AutomationProperties.AutomationId="{x:Static automation:AutomationIds.BarcodeGrid}" Template="{DynamicResource DataGridControlTemplate1}" Height="325" >
+                        <DataGrid.Columns>
+                            <DataGridTemplateColumn Visibility="{Binding Path=Visibility, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UserControl}}}">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button BorderBrush="Transparent" BorderThickness="0" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                                Command="{Binding Path=DataContext.RemoveBarcodeCommand, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}"
+                                                CommandParameter="{Binding Path=BarCodeId}"
+                                                AutomationProperties.AutomationId="{Binding Path=BarCodeId, StringFormat=DeleteBarcode_{0}}" 
+                                                Focusable="False" Background="Transparent"
+                                                Padding="-5 -8" ToolTip="{x:Static translation:Language.Tooltip_RemoveConsumable}"
+                                                Visibility="{Binding Path=QualifyLevelType, Converter={StaticResource ConsumableLevelToVisibilityConverter}}">
+                                            <Viewbox Height="32" Width="32">
+                                                <Canvas Width="76" Height="76" 
+                                                                    Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
+                                                    <Path Width="27.7083" Height="35.625" 
+                                                                      Canvas.Left="24.1458" Canvas.Top="19.7917" 
+                                                                      Stretch="Fill" Fill="DarkGray" 
+                                                                      Data="F1 M 25.3333,23.75L 50.6667,23.75C 51.5411,23.75 51.8541,27.3125 51.8541,27.3125L 24.1458,27.3125C 24.1458,27.3125 24.4589,23.75 25.3333,23.75 Z M 35.625,19.7917L 40.375,19.7917C 40.8122,19.7917 41.9583,20.9378 41.9583,21.375C 41.9583,21.8122 40.8122,22.9584 40.375,22.9584L 35.625,22.9584C 35.1878,22.9584 34.0416,21.8122 34.0416,21.375C 34.0416,20.9378 35.1878,19.7917 35.625,19.7917 Z M 27.7083,28.5L 48.2916,28.5C 49.1661,28.5 49.875,29.2089 49.875,30.0834L 48.2916,53.8334C 48.2916,54.7078 47.5828,55.4167 46.7083,55.4167L 29.2917,55.4167C 28.4172,55.4167 27.7083,54.7078 27.7083,53.8334L 26.125,30.0834C 26.125,29.2089 26.8339,28.5 27.7083,28.5 Z M 30.0833,31.6667L 30.4792,52.25L 33.25,52.25L 32.8542,31.6667L 30.0833,31.6667 Z M 36.4167,31.6667L 36.4167,52.25L 39.5833,52.25L 39.5833,31.6667L 36.4167,31.6667 Z M 43.1458,31.6667L 42.75,52.25L 45.5208,52.25L 45.9167,31.6667L 43.1458,31.6667 Z "/>
+                                                </Canvas>
+                                            </Viewbox>
+                                        </Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                        <ui:SmartDataGrid.ColumnHeaderStyle>
+                            <Style TargetType="DataGridColumnHeader">
+
+                                <Setter Property="ContextMenu">
+                                    <Setter.Value>
+                                        <ContextMenu Visibility="Collapsed">
+                                            <ContextMenu.Items>
+                                                <MenuItem>
+                                                    <MenuItem.Header>
+                                                        <StackPanel Orientation="Horizontal">
+                                                            <TextBlock Foreground="Brown">Column...</TextBlock>
+                                                        </StackPanel>
+                                                    </MenuItem.Header>
+                                                    <MenuItem Header="to Info"></MenuItem>
+                                                    <MenuItem Header="Hide"></MenuItem>
+                                                </MenuItem>
+                                            </ContextMenu.Items>
+                                        </ContextMenu>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </ui:SmartDataGrid.ColumnHeaderStyle>
+                        <ui:SmartDataGrid.GroupStyle>
+                            <GroupStyle>
+                                <GroupStyle.ContainerStyle>
+                                    <Style TargetType="{x:Type GroupItem}">
+                                        <Setter Property="Margin" Value="0,0,0,5"/>
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="{x:Type GroupItem}">
+                                                    <StackPanel>
+                                                        <TextBlock Text="{Binding Name, Converter={StaticResource ConsumableLevelConverter}}" FontWeight="Bold" Margin="5,5,5,5"/>
+                                                        <ItemsPresenter />
+                                                    </StackPanel>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </GroupStyle.ContainerStyle>
+                            </GroupStyle>
+                        </ui:SmartDataGrid.GroupStyle>
+                        <ui:SmartDataGrid.Resources>
+                            <Style TargetType="{x:Type TextBlock}"  BasedOn="{StaticResource {x:Type TextBlock}}">
+                                <Setter Property="FontSize" Value="14" />
+                                <Setter Property="HorizontalAlignment" Value="Left"/>
+                                <Setter Property="FontFamily" Value="Segoe UI SemiBold" />
+                                <Setter Property="Background" Value="Green" />
+                            </Style>
+                            <Style TargetType="{x:Type DataGridCell}">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                            <Style TargetType="{x:Type DataGridRow}">
+                                <Setter Property="Background" Value="Transparent" />
+                                <Setter Property="BorderBrush" Value="Transparent" />
+                                <Setter Property="Foreground" Value="Black"/>
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="Transparent" />
+                                        <Setter Property="BorderBrush" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </ui:SmartDataGrid.Resources>
+
+                    </ui:SmartDataGrid>
+                    <Button AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryAdd}"
+                            Grid.Row="3"
+                            Grid.Column="2"
+                            Width="200"
+                            Height="32"
+                            Command="{Binding Path=AddArbitraryCommand}"
+                            Content="{x:Static translation:Language.Action_AddArbitraryConsumable}"
+                            VerticalAlignment="Top"
+                            HorizontalAlignment="Right"
+                            Margin="5,15,25,0" Visibility="Visible" Style="{StaticResource ButtonStyle.CommonGrayButton}">
+                    </Button>
+                    <GroupBox Margin="5,10,10,5" Visibility="{Binding ShowArbitrary}"
+                            Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Label Content="{x:Static translation:Language.Label_Identifier}"
+                                       Grid.Row="0"
+                                       Grid.Column="0" />
+
+                            <Label Grid.Row="1"
+                                       Grid.Column="0"
+                                       Content="{x:Static translation:Language.Label_CategoryName}"
+                                       ContentStringFormat="{}{0} :"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Right" />
+                            <TextBox AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryName}"
+                                         x:Name="ArbitraryCategoryName"
+                                         Grid.Row="1"
+                                         Grid.Column="1"
+                                         MaxLength="50"
+                                         Text="{Binding ArbitraryName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         MinWidth="200"
+                                         Margin="5,0,5,0"
+                                         BorderBrush="{StaticResource MidGrey}" BorderThickness="1"/>
+                            <Label Grid.Row="2"
+                                       Grid.Column="0"
+                                       Content="{x:Static translation:Language.Label_ConsumableType}"
+                                       ContentStringFormat="{}{0} :"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Right" />
+                            <TextBox AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryType}"
+                                         x:Name="ArbitraryTypeName"
+                                         Grid.Row="2"
+                                         Grid.Column="1"
+                                         MaxLength="50"
+                                         Text="{Binding ArbitraryType, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         MinWidth="200" 
+                                         Margin="5,0,5,0"
+                                         BorderBrush="{StaticResource MidGrey}" BorderThickness="1"/>
+                            <Label Grid.Row="3"
+                                       Grid.Column="0"
+                                       Content="{x:Static translation:Language.Label_Expiry_Date}"
+                                       ContentStringFormat="{}{0} :"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Right" />
+
+
+                            <Grid Grid.Row="3" Grid.Column="1">
+                                <TextBlock  IsHitTestVisible="False"
+                                            Margin="5,0,5,0"
+                                            Padding="5,0,0,0"
+                                            Text="{Binding DateFormatAsPerLocalCulture}" 
+                                            Foreground="LightGray" />
+
+                                <TextBox AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryExpiry}"
+                                         x:Name="ArbitraryExpiryDate"
+                                         MaxLength="10"
+                                         Text="{Binding ArbitraryExpiryDate, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                         MinWidth="200"
+                                         BorderBrush="{StaticResource MidGrey}"
+                                         BorderThickness="1"
+                                         Margin="5,0,5,0">
+                                    <TextBox.Style>
+                                        <Style TargetType="{x:Type TextBox}">
+                                            <Style.Triggers>
+                                                <Trigger Property="Text" Value="{x:Static sys:String.Empty}">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                                <Trigger Property="Text" Value="{x:Null}">
+                                                    <Setter Property="Background" Value="Transparent" />
+                                                </Trigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBox.Style>
+                                </TextBox>
+
+                             </Grid>
+
+                            <Label Grid.Row="4"
+                                       Grid.Column="0"
+                                       Content="{x:Static translation:Language.Label_Lot}"
+                                       ContentStringFormat="{}{0} :"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Right" />
+                            <TextBox AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryLot}"
+                                         x:Name="ArbitraryLot"
+                                         Grid.Row="4"
+                                         Grid.Column="1"
+                                         MaxLength="20"
+                                         Text="{Binding ArbitraryLot, Mode=TwoWay}"
+                                         MinWidth="200"
+                                         Margin="5,0,5,0"
+                                         BorderBrush="{StaticResource MidGrey}" BorderThickness="1"/>
+
+                            <Label Grid.Row="5"
+                                       Grid.Column="0"
+                                       Content="{x:Static translation:Language.Label_Serial}"
+                                       ContentStringFormat="{}{0} :"
+                                       VerticalAlignment="Center"
+                                       HorizontalContentAlignment="Right" />
+                            <TextBox AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitrarySerial}"
+                                         x:Name="ArbitrarySerial"
+                                         Grid.Row="5"
+                                         Grid.Column="1"
+                                         MaxLength="20"
+                                         Text="{Binding ArbitrarySerial, Mode=TwoWay}"
+                                         MinWidth="200" 
+                                         Margin="5,0,5,0"
+                                         BorderBrush="{StaticResource MidGrey}" BorderThickness="1"/>
+                            <Grid Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width=".8*" />
+                                    <ColumnDefinition Width=".2*" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitraryErrorMessage}"
+                                                Grid.Column="0"
+                                                MaxWidth="450"
+                                                Margin="0,5,5,5"
+                                                HorizontalAlignment="Left"
+                                                VerticalAlignment="Center"
+                                                Foreground="Red"
+                                                FontStyle="Italic"
+                                                Text="{Binding ArbitraryErrorMessage, Mode=TwoWay}"
+                                                TextWrapping="Wrap"/>
+                                <Button AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ArbitrarySave}"
+                                            Grid.Column="1"
+                                            MinWidth="50"
+                                            Height="25"
+                                            Command="{Binding Path=SaveArbitraryCommand}"
+                                            Content="{x:Static translation:Language.Action_Save}"
+                                            VerticalAlignment="Top"
+                                            HorizontalAlignment="Right"
+                                            Margin="0,5,4,5">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="IsEnabled" Value="False" />
+                                            <Style.Triggers>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=Text, ElementName=ArbitraryCategoryName, Converter={StaticResource StringEmptyConverter}}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=Text, ElementName=ArbitraryTypeName, Converter={StaticResource StringEmptyConverter}}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=Text, ElementName=ArbitraryLot, Converter={StaticResource StringEmptyConverter}}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=Text, ElementName=ArbitrarySerial, Converter={StaticResource StringEmptyConverter}}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                                <MultiDataTrigger>
+                                                    <MultiDataTrigger.Conditions>
+                                                        <Condition Binding="{Binding Path=Text, ElementName=ArbitraryExpiryDate, Converter={StaticResource StringEmptyConverter}}" Value="False" />
+                                                    </MultiDataTrigger.Conditions>
+                                                    <Setter Property="IsEnabled" Value="True" />
+                                                </MultiDataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </GroupBox>
+                    <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" Margin="5,10,10,5" 
+                            BorderThickness="2" CornerRadius="5" BorderBrush="Red" Visibility="{Binding ErrorMessageVisibility}">
+                        <TextBlock Grid.Row="0"
+                           Margin="5,5,5,5"
+                           HorizontalAlignment="Left"
+                           VerticalAlignment="Center"
+                           Foreground="Red"
+                           FontStyle="Italic"
+                           Text="{Binding ConsumableErrorMessage}"
+                           TextWrapping="Wrap" 
+                           AutomationProperties.AutomationId="{x:Static automation:AutomationIds.ConsumableErrorMessage}" />
+                    </Border>
+                </Grid>
+            </ScrollViewer>
+            <Button AutomationProperties.AutomationId="{x:Static automation:AutomationIds.BarcodeBypass}"
+                    Grid.Row="1"
+                    Click="Bypass_OnClick"
+                    Command="{Binding Path=BypassCommand}"
+                    Content="{Binding BypassText}"
+                    IsEnabled="{Binding IsEnabledBypass}"
+                    Visibility="{Binding IsBypassVisible}"
+                    ToolTipService.ShowOnDisabled="{Binding IsEnabledBypass, Converter={StaticResource ButtonDisabledReasonTooltipVisibilityConverter}, ConverterParameter=IsEnabledBypass}" 
+                    ToolTipService.IsEnabled="{Binding IsEnabledBypass, Converter={StaticResource ButtonDisabledReasonTooltipVisibilityConverter}, ConverterParameter=IsEnabledBypass}"
+                    VerticalAlignment="Bottom"
+                    HorizontalAlignment="Right"
+                    Margin="0,5,10,0" 
+                    Style="{StaticResource ButtonStyle.CommonGrayButton}" 
+                    Height="32" 
+                    Width="134"
+                    >
+                <Button.ToolTip>
+                    <Border Margin="-8,-3,-7,-3" Padding="10" Background="#f4f6f9">
+                        <Border.BitmapEffect>
+                            <OuterGlowBitmapEffect></OuterGlowBitmapEffect>
+                        </Border.BitmapEffect>
+                        <TextBlock Text="{Binding ButtonDisabledReason, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Border>
+                </Button.ToolTip>
+            </Button>
+            <Border Grid.Row="2" Grid.Column="0" Margin="5,20" BorderThickness="2" CornerRadius="5" BorderBrush="#FF139E13" >
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Image  Margin="5" HorizontalAlignment="Right"  Source="/Laborie.Synergy.BarcodeTraceability;component/Resources/green-check.png" Stretch="Fill"  Width="32px" Height="32px"/>
+                    <TextBlock AutomationProperties.AutomationId="{x:Static automation:AutomationIds.BypassConsumableMessage}" Text="{x:Static translation:Language.ConsumableBypass}"  VerticalAlignment="Center" />
+                </StackPanel>
+                <Border.Style>
+                    <Style>
+                        <Setter Property="Border.Visibility" Value="Collapsed"/>
+                        <Style.Triggers>
+                            <DataTrigger Binding="{Binding DisplayBypassMessage}" Value="true">
+                                <Setter Property="Border.Visibility" Value="Visible"/>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Border.Style>
+            </Border>
+        </Grid>
+    </Border>
+</UserControl>

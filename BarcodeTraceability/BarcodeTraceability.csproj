@@ -1,0 +1,357 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4EA19538-6297-44F8-87A7-ADDDCCDC70A8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Laborie.Synergy.BarcodeTraceability</RootNamespace>
+    <AssemblyName>Laborie.Synergy.BarcodeTraceability</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StaticCodeAnalysis_Debug.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>true</RunCodeAnalysis>
+    <CodeAnalysisRuleSet>..\StaticCodeAnalysis_Release.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>True</TreatWarningsAsErrors>
+    <CodeAnalysisIgnoreGeneratedCode>true</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\BuildTools\Certificates\SynergyMasterCert.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Laborie.SmartSenseCore, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b6fa178de247c267, processorArchitecture=MSIL">
+      <HintPath>..\packages\SmartSenseSynergy.5.0.26073\lib\net47\Laborie.SmartSenseCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Laborie.SmartSenseSynergy, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b6fa178de247c267, processorArchitecture=MSIL">
+      <HintPath>..\packages\SmartSenseSynergy.5.0.26073\lib\net47\Laborie.SmartSenseSynergy.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Expression.Blend.Sdk.1.0.2\lib\net45\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="BarcodeTraceabilityManager.cs" />
+    <Compile Include="ConsumableMatrixHelper.cs" />
+    <Compile Include="ConsumableValidator.cs" />
+    <Compile Include="Converters\ConsumableIconConverter.cs" />
+    <Compile Include="Converters\ConsumableLevelTypeConverter.cs" />
+    <Compile Include="Converters\ConsumableLevelTypeToVisibilityConverter.cs" />
+    <Compile Include="Converters\DateConverter.cs" />
+    <Compile Include="Behaviors\NumericTextBoxBehavior.cs" />
+    <Compile Include="Converters\StringEmptyConverter.cs" />
+    <Compile Include="Exceptions\ConsumableIsUsedByOtherPatientException.cs" />
+    <Compile Include="Exceptions\ConsumableIsUsedBySamePatientAfterFourHoursException.cs" />
+    <Compile Include="Exceptions\ConsumableTimeLimitExpiredException.cs" />
+    <Compile Include="Exceptions\ConsumableWithDuplicateBarcodeExistsException.cs" />
+    <Compile Include="Exceptions\InvalidConsumableException.cs" />
+    <Compile Include="Factory.cs" />
+    <Compile Include="IBarcodeTraceabilityManager.cs" />
+    <Compile Include="IConsumableMatrixHelper.cs" />
+    <Compile Include="IConsumableValidator.cs" />
+    <Compile Include="Model\BarcodeModel.cs" />
+    <Compile Include="Model\ChannelConsumableCategory.cs" />
+    <Compile Include="Model\ConsumableCategory.cs" />
+    <Compile Include="Model\ConsumableDataContract.cs" />
+    <Compile Include="Model\ConsumableType.cs" />
+    <Compile Include="Model\InvestigationConsumable.cs" />
+    <Compile Include="Model\QualifyType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="SmartSense\ISmartSenseHelper.cs" />
+    <Compile Include="SmartSense\ManufacturerServiceStub.cs" />
+    <Compile Include="SmartSense\SmartSenseHelper.cs" />
+    <Compile Include="Translations\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\BarcodeViewModel.cs" />
+    <Compile Include="ViewModel\BarcodeReviewViewModel.cs" />
+    <Compile Include="ViewModel\ExpireDateState.cs" />
+    <Compile Include="Views\BarcodeView.xaml.cs">
+      <DependentUpon>BarcodeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BarcodeReviewView.xaml.cs">
+      <DependentUpon>BarcodeReviewView.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Translations\Language.de-DE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-GB.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-TT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-US.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.es-ES.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.fr-FR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.nl-NL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.pt-PT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="..\BuildTools\Certificates\SynergyMasterCert.pfx">
+      <Link>SynergyMasterCert.pfx</Link>
+    </None>
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Consumables\ConsumableCompatibility.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\BarcodeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BarcodeReviewView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.UI\Common.UI.csproj">
+      <Project>{48356ff6-0f31-4ed0-b59c-44ebb11ea31a}</Project>
+      <Name>Common.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3e2489d1-3af7-4208-8810-f7eeb4a46099}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{74258af6-e981-4293-80fc-e6c4a76a1bab}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{7f7d5859-4135-4bc0-b67c-9456dbc7b492}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStorage.Interfaces\DataStorage.Interfaces.csproj">
+      <Project>{5115E656-FF70-4916-9BEC-6DF16B17C3C1}</Project>
+      <Name>DataStorage.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataStorage\DataStorage.csproj">
+      <Project>{4a1bc540-5656-4d97-975f-b98d585c06d7}</Project>
+      <Name>DataStorage</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareManager.Interfaces\HardwareManager.Interfaces.csproj">
+      <Project>{0edc6483-a879-4a85-bb68-92c10733e0a7}</Project>
+      <Name>HardwareManager.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\HardwareManager\HardwareManager.csproj">
+      <Project>{e70d856e-2382-4f33-a6c9-aaf3b93d4e4e}</Project>
+      <Name>HardwareManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LicenseManager\LicenseManager.csproj">
+      <Project>{95e17a6c-7791-4329-9c1e-2963f00e19e7}</Project>
+      <Name>LicenseManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PatientManager\PatientManager.csproj">
+      <Project>{B9AC170C-8D25-4918-9130-91017223750D}</Project>
+      <Name>PatientManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProcedureManager.Interfaces\ProcedureManager.Interfaces.csproj">
+      <Project>{D0FE80D8-596F-46AF-9C56-BB236961C48C}</Project>
+      <Name>ProcedureManager.Interfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RfidReader\RfidReader.csproj">
+      <Project>{581fe49e-b7e2-465a-94a6-bf2e1c63a3b2}</Project>
+      <Name>RfidReader</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StimProbe.png" />
+    <Resource Include="Resources\ManometryProbe.png" />
+    <Resource Include="Resources\PatchElectrodes.png" />
+    <Resource Include="Resources\ManometryTubing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Qualified.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Secondary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\green-unlock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\red-lock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\yellow-unlock-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="CodeJunks.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\EMGProbe.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Consumables\ELE425.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\ELE428.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\ELE625.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB055.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB078.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB080.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB085.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB108.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB113.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB425.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\PRB450.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\RFID_Start.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\RFID_Good.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Consumables\RFID_Bad.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\PabdCatheter.png" />
+    <Resource Include="Resources\PuraCatheter.png" />
+    <Resource Include="Resources\PvesCatheter.png" />
+    <Resource Include="Resources\VinfCatheter.png" />
+    <Resource Include="Resources\VinfTubing.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\green-check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ic_checkbox-selected.png" />
+    <Resource Include="Images\ic_checkbox-sm-hover.png" />
+    <Resource Include="Images\ic_checkbox.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\rfidscan.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -executionpolicy unrestricted -File "$(SolutionDir)Shell\GenerateTestLanguage.ps1" -in "$(ProjectDir)Translations\Language.resx" -out "$(ProjectDir)Translations\Language.en-TT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.en-GB.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.en-US.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.fr-FR.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.de-DE.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.es-ES.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.pt-PT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.it-IT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.nl-NL.resx"
+
+
+</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,572 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7F7D5859-4135-4BC0-B67C-9456DBC7B492}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Laborie.Synergy.DataModel</RootNamespace>
+    <AssemblyName>Laborie.Synergy.DataModel</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StaticCodeAnalysis_Debug.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>..\StaticCodeAnalysis_Release.ruleset</CodeAnalysisRuleSet>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\BuildTools\Certificates\SynergyMasterCert.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\GlobalAssemblyInfo.cs">
+      <Link>Properties\GlobalAssemblyInfo.cs</Link>
+    </Compile>
+    <Compile Include="AdditionalStatusBarItemType.cs" />
+    <Compile Include="Answer.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ApplicationSetting.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AppSecurity.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AuditLog.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BaseDevice.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="BridgePatternModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ButtonModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChallengeTemplateModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelCalculationType.cs" />
+    <Compile Include="ChannelMapping.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChannelModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChartChannelEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChartDownSamplerType.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChartEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Choice.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ChoiceGroup.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CompletionStatus.cs" />
+    <Compile Include="Consumable.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ConsumableCompatibility.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanelControlType.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ControlPanelModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DataQuantity.cs" />
+    <Compile Include="DataQuantityConst.cs" />
+    <Compile Include="DataSampleRate.cs" />
+    <Compile Include="DeviceConnectionStatus.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceConnectionType.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DeviceTypes.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EagerLoader.cs" />
+    <Compile Include="EditableButtonModelProperties.cs" />
+    <Compile Include="EmgFilterRate.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Eula.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EulaStates.cs" />
+    <Compile Include="Event.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EventsHistory.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PermissionNames.cs" />
+    <Compile Include="RolesDefault.cs" />
+    <Compile Include="RoleType.cs" />
+    <Compile Include="Roles.cs" />
+    <Compile Include="EventType.cs" />
+    <Compile Include="EventTypesCollections.cs" />
+    <Compile Include="Extensions\Answer.cs" />
+    <Compile Include="Extensions\BaseDevice.cs" />
+    <Compile Include="Extensions\ButtonModel.cs" />
+    <Compile Include="Extensions\ChannelType.cs" />
+    <Compile Include="Extensions\ChannelMapping.cs" />
+    <Compile Include="Extensions\ControlAction.cs" />
+    <Compile Include="Extensions\ChannelDataType.cs" />
+    <Compile Include="Extensions\ControlModel.cs" />
+    <Compile Include="Extensions\DeviceConnectionStatusExtenstion.cs" />
+    <Compile Include="Extensions\DeviceConnectionTypeExtenstion.cs" />
+    <Compile Include="Extensions\EnumChallengeTemplateModel.cs" />
+    <Compile Include="Extensions\EnumChannelTypeName.cs" />
+    <Compile Include="Extensions\EnumPhaseName.cs" />
+    <Compile Include="Extensions\EnumStimulationSettingName.cs" />
+    <Compile Include="Extensions\EnumWorkflowConfiguration.cs" />
+    <Compile Include="Extensions\Event.cs" />
+    <Compile Include="Extensions\ImageType.cs" />
+    <Compile Include="Extensions\IPhaseAutoDetectPeakProperties.cs" />
+    <Compile Include="Extensions\IPhaseAutoDetectProfileProperty.cs" />
+    <Compile Include="Extensions\IPhases.cs" />
+    <Compile Include="Extensions\Media.cs" />
+    <Compile Include="Extensions\LoginFailureInfo.cs" />
+    <Compile Include="Extensions\PhaseModel.cs" />
+    <Compile Include="Extensions\ChannelModel.cs" />
+    <Compile Include="Extensions\GeneratedReport.cs" />
+    <Compile Include="Extensions\PhaseModelTypes.cs" />
+    <Compile Include="Extensions\ProtocolModel.cs" />
+    <Compile Include="Extensions\PumpSpeedChange.cs" />
+    <Compile Include="Extensions\PumpSpeedLevel.cs" />
+    <Compile Include="Extensions\QualityControlModelStatus.cs" />
+    <Compile Include="Extensions\QualityControlModelTypes.cs" />
+    <Compile Include="Extensions\QualityControlStepModel.cs" />
+    <Compile Include="Extensions\QuestionnaireScore.cs" />
+    <Compile Include="Extensions\ReadPatients_Result.cs" />
+    <Compile Include="Extensions\Result.cs" />
+    <Compile Include="Extensions\ServiceType.cs" />
+    <Compile Include="Extensions\WorkflowStepConfiguration.cs" />
+    <Compile Include="ChartScrollingMode.cs" />
+    <Compile Include="Extensions\ResultTypes.cs" />
+    <Compile Include="FilledInStatus.cs" />
+    <Compile Include="Formula.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FrameDetail.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FunctionKey.cs" />
+    <Compile Include="Gender.cs" />
+    <Compile Include="GeneratedReport.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GeneratedReportComponent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="GetPatientQuestionnaireScore_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Group.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HardwareCompatibility.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageFrameResult.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageResult.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ImageSubType.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="InfusionBagSpecificGravityChangeEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="License.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LinePatternModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginFailureInfo.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Media.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OffsetEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="OriginType.cs" />
+    <Compile Include="Patient.cs" />
+    <Compile Include="PatientContextExtension.cs" />
+    <Compile Include="PatientsGroup.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Patient_Questionnaire.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Permission.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhaseEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhaseIconType.cs" />
+    <Compile Include="DbContextExtensions.cs" />
+    <Compile Include="PhaseSwitchInformation.cs" />
+    <Compile Include="PhaseModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PhaseTextMarker.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PresetControl.cs" />
+    <Compile Include="PrimaryReason.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrimaryReasonGroup.cs" />
+    <Compile Include="PrimaryReasonsPhasesConfiguration.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PrimaryReasonsQuestionnairesConfiguration.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProcedureType.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtocolModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PullerDistanceEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PumpSettingsModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PumpSpeedChange.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PumpSpeedEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PumpSpeedLevel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="PvrInputEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QCScore.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QCHighScoreCriteria.cs" />
+    <Compile Include="QCIntermediateScoreCriteria.cs" />
+    <Compile Include="QCLowScoreCriteria.cs" />
+    <Compile Include="QCScoreCriteria.cs" />
+    <Compile Include="QCScoreType.cs" />
+    <Compile Include="QualityControlStep.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QualityControlStepsWithPhase.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionnaireFormula.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionnaireIds.cs" />
+    <Compile Include="QuestionnaireModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QuestionnaireScore.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Questionnaire_Question.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Question_Choice.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Question_SubQuestionRowHeader.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadAuditLog_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadDoctors_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadInvestigators_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadPatients_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReadReferrals_Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReferenceData.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Report.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportComponent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportConfiguration.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReportModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Result.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultNormalValue.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResultsHelper.cs" />
+    <Compile Include="ReviewModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Role_Types.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SpecificGravity.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQuestion.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SQuestionnaire.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StimulationSettingsModel.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Study.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="StudyPrimaryReason.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SubQuestionRowHeader.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SynergyDataModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynergyDataModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SynergyDataModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SynergyDataModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SynergyDataModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\WorkflowInvestigationType.cs" />
+    <Compile Include="SynergyDbConfiguration.cs" />
+    <Compile Include="TcpDevice.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateEvent.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Test.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Translations\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UDS_TestData.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UseCaseNames.cs" />
+    <Compile Include="UsedService.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserSetting.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Utils\DataQuantityUnitDescriptor.cs" />
+    <Compile Include="Utils\PhaseModelChildPhaseHelper.cs" />
+    <Compile Include="VcpDevice.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowConfiguration.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowStepConfiguration.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="WorkflowStepResult.cs">
+      <DependentUpon>SynergyDataModel.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\BuildTools\Certificates\SynergyMasterCert.pfx">
+      <Link>SynergyMasterCert.pfx</Link>
+    </None>
+    <AdditionalFiles Include="..\stylecop.json">
+      <Link>stylecop.json</Link>
+    </AdditionalFiles>
+    <None Include="..\Synergy.sln.DotSettings">
+      <Link>Synergy.sln.DotSettings</Link>
+    </None>
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ProtocolModels.cd" />
+    <EntityDeploy Include="SynergyDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SynergyDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SynergyDataModel.edmx.diagram">
+      <DependentUpon>SynergyDataModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{3E2489D1-3AF7-4208-8810-F7EEB4A46099}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="SynergyDataModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SynergyDataModel.edmx</DependentUpon>
+      <LastGenOutput>SynergyDataModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="SynergyDataModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>SynergyDataModel.edmx</DependentUpon>
+      <LastGenOutput>SynergyDataModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
+    <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Translations\Language.de-DE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-GB.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-TT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.en-US.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.es-ES.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.fr-FR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.it-IT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.nl-NL.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.pt-PT.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Translations\Language.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>powershell.exe -executionpolicy unrestricted -File "$(SolutionDir)Shell\GenerateTestLanguage.ps1" -in "$(ProjectDir)Translations\Language.resx" -out "$(ProjectDir)Translations\Language.en-TT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.en-GB.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.en-US.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.fr-FR.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.de-DE.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.es-ES.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.pt-PT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.it-IT.resx"
+"$(SolutionDir)\BuildTools\LaborieLanguageFileTool\LaborieLanguageFileTool.exe" "$(ProjectDir)Translations\Language.resx" "$(ProjectDir)Translations\Language.nl-NL.resx"</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

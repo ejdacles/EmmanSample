@@ -1,0 +1,2563 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SynergyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApplicationSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Event">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="test_id" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Tag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Time" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ShowInSummary" Type="Boolean" Nullable="false" />
+    <Property Name="BeginTime" Type="Int64" Nullable="false" />
+    <Property Name="EndTime" Type="Int64" Nullable="false" />
+    <Property Name="Parent_Id" Type="Int64" />
+    <Property Name="Event_Type" Type="SynergyModel.EventType" Nullable="false" />
+    <NavigationProperty Name="Children" Relationship="Self.FK_Events_Events" FromRole="Events" ToRole="Events1" />
+    <NavigationProperty Name="Parent" Relationship="Self.FK_Events_Events" FromRole="Events1" ToRole="Events" />
+    <NavigationProperty Name="Results" Relationship="SynergyModel.FK_Results_To_Events" FromRole="Event" ToRole="Result" />
+    <NavigationProperty Name="ImageResults" Relationship="SynergyModel.FK_ImageResults_To_Events" FromRole="Event" ToRole="ImageResult" />
+    <Property Name="CreatedBy" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Media" Relationship="SynergyModel.FK_Media_Events" FromRole="Event" ToRole="Media" />
+    <Property Name="Origin" Type="Int32" />
+    <NavigationProperty Name="EventsHistories" Relationship="SynergyModel.FK_EventHistory" FromRole="Event" ToRole="EventsHistory" />
+  </EntityType>
+  <EntityType Name="PhaseEvent" BaseType="SynergyModel.ChartEvent">
+    <Property Name="PhaseProtocolIndex" Type="Int32" Nullable="false" />
+    <Property Name="PhaseRepeatNumber" Type="Int32" Nullable="false" />
+    <Property Name="Phase" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PhaseModel" Relationship="SynergyModel.FK_PhaseEvents_PhaseModel" FromRole="PhaseEvent" ToRole="PhaseModel" />
+  </EntityType>
+  <EntityType Name="Study">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="patient_id" Type="Int32" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="WorkflowStepResults" Relationship="SynergyModel.FK__WorkflowS__study__02E7657A" FromRole="Study" ToRole="WorkflowStepResult" />
+    <Property Name="WorkflowConfigurationId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkflowConfiguration" Relationship="SynergyModel.FK_Studies_WorkflowConfiguration" FromRole="Study" ToRole="WorkflowConfiguration" />
+    <Property Name="LicenseId" Type="Int16" />
+    <Property Name="StartTime" Type="DateTime" Precision="3" />
+    <Property Name="Mode" Type="Boolean" Nullable="false" />
+    <Property Name="UUID" Type="Guid" Nullable="false" annotation:StoreGeneratedPattern="None" />
+    <NavigationProperty Name="StudyPrimaryReasons" Relationship="SynergyModel.FK__StudyPrim__Studi__5C37ACAD" FromRole="Study" ToRole="StudyPrimaryReason" />
+    <Property Name="QualityControlStepTree" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsDirty" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="License" Relationship="SynergyModel.FK_License_Studies" FromRole="Study" ToRole="License" />
+  </EntityType>
+  <EntityType Name="Test" BaseType="SynergyModel.WorkflowStepResult">
+    <Property Name="doctor_id" Type="Int32" />
+    <Property Name="test_time" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="test_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="clinic_name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="test_type" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="sched_machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="test_machine" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cfg_file" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="catheter_size" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="emg_type" Type="Byte" Nullable="false" />
+    <Property Name="upp_measured" Type="Boolean" Nullable="false" />
+    <Property Name="emg_guard_reflex" Type="Boolean" Nullable="false" />
+    <Property Name="Hl7AppointmentId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Hl7AppointmentDatetime" Type="DateTime" Precision="3" />
+    <Property Name="Hl7Comments" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Hl7EventType" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+    <Property Name="TestStatus" Type="Byte" Nullable="false" />
+    <Property Name="reportSentStatus" Type="Byte" Nullable="false" />
+    <Property Name="UDS_Test_Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="XML_Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SoftwareType" Type="Byte" Nullable="false" />
+    <Property Name="SoftwareVersion" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+    <Property Name="Processed" Type="Int16" />
+    <Property Name="DB_CID" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="diagnosis_ENC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="comments_ENC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="comments2_ENC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="recommendations_ENC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Hl7Comments_ENC" Type="Binary" MaxLength="800" FixedLength="false" />
+    <Property Name="dta_file_ENC" Type="Binary" MaxLength="800" FixedLength="false" />
+    <Property Name="Xml_Content_ENC" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="Ref_Test_Id" Type="Int32" />
+    <Property Name="Visit_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Reffering_Doctor_id" Type="Int32" />
+    <Property Name="other_doctor_name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="group_id" Type="Int32" />
+    <Property Name="create_datetime" Type="DateTime" Precision="3" />
+    <Property Name="create_by_id" Type="Int32" />
+    <Property Name="mod_datetime" Type="DateTime" Precision="3" />
+    <Property Name="mod_by_id" Type="Int32" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="dta_file_ENCRevision" Type="Int32" />
+    <Property Name="dta_file_ENCDateTimeModified" Type="DateTime" Precision="3" />
+    <Property Name="ScrollingRate" Type="Int32" />
+    <Property Name="ModifiedByUser" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="dta_file_ENCSyncError" Type="Int32" Nullable="false" />
+    <Property Name="VisitDataSubmittedToEMR" Type="Boolean" Nullable="false" />
+    <Property Name="OriginalDirectoryToMoveFileTo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProtocolName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Events" Relationship="Self.FK_UDS_Events_Tests" FromRole="Tests" ToRole="Events" />
+    <NavigationProperty Name="Patient_Questionnaires" Relationship="SynergyModel.FK_Patient_Questionnaires_Tests" FromRole="Test" ToRole="Patient_Questionnaires" />
+    <NavigationProperty Name="Media" Relationship="SynergyModel.FK_TestMedia" FromRole="Test" ToRole="Media" />
+    <NavigationProperty Name="Group" Relationship="SynergyModel.FK_Tests_Groups" FromRole="Test" ToRole="Group" />
+    <NavigationProperty Name="UDS_TestData" Relationship="SynergyModel.FK__UDS_TestD__Test___090A5324" FromRole="Test" ToRole="UDS_TestData" />
+    <NavigationProperty Name="Consumables" Relationship="SynergyModel.Tests_Consumables" FromRole="Test" ToRole="Consumable" />
+    <Property Name="IsConsumableBypassed" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="OffsetEvents" Relationship="SynergyModel.FK_OffsetEvents_Tests1" FromRole="Test" ToRole="OffsetEvent" />
+    <Property Name="NewConsumableCount" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSetting">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+    <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="32" FixedLength="true" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkflowStepResult" Abstract="true">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="study_id" Type="Int32" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Study" Relationship="SynergyModel.FK__WorkflowS__study__02E7657A" FromRole="WorkflowStepResult" ToRole="Study" />
+    <Property Name="WorkflowStepConfigurationId" Type="Int32" />
+    <NavigationProperty Name="WorkflowStepConfiguration" Relationship="SynergyModel.FK_WorkflowStepResult_WorkflowStepConfiguration" FromRole="WorkflowStepResult" ToRole="WorkflowStepConfiguration" />
+    <NavigationProperty Name="GeneratedReportComponents1" Relationship="SynergyModel.FK_GeneratedReportComponents_WorkflowStepResults" FromRole="WorkflowStepResult" ToRole="GeneratedReportComponent" />
+  </EntityType>
+  <Association Name="FK_Events_Events">
+    <End Role="Events" Type="Self.Event" Multiplicity="0..1" />
+    <End Role="Events1" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Events1">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UDS_Events_Tests">
+    <End Role="Tests" Type="Self.Test" Multiplicity="1" />
+    <End Role="Events" Type="Self.Event" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="test_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DbEntities" annotation:LazyLoadingEnabled="true" a:TypeAccess="Internal" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSetting" />
+    <EntitySet Name="Events" EntityType="Self.Event" />
+    <EntitySet Name="Studies" EntityType="Self.Study" />
+    <EntitySet Name="UserSettings" EntityType="Self.UserSetting" />
+    <EntitySet Name="WorkflowStepResults" EntityType="Self.WorkflowStepResult" />
+    <AssociationSet Name="FK_Events_Events" Association="Self.FK_Events_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Events1" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UDS_Events_Tests" Association="Self.FK_UDS_Events_Tests">
+      <End Role="Tests" EntitySet="WorkflowStepResults" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <EntitySet Name="Question_Choice" EntityType="SynergyModel.Question_Choice" />
+    <EntitySet Name="SQuestions" EntityType="SynergyModel.SQuestion" />
+    <EntitySet Name="SQuestionnaires" EntityType="SynergyModel.SQuestionnaire" />
+    <AssociationSet Name="FK_Question_Choice_Question" Association="SynergyModel.FK_Question_Choice_Question">
+      <End Role="SQuestion" EntitySet="SQuestions" />
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+    </AssociationSet>
+    <EntitySet Name="Choices" EntityType="SynergyModel.Choice" />
+    <FunctionImport Name="GetPatientQuestionnaireScore" ReturnType="Collection(SynergyModel.GetPatientQuestionnaireScore_Result)">
+      <Parameter Name="patientQnrId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <EntitySet Name="Questionnaire_Question" EntityType="SynergyModel.Questionnaire_Question" />
+    <AssociationSet Name="FK_Questionnaire_Question_Question" Association="SynergyModel.FK_Questionnaire_Question_Question">
+      <End Role="SQuestion" EntitySet="SQuestions" />
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questionnaire_Question_SQuestionnaire" Association="SynergyModel.FK_Questionnaire_Question_SQuestionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaires" />
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+    </AssociationSet>
+    <EntitySet Name="ChoiceGroups" EntityType="SynergyModel.ChoiceGroup" />
+    <AssociationSet Name="FK_Choice_ChoiceGroup" Association="SynergyModel.FK_Choice_ChoiceGroup">
+      <End Role="ChoiceGroup" EntitySet="ChoiceGroups" />
+      <End Role="Choice" EntitySet="Choices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Choice_ChoiceGroup" Association="SynergyModel.FK_Question_Choice_ChoiceGroup">
+      <End Role="ChoiceGroup" EntitySet="ChoiceGroups" />
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkflowS__study__02E7657A" Association="SynergyModel.FK__WorkflowS__study__02E7657A">
+      <End Role="Study" EntitySet="Studies" />
+      <End Role="WorkflowStepResult" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <EntitySet Name="Answers" EntityType="SynergyModel.Answer" />
+    <AssociationSet Name="FK_Answers_Choice" Association="SynergyModel.FK_Answers_Choice">
+      <End Role="Choice" EntitySet="Choices" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Patient_Questionnaires" Association="SynergyModel.FK_Answers_Patient_Questionnaires">
+      <End Role="Patient_Questionnaires" EntitySet="WorkflowStepResults" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Question_Choice" Association="SynergyModel.FK_Answers_Question_Choice">
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Questionnaire_Question" Association="SynergyModel.FK_Answers_Questionnaire_Question">
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Questionnaires_Questionnaire" Association="SynergyModel.FK_Patient_Questionnaires_Questionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaires" />
+      <End Role="Patient_Questionnaires" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Questionnaires_Tests" Association="SynergyModel.FK_Patient_Questionnaires_Tests">
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+      <End Role="Patient_Questionnaires" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <EntitySet Name="Reports" EntityType="SynergyModel.Report" />
+    <AssociationSet Name="FK_GeneratedReports_Reports" Association="SynergyModel.FK_GeneratedReports_Reports">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="GeneratedReport" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <EntitySet Name="GeneratedReportComponents" EntityType="SynergyModel.GeneratedReportComponent" />
+    <EntitySet Name="ReportComponents" EntityType="SynergyModel.ReportComponent" />
+    <AssociationSet Name="FK_GeneratedReportComponents_GeneratedReports" Association="SynergyModel.FK_GeneratedReportComponents_GeneratedReports">
+      <End Role="GeneratedReport" EntitySet="WorkflowStepResults" />
+      <End Role="GeneratedReportComponent" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneratedReportComponents_ReportComponents" Association="SynergyModel.FK_GeneratedReportComponents_ReportComponents">
+      <End Role="ReportComponent" EntitySet="ReportComponents" />
+      <End Role="GeneratedReportComponent" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportComponents_Reports" Association="SynergyModel.FK_ReportComponents_Reports">
+      <End Role="Report" EntitySet="Reports" />
+      <End Role="ReportComponent" EntitySet="ReportComponents" />
+    </AssociationSet>
+    <EntitySet Name="ChallengeTemplateModels" EntityType="SynergyModel.ChallengeTemplateModel" a:GetterAccess="Internal" />
+    <EntitySet Name="ControlPanelModels" EntityType="SynergyModel.ControlPanelModel" a:GetterAccess="Internal" />
+    <EntitySet Name="PhaseModels" EntityType="SynergyModel.PhaseModel" a:GetterAccess="Internal" />
+    <EntitySet Name="StimulationSettingsModels" EntityType="SynergyModel.StimulationSettingsModel" a:GetterAccess="Internal" />
+    <EntitySet Name="WorkflowConfigurations" EntityType="SynergyModel.WorkflowConfiguration" a:GetterAccess="Internal" />
+    <EntitySet Name="WorkflowStepConfigurations" EntityType="SynergyModel.WorkflowStepConfiguration" a:GetterAccess="Internal" />
+    <AssociationSet Name="FK_ChallengeTemplateModel_PhaseModel" Association="SynergyModel.FK_ChallengeTemplateModel_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="ChallengeTemplateModel" EntitySet="ChallengeTemplateModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Studies_WorkflowConfiguration" Association="SynergyModel.FK_Studies_WorkflowConfiguration">
+      <End Role="WorkflowConfiguration" EntitySet="WorkflowConfigurations" />
+      <End Role="Study" EntitySet="Studies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkflowStepConfiguration_WorkflowConfiguration" Association="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration">
+      <End Role="WorkflowConfiguration" EntitySet="WorkflowConfigurations" />
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfigurations" />
+    </AssociationSet>
+    <EntitySet Name="Formulas" EntityType="SynergyModel.Formula" />
+    <EntitySet Name="QuestionnaireFormulas" EntityType="SynergyModel.QuestionnaireFormula" />
+    <EntitySet Name="QuestionnaireScores" EntityType="SynergyModel.QuestionnaireScore" />
+    <AssociationSet Name="FK_QuestionnaireFormulas_Formulas" Association="SynergyModel.FK_QuestionnaireFormulas_Formulas">
+      <End Role="Formula" EntitySet="Formulas" />
+      <End Role="QuestionnaireFormula" EntitySet="QuestionnaireFormulas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireScore_Formulas" Association="SynergyModel.FK_QuestionnaireScore_Formulas">
+      <End Role="Formula" EntitySet="Formulas" />
+      <End Role="QuestionnaireScore" EntitySet="QuestionnaireScores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireScore_Patient_Questionnaires" Association="SynergyModel.FK_QuestionnaireScore_Patient_Questionnaires">
+      <End Role="Patient_Questionnaire" EntitySet="WorkflowStepResults" />
+      <End Role="QuestionnaireScore" EntitySet="QuestionnaireScores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireFormulas_Qustionnaire" Association="SynergyModel.FK_QuestionnaireFormulas_Qustionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaires" />
+      <End Role="QuestionnaireFormula" EntitySet="QuestionnaireFormulas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseModel_ParentPhase" Association="SynergyModel.FK_PhaseModel_ParentPhase">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="PhaseModel1" EntitySet="PhaseModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StimulationSettingsModel_PhaseModel" Association="SynergyModel.FK_StimulationSettingsModel_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="StimulationSettingsModel" EntitySet="StimulationSettingsModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseModel_ControlPanelModel1" Association="SynergyModel.FK_PhaseModel_ControlPanelModel1">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModels" />
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewModel_ControlPanelModel1" Association="SynergyModel.FK_ReviewModel_ControlPanelModel1">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModels" />
+      <End Role="ReviewModel" EntitySet="WorkflowStepConfigurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkflowStepResult_WorkflowStepConfiguration" Association="SynergyModel.FK_WorkflowStepResult_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfigurations" />
+      <End Role="WorkflowStepResult" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <EntitySet Name="BaseDevices" EntityType="SynergyModel.BaseDevice" />
+    <AssociationSet Name="FK_GeneratedReportComponents_WorkflowStepResults" Association="SynergyModel.FK_GeneratedReportComponents_WorkflowStepResults">
+      <End Role="WorkflowStepResult" EntitySet="WorkflowStepResults" />
+      <End Role="GeneratedReportComponent" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="SynergyModel.User" />
+    <EntitySet Name="AppSecurities" EntityType="SynergyModel.AppSecurity" />
+    <EntitySet Name="Results" EntityType="SynergyModel.Result" />
+    <AssociationSet Name="FK_Results_To_Events" Association="SynergyModel.FK_Results_To_Events">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Result" EntitySet="Results" />
+    </AssociationSet>
+    <EntitySet Name="UsedServices" EntityType="SynergyModel.UsedService" />
+    <EntitySet Name="Permissions" EntityType="SynergyModel.Permission" />
+    <EntitySet Name="Role_Types" EntityType="SynergyModel.Role_Types" />
+    <EntitySet Name="Roles" EntityType="SynergyModel.Role" />
+    <AssociationSet Name="FK_Roles_Role_Type_ID" Association="SynergyModel.FK_Roles_Role_Type_ID">
+      <End Role="Role_Types" EntitySet="Role_Types" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="Role_Permission" Association="SynergyModel.Role_Permission">
+      <End Role="Permission" EntitySet="Permissions" />
+      <End Role="Role" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="User_Role" Association="SynergyModel.User_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="User" EntitySet="Users" />
+    </AssociationSet>
+    <EntitySet Name="ImageResults" EntityType="SynergyModel.ImageResult" />
+    <AssociationSet Name="FK_ImageResults_To_Events" Association="SynergyModel.FK_ImageResults_To_Events">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="ImageResult" EntitySet="ImageResults" />
+    </AssociationSet>
+    <EntitySet Name="PatientsGroups" EntityType="SynergyModel.PatientsGroup" />
+    <EntitySet Name="Question_SubQuestionRowHeader" EntityType="SynergyModel.Question_SubQuestionRowHeader" />
+    <EntitySet Name="SubQuestionRowHeaders" EntityType="SynergyModel.SubQuestionRowHeader" />
+    <AssociationSet Name="FK_Answers_Question_SubQuestionRowHeader" Association="SynergyModel.FK_Answers_Question_SubQuestionRowHeader">
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+      <End Role="Answer" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_SubQuestionRowHeader_SQuestion" Association="SynergyModel.FK_Question_SubQuestionRowHeader_SQuestion">
+      <End Role="SQuestion" EntitySet="SQuestions" />
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_SubQuestionRowHeader_SubQuestionRowHeader" Association="SynergyModel.FK_Question_SubQuestionRowHeader_SubQuestionRowHeader">
+      <End Role="SubQuestionRowHeader" EntitySet="SubQuestionRowHeaders" />
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubQuestionRowHeader_SQuestionnaire" Association="SynergyModel.FK_SubQuestionRowHeader_SQuestionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaires" />
+      <End Role="SubQuestionRowHeader" EntitySet="SubQuestionRowHeaders" />
+    </AssociationSet>
+    <EntitySet Name="Media" EntityType="SynergyModel.Media" />
+    <AssociationSet Name="FK_TestMedia" Association="SynergyModel.FK_TestMedia">
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <EntitySet Name="Groups" EntityType="SynergyModel.Group" />
+    <AssociationSet Name="FK_PatientsGroups_Groups" Association="SynergyModel.FK_PatientsGroups_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="PatientsGroup" EntitySet="PatientsGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_Groups" Association="SynergyModel.FK_Tests_Groups">
+      <End Role="Group" EntitySet="Groups" />
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <EntitySet Name="HardwareCompatibilities" EntityType="SynergyModel.HardwareCompatibility" />
+    <EntitySet Name="AuditLog" EntityType="SynergyModel.AuditLog" />
+    <FunctionImport Name="CreateDoctor" ReturnType="Collection(Int32)">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CreateInvestigator" ReturnType="Collection(Int32)">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CreateReferral" ReturnType="Collection(Int32)">
+      <Parameter Name="fname" Mode="In" Type="String" />
+      <Parameter Name="lname" Mode="In" Type="String" />
+      <Parameter Name="title" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReadDoctors" ReturnType="Collection(SynergyModel.ReadDoctors_Result)">
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReadInvestigators" ReturnType="Collection(SynergyModel.ReadInvestigators_Result)">
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ReadReferrals" ReturnType="Collection(SynergyModel.ReadReferrals_Result)">
+      <Parameter Name="fullName" Mode="In" Type="String" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateDoctor" ReturnType="Collection(Int32)">
+      <Parameter Name="doctorId" Mode="In" Type="Int32" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="newFName" Mode="In" Type="String" />
+      <Parameter Name="newLName" Mode="In" Type="String" />
+      <Parameter Name="visible" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateInvestigator" ReturnType="Collection(Int32)">
+      <Parameter Name="investigatorId" Mode="In" Type="Int32" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="newFName" Mode="In" Type="String" />
+      <Parameter Name="newLName" Mode="In" Type="String" />
+      <Parameter Name="visible" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="UpdateReferral" ReturnType="Collection(Int32)">
+      <Parameter Name="referralId" Mode="In" Type="Int32" />
+      <Parameter Name="title" Mode="In" Type="String" />
+      <Parameter Name="newFName" Mode="In" Type="String" />
+      <Parameter Name="newLName" Mode="In" Type="String" />
+      <Parameter Name="visible" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <EntitySet Name="StudyPrimaryReasons" EntityType="SynergyModel.StudyPrimaryReason" />
+    <AssociationSet Name="FK__StudyPrim__Studi__5C37ACAD" Association="SynergyModel.FK__StudyPrim__Studi__5C37ACAD">
+      <End Role="Study" EntitySet="Studies" />
+      <End Role="StudyPrimaryReason" EntitySet="StudyPrimaryReasons" />
+    </AssociationSet>
+    <EntitySet Name="PrimaryReasons" EntityType="SynergyModel.PrimaryReason" />
+    <AssociationSet Name="FK__StudyPrim__Prima__062DE679" Association="SynergyModel.FK__StudyPrim__Prima__062DE679">
+      <End Role="PrimaryReason" EntitySet="PrimaryReasons" />
+      <End Role="StudyPrimaryReason" EntitySet="StudyPrimaryReasons" />
+    </AssociationSet>
+    <EntitySet Name="ReportConfigurations" EntityType="SynergyModel.ReportConfiguration" />
+    <AssociationSet Name="FK_ReportModel_ReportConfiguration" Association="SynergyModel.FK_ReportModel_ReportConfiguration">
+      <End Role="ReportConfiguration" EntitySet="ReportConfigurations" />
+      <End Role="ReportModel" EntitySet="WorkflowStepConfigurations" />
+    </AssociationSet>
+    <EntitySet Name="PrimaryReasonsPhasesConfigurations" EntityType="SynergyModel.PrimaryReasonsPhasesConfiguration" />
+    <AssociationSet Name="FK_PrimaryReasonsPhases_PrimaryReasonsID" Association="SynergyModel.FK_PrimaryReasonsPhases_PrimaryReasonsID">
+      <End Role="PrimaryReason" EntitySet="PrimaryReasons" />
+      <End Role="PrimaryReasonsPhasesConfiguration" EntitySet="PrimaryReasonsPhasesConfigurations" />
+    </AssociationSet>
+    <EntitySet Name="ConsumableCompatibilities" EntityType="SynergyModel.ConsumableCompatibility" />
+    <EntitySet Name="ChannelMappings" EntityType="SynergyModel.ChannelMapping" />
+    <EntitySet Name="ChannelModels" EntityType="SynergyModel.ChannelModel" />
+    <AssociationSet Name="FK_ChannelMapping_ChannelModel" Association="SynergyModel.FK_ChannelMapping_ChannelModel">
+      <End Role="ChannelModel" EntitySet="ChannelModels" />
+      <End Role="ChannelMapping" EntitySet="ChannelMappings" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChartChannelEvents_ChannelModel" Association="SynergyModel.FK_ChartChannelEvents_ChannelModel">
+      <End Role="ChannelModel" EntitySet="ChannelModels" />
+      <End Role="ChartChannelEvent" EntitySet="Events" />
+    </AssociationSet>
+    <EntitySet Name="Eulas" EntityType="SynergyModel.Eula" />
+    <EntitySet Name="ButtonModels" EntityType="SynergyModel.ButtonModel" />
+    <AssociationSet Name="FK_ButtonModel_ControlPanelModel" Association="SynergyModel.FK_ButtonModel_ControlPanelModel">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModels" />
+      <End Role="ButtonModel" EntitySet="ButtonModels" />
+    </AssociationSet>
+    <EntitySet Name="ControlModels" EntityType="SynergyModel.ControlModel" />
+    <AssociationSet Name="FK_ControlModel_ButtonModel" Association="SynergyModel.FK_ControlModel_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModels" />
+      <End Role="ControlModel" EntitySet="ControlModels" />
+    </AssociationSet>
+    <FunctionImport Name="ReadPatients" ReturnType="Collection(SynergyModel.ReadPatients_Result)">
+      <Parameter Name="hospitalId" Mode="In" Type="Int32" />
+      <Parameter Name="dbId" Mode="In" Type="Int32" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="UpdatePatient" ReturnType="Collection(Int32)">
+      <Parameter Name="dbId" Mode="In" Type="Int32" />
+      <Parameter Name="visibilityStatus" Mode="In" Type="Int32" />
+      <Parameter Name="patientId" Mode="In" Type="String" />
+      <Parameter Name="hospitalId" Mode="In" Type="Int32" />
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="middleName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="genderId" Mode="In" Type="Int32" />
+      <Parameter Name="dateOfBirth" Mode="In" Type="DateTime" />
+      <Parameter Name="maritalStatusId" Mode="In" Type="String" />
+      <Parameter Name="ethnicityId" Mode="In" Type="String" />
+      <Parameter Name="icn" Mode="In" Type="Binary" />
+      <Parameter Name="height" Mode="In" Type="Int32" />
+      <Parameter Name="weight" Mode="In" Type="Int32" />
+      <Parameter Name="notes" Mode="In" Type="String" />
+      <Parameter Name="allergy" Mode="In" Type="String" />
+      <Parameter Name="personalNumber" Mode="In" Type="String" />
+      <Parameter Name="securityCode" Mode="In" Type="String" />
+      <Parameter Name="street" Mode="In" Type="String" />
+      <Parameter Name="suiteNumber" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="postalCode" Mode="In" Type="String" />
+      <Parameter Name="poBoxNumber" Mode="In" Type="String" />
+      <Parameter Name="phoneHome" Mode="In" Type="String" />
+      <Parameter Name="phoneMobile" Mode="In" Type="String" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+      <Parameter Name="insuranceCompany" Mode="In" Type="String" />
+      <Parameter Name="insurancePolicyNo" Mode="In" Type="String" />
+      <Parameter Name="doctorId" Mode="In" Type="Int32" />
+      <Parameter Name="investigatorId" Mode="In" Type="Int32" />
+      <Parameter Name="referringDoctorId" Mode="In" Type="Int32" />
+      <Parameter Name="history" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="CreatePatient" ReturnType="Collection(Int32)">
+      <Parameter Name="patientId" Mode="In" Type="String" />
+      <Parameter Name="uuid" Mode="In" Type="Guid" />
+      <Parameter Name="visibilityStatus" Mode="In" Type="Int32" />
+      <Parameter Name="hospitalId" Mode="In" Type="Int32" />
+      <Parameter Name="firstName" Mode="In" Type="String" />
+      <Parameter Name="middleName" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="genderId" Mode="In" Type="Int32" />
+      <Parameter Name="dateOfBirth" Mode="In" Type="DateTime" />
+      <Parameter Name="maritalStatusId" Mode="In" Type="String" />
+      <Parameter Name="ethnicityId" Mode="In" Type="String" />
+      <Parameter Name="icn" Mode="In" Type="Binary" />
+      <Parameter Name="height" Mode="In" Type="Int32" />
+      <Parameter Name="weight" Mode="In" Type="Int32" />
+      <Parameter Name="notes" Mode="In" Type="String" />
+      <Parameter Name="allergy" Mode="In" Type="String" />
+      <Parameter Name="personalNumber" Mode="In" Type="String" />
+      <Parameter Name="securityCode" Mode="In" Type="String" />
+      <Parameter Name="street" Mode="In" Type="String" />
+      <Parameter Name="suiteNumber" Mode="In" Type="String" />
+      <Parameter Name="city" Mode="In" Type="String" />
+      <Parameter Name="state" Mode="In" Type="String" />
+      <Parameter Name="country" Mode="In" Type="String" />
+      <Parameter Name="postalCode" Mode="In" Type="String" />
+      <Parameter Name="poBoxNumber" Mode="In" Type="String" />
+      <Parameter Name="phoneHome" Mode="In" Type="String" />
+      <Parameter Name="phoneMobile" Mode="In" Type="String" />
+      <Parameter Name="groupId" Mode="In" Type="Int32" />
+      <Parameter Name="insuranceCompany" Mode="In" Type="String" />
+      <Parameter Name="insurancePolicyNo" Mode="In" Type="String" />
+      <Parameter Name="doctorId" Mode="In" Type="Int32" />
+      <Parameter Name="investigatorId" Mode="In" Type="Int32" />
+      <Parameter Name="referringDoctorId" Mode="In" Type="Int32" />
+      <Parameter Name="history" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="UDS_TestData" EntityType="SynergyModel.UDS_TestData" />
+    <AssociationSet Name="FK__UDS_TestD__Test___090A5324" Association="SynergyModel.FK__UDS_TestD__Test___090A5324">
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+      <End Role="UDS_TestData" EntitySet="UDS_TestData" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelModel_ProtocolModel" Association="SynergyModel.FK_ChannelModel_ProtocolModel">
+      <End Role="ProtocolModel" EntitySet="WorkflowStepConfigurations" />
+      <End Role="ChannelModel" EntitySet="ChannelModels" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProtocolModel_RootPhase" Association="SynergyModel.FK_ProtocolModel_RootPhase">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="ProtocolModel" EntitySet="WorkflowStepConfigurations" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsedServices_ProtocolModel" Association="SynergyModel.FK_UsedServices_ProtocolModel">
+      <End Role="ProtocolModel" EntitySet="WorkflowStepConfigurations" />
+      <End Role="UsedService" EntitySet="UsedServices" />
+    </AssociationSet>
+    <EntitySet Name="FrameDetails" EntityType="SynergyModel.FrameDetail" />
+    <AssociationSet Name="FK_MediaFrameDetails" Association="SynergyModel.FK_MediaFrameDetails">
+      <End Role="Media" EntitySet="Media" />
+      <End Role="FrameDetail" EntitySet="FrameDetails" />
+    </AssociationSet>
+    <EntitySet Name="Consumables" EntityType="SynergyModel.Consumable" />
+    <AssociationSet Name="Tests_Consumables" Association="SynergyModel.Tests_Consumables">
+      <End Role="Consumable" EntitySet="Consumables" />
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Results" Association="SynergyModel.FK_Results_Results">
+      <End Role="Result" EntitySet="Results" />
+      <End Role="Result1" EntitySet="Results" />
+    </AssociationSet>
+    <EntitySet Name="PrimaryReasonsQuestionnairesConfigurations" EntityType="SynergyModel.PrimaryReasonsQuestionnairesConfiguration" />
+    <AssociationSet Name="FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID" Association="SynergyModel.FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID">
+      <End Role="PrimaryReason" EntitySet="PrimaryReasons" />
+      <End Role="PrimaryReasonsQuestionnairesConfiguration" EntitySet="PrimaryReasonsQuestionnairesConfigurations" />
+    </AssociationSet>
+    <EntitySet Name="QualityControlSteps" EntityType="SynergyModel.QualityControlStep" />
+    <EntitySet Name="QualityControlStepsWithPhases" EntityType="SynergyModel.QualityControlStepsWithPhase" />
+    <AssociationSet Name="FK_Quality_Step" Association="SynergyModel.FK_Quality_Step">
+      <End Role="QualityControlStep" EntitySet="QualityControlSteps" />
+      <End Role="QualityControlStepsWithPhase" EntitySet="QualityControlStepsWithPhases" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Media_Events" Association="SynergyModel.FK_Media_Events">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <EntitySet Name="EventsHistories" EntityType="SynergyModel.EventsHistory" />
+    <AssociationSet Name="FK_EventHistory" Association="SynergyModel.FK_EventHistory">
+      <End Role="Event" EntitySet="Events" />
+      <End Role="EventsHistory" EntitySet="EventsHistories" />
+    </AssociationSet>
+    <EntitySet Name="PhaseTextMarkers" EntityType="SynergyModel.PhaseTextMarker" />
+    <EntitySet Name="PumpSpeedChanges" EntityType="SynergyModel.PumpSpeedChange" />
+    <EntitySet Name="PumpSpeedLevels" EntityType="SynergyModel.PumpSpeedLevel" />
+    <AssociationSet Name="FK_PumpSpeedChange_ButtonModel" Association="SynergyModel.FK_PumpSpeedChange_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModels" />
+      <End Role="PumpSpeedChange" EntitySet="PumpSpeedChanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PumpSpeedLevel_ButtonModel" Association="SynergyModel.FK_PumpSpeedLevel_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModels" />
+      <End Role="PumpSpeedLevel" EntitySet="PumpSpeedLevels" />
+    </AssociationSet>
+    <EntitySet Name="OffsetEvents" EntityType="SynergyModel.OffsetEvent" />
+    <AssociationSet Name="FK_OffsetEvents_Tests1" Association="SynergyModel.FK_OffsetEvents_Tests1">
+      <End Role="Test" EntitySet="WorkflowStepResults" />
+      <End Role="OffsetEvent" EntitySet="OffsetEvents" />
+    </AssociationSet>
+    <EntitySet Name="LoginFailureInfoes" EntityType="SynergyModel.LoginFailureInfo" />
+    <EntitySet Name="ImageFrameResults" EntityType="SynergyModel.ImageFrameResult" />
+    <AssociationSet Name="FK_ImageFrameResults_To_ImageResults" Association="SynergyModel.FK_ImageFrameResults_To_ImageResults">
+      <End Role="ImageResult" EntitySet="ImageResults" />
+      <End Role="ImageFrameResult" EntitySet="ImageFrameResults" />
+    </AssociationSet>
+    <EntitySet Name="ReferenceDatas" EntityType="SynergyModel.ReferenceData" />
+    <EntitySet Name="ResultNormalValues" EntityType="SynergyModel.ResultNormalValue" />
+    <EntitySet Name="QCScores" EntityType="SynergyModel.QCScore" />
+    <AssociationSet Name="FK__QCScores__PhaseM__7869D707" Association="SynergyModel.FK__QCScores__PhaseM__7869D707">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="QCScore" EntitySet="QCScores" />
+    </AssociationSet>
+    <EntitySet Name="Licenses" EntityType="SynergyModel.License" />
+    <AssociationSet Name="FK_License_Studies" Association="SynergyModel.FK_License_Studies">
+      <End Role="License" EntitySet="Licenses" />
+      <End Role="Study" EntitySet="Studies" />
+    </AssociationSet>
+    <FunctionImport Name="CreateAuditLog" ReturnType="Collection(Int32)">
+      <Parameter Name="Message" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="SpecificGravities" EntityType="SynergyModel.SpecificGravity" />
+    <FunctionImport Name="ReadAuditLog" ReturnType="Collection(SynergyModel.ReadAuditLog_Result)">
+      <Parameter Name="ID" Mode="In" Type="Int32" />
+      <Parameter Name="pwd" Mode="In" Type="String" />
+    </FunctionImport>
+    <AssociationSet Name="FK_PhaseEvents_PhaseModel" Association="SynergyModel.FK_PhaseEvents_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModels" />
+      <End Role="PhaseEvent" EntitySet="Events" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Question_Choice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Question_ID" Type="Int32" />
+    <Property Name="ChoiceGroup_ID" Type="Int64" Nullable="false" />
+    <Property Name="ChoiceType_ID" Type="Int32" />
+    <Property Name="OrderBy" Type="Int16" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SQuestion" Relationship="SynergyModel.FK_Question_Choice_Question" FromRole="Question_Choice" ToRole="SQuestion" />
+    <NavigationProperty Name="ChoiceGroup" Relationship="SynergyModel.FK_Question_Choice_ChoiceGroup" FromRole="Question_Choice" ToRole="ChoiceGroup" />
+    <NavigationProperty Name="Answers" Relationship="SynergyModel.FK_Answers_Question_Choice" FromRole="Question_Choice" ToRole="Answer" />
+  </EntityType>
+  <EntityType Name="SQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DisplayText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Question_Choice" Relationship="SynergyModel.FK_Question_Choice_Question" FromRole="SQuestion" ToRole="Question_Choice" />
+    <NavigationProperty Name="Questionnaire_Question" Relationship="SynergyModel.FK_Questionnaire_Question_Question" FromRole="SQuestion" ToRole="Questionnaire_Question" />
+    <Property Name="ForGender" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="Question_SubQuestionRowHeader" Relationship="SynergyModel.FK_Question_SubQuestionRowHeader_SQuestion" FromRole="SQuestion" ToRole="Question_SubQuestionRowHeader" />
+  </EntityType>
+  <EntityType Name="SQuestionnaire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SerialNumber" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Filename" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionnaireType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Questionnaire_Question" Relationship="SynergyModel.FK_Questionnaire_Question_SQuestionnaire" FromRole="SQuestionnaire" ToRole="Questionnaire_Question" />
+    <NavigationProperty Name="Patient_Questionnaires" Relationship="SynergyModel.FK_Patient_Questionnaires_Questionnaire" FromRole="SQuestionnaire" ToRole="Patient_Questionnaires" />
+    <NavigationProperty Name="QuestionnaireFormulas" Relationship="SynergyModel.FK_QuestionnaireFormulas_Qustionnaire" FromRole="SQuestionnaire" ToRole="QuestionnaireFormula" />
+    <Property Name="ForGender" Type="Byte" Nullable="false" />
+    <Property Name="Format" Type="Byte" Nullable="false" />
+    <NavigationProperty Name="SubQuestionRowHeaders" Relationship="SynergyModel.FK_SubQuestionRowHeader_SQuestionnaire" FromRole="SQuestionnaire" ToRole="SubQuestionRowHeader" />
+  </EntityType>
+  <Association Name="FK_Question_Choice_Question">
+    <End Type="SynergyModel.SQuestion" Role="SQuestion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Question_Choice" Role="Question_Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_Choice">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Choice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ChoiceGroup_ID" Type="Int64" Nullable="false" />
+    <Property Name="DisplayText" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ChoiceIndex" Type="Int16" />
+    <Property Name="Score" Type="Int32" Nullable="false" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ChoiceDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ChoiceGroup" Relationship="SynergyModel.FK_Choice_ChoiceGroup" FromRole="Choice" ToRole="ChoiceGroup" />
+  </EntityType>
+  <ComplexType Name="GetPatientQuestionnaireScore_Result">
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="200" />
+    <Property Type="Decimal" Name="Score" Nullable="false" Precision="9" Scale="2" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="Int32" Name="PatientQnrID" Nullable="false" />
+    <Property Type="Int32" Name="FormulaID" Nullable="false" />
+  </ComplexType>
+  <EntityType Name="Questionnaire_Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Questionnaire_ID" Type="Int32" Nullable="false" />
+    <Property Name="Question_ID" Type="Int32" Nullable="false" />
+    <Property Name="X" Type="Int32" />
+    <Property Name="Y" Type="Int32" />
+    <Property Name="Width" Type="Int32" />
+    <Property Name="Length" Type="Int32" />
+    <Property Name="PageIndex" Type="Int32" />
+    <Property Name="Columns" Type="Int32" />
+    <Property Name="QuestionIndex" Type="Int16" />
+    <Property Name="Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DefaultValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Visible" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AlwaysCopyAnswer" Type="Boolean" Nullable="false" />
+    <Property Name="DependentOn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AddToY" Type="Int32" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SQuestion" Relationship="SynergyModel.FK_Questionnaire_Question_Question" FromRole="Questionnaire_Question" ToRole="SQuestion" />
+    <NavigationProperty Name="SQuestionnaire" Relationship="SynergyModel.FK_Questionnaire_Question_SQuestionnaire" FromRole="Questionnaire_Question" ToRole="SQuestionnaire" />
+    <NavigationProperty Name="Answers" Relationship="SynergyModel.FK_Answers_Questionnaire_Question" FromRole="Questionnaire_Question" ToRole="Answer" />
+  </EntityType>
+  <Association Name="FK_Questionnaire_Question_Question">
+    <End Type="SynergyModel.SQuestion" Role="SQuestion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Questionnaire_Question" Role="Questionnaire_Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Question">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questionnaire_Question_SQuestionnaire">
+    <End Type="SynergyModel.SQuestionnaire" Role="SQuestionnaire" Multiplicity="1" />
+    <End Type="SynergyModel.Questionnaire_Question" Role="Questionnaire_Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Question">
+        <PropertyRef Name="Questionnaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ChoiceGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Editable" Type="Boolean" Nullable="false" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int32" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Question_Choice" Relationship="SynergyModel.FK_Question_Choice_ChoiceGroup" FromRole="ChoiceGroup" ToRole="Question_Choice" />
+    <NavigationProperty Name="Choice" Relationship="SynergyModel.FK_Choice_ChoiceGroup" FromRole="ChoiceGroup" ToRole="Choice" />
+  </EntityType>
+  <Association Name="FK_Choice_ChoiceGroup">
+    <End Type="SynergyModel.ChoiceGroup" Role="ChoiceGroup" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Choice" Role="Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Choice">
+        <PropertyRef Name="ChoiceGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Choice_ChoiceGroup">
+    <End Type="SynergyModel.ChoiceGroup" Role="ChoiceGroup" Multiplicity="1" />
+    <End Type="SynergyModel.Question_Choice" Role="Question_Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_Choice">
+        <PropertyRef Name="ChoiceGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkflowS__study__02E7657A">
+    <End Type="SynergyModel.Study" Role="Study" Multiplicity="0..1" />
+    <End Type="SynergyModel.WorkflowStepResult" Role="WorkflowStepResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Study">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkflowStepResult">
+        <PropertyRef Name="study_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="GeneratedReport" BaseType="SynergyModel.WorkflowStepResult">
+    <Property Name="Reports_ID" Type="Int32" Nullable="false" />
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Saved" Type="Boolean" Nullable="false" />
+    <Property Name="MRN" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="LastViewed" Type="DateTime" Precision="3" />
+    <Property Name="EMRSent" Type="Boolean" />
+    <Property Name="MemberIDConfirmed" Type="Int32" Nullable="false" />
+    <Property Name="MemberIDSubmittedToEMR" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Report" Relationship="SynergyModel.FK_GeneratedReports_Reports" FromRole="GeneratedReport" ToRole="Report" />
+    <NavigationProperty Name="GeneratedReportComponents" Relationship="SynergyModel.FK_GeneratedReportComponents_GeneratedReports" FromRole="GeneratedReport" ToRole="GeneratedReportComponent" />
+    <Property Name="ExportedFormat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Answer">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Patient_Questionnaires_ID" Type="Int32" Nullable="false" />
+    <Property Name="Questionnaire_Question_ID" Type="Int64" Nullable="false" />
+    <Property Name="Choice_ID" Type="Int64" />
+    <Property Name="TextAnswer" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Processed" Type="Int16" />
+    <Property Name="DB_ID" Type="Int64" />
+    <Property Name="DB_CID" Type="Int32" />
+    <Property Name="Question_Choice_ID" Type="Int64" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Choice" Relationship="SynergyModel.FK_Answers_Choice" FromRole="Answer" ToRole="Choice" />
+    <NavigationProperty Name="Patient_Questionnaires" Relationship="SynergyModel.FK_Answers_Patient_Questionnaires" FromRole="Answer" ToRole="Patient_Questionnaires" />
+    <NavigationProperty Name="Question_Choice" Relationship="SynergyModel.FK_Answers_Question_Choice" FromRole="Answer" ToRole="Question_Choice" />
+    <NavigationProperty Name="Questionnaire_Question" Relationship="SynergyModel.FK_Answers_Questionnaire_Question" FromRole="Answer" ToRole="Questionnaire_Question" />
+    <Property Name="Question_SubQuestionRowHeader_ID" Type="Int32" />
+    <NavigationProperty Name="Question_SubQuestionRowHeader" Relationship="SynergyModel.FK_Answers_Question_SubQuestionRowHeader" FromRole="Answer" ToRole="Question_SubQuestionRowHeader" />
+  </EntityType>
+  <EntityType Name="Patient_Questionnaire" BaseType="SynergyModel.WorkflowStepResult">
+    <Property Name="DateAndTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Questionnaire_ID" Type="Int32" Nullable="false" />
+    <Property Name="Test_ID" Type="Int32" />
+    <Property Name="EmailSent" Type="Boolean" Nullable="false" />
+    <Property Name="EmailID" Type="Int32" />
+    <Property Name="Processed" Type="Int16" Nullable="false" />
+    <Property Name="DB_CID" Type="Int32" Nullable="false" />
+    <Property Name="DB_ID" Type="Int64" />
+    <Property Name="DateAndTimeSubmitted" Type="DateTime" Precision="3" />
+    <Property Name="mod_datetime" Type="DateTime" Precision="3" />
+    <Property Name="mod_by_id" Type="Int32" />
+    <Property Name="Status" Type="Int32" />
+    <Property Name="SenderDBID" Type="Int32" />
+    <Property Name="Revision" Type="Int32" Nullable="false" />
+    <Property Name="SyncError" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedDatetime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="MemberIDValidated" Type="Int32" Nullable="false" />
+    <Property Name="PercentComplete" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Answers" Relationship="SynergyModel.FK_Answers_Patient_Questionnaires" FromRole="Patient_Questionnaires" ToRole="Answer" />
+    <NavigationProperty Name="SQuestionnaire" Relationship="SynergyModel.FK_Patient_Questionnaires_Questionnaire" FromRole="Patient_Questionnaires" ToRole="SQuestionnaire" />
+    <NavigationProperty Name="Test" Relationship="SynergyModel.FK_Patient_Questionnaires_Tests" FromRole="Patient_Questionnaires" ToRole="Test" />
+    <NavigationProperty Name="QuestionnaireScores" Relationship="SynergyModel.FK_QuestionnaireScore_Patient_Questionnaires" FromRole="Patient_Questionnaire" ToRole="QuestionnaireScore" />
+    <Property Name="QuestionsPerPage" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_Answers_Choice">
+    <End Type="SynergyModel.Choice" Role="Choice" Multiplicity="0..1" />
+    <End Type="SynergyModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Choice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Choice_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Patient_Questionnaires">
+    <End Type="SynergyModel.Patient_Questionnaire" Role="Patient_Questionnaires" Multiplicity="1" />
+    <End Type="SynergyModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Questionnaires">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Patient_Questionnaires_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Question_Choice">
+    <End Type="SynergyModel.Question_Choice" Role="Question_Choice" Multiplicity="0..1" />
+    <End Type="SynergyModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question_Choice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Question_Choice_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Questionnaire_Question">
+    <End Type="SynergyModel.Questionnaire_Question" Role="Questionnaire_Question" Multiplicity="1" />
+    <End Type="SynergyModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questionnaire_Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Questionnaire_Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Questionnaires_Questionnaire">
+    <End Type="SynergyModel.SQuestionnaire" Role="SQuestionnaire" Multiplicity="1" />
+    <End Type="SynergyModel.Patient_Questionnaire" Role="Patient_Questionnaires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient_Questionnaires">
+        <PropertyRef Name="Questionnaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Questionnaires_Tests">
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="0..1" />
+    <End Type="SynergyModel.Patient_Questionnaire" Role="Patient_Questionnaires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient_Questionnaires">
+        <PropertyRef Name="Test_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SoftwareMode" Type="Int32" Nullable="false" />
+    <Property Name="Alias" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <Property Name="InvestigationType" Type="Int32" />
+    <NavigationProperty Name="ReportComponents" Relationship="SynergyModel.FK_ReportComponents_Reports" FromRole="Report" ToRole="ReportComponent" />
+  </EntityType>
+  <Association Name="FK_GeneratedReports_Reports">
+    <End Type="SynergyModel.Report" Role="Report" Multiplicity="1" />
+    <End Type="SynergyModel.GeneratedReport" Role="GeneratedReport" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReport">
+        <PropertyRef Name="Reports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ChallengeTemplateModel" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ChannelNumberToDrawOn" Type="Int32" Nullable="false" />
+    <Property Name="PhaseModel_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ControlPanelModel" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RowCount" Type="Int32" Nullable="false" />
+    <Property Name="ColumnCount" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ButtonModels" Relationship="SynergyModel.FK_ButtonModel_ControlPanelModel" FromRole="ControlPanelModel" ToRole="ButtonModel" />
+  </EntityType>
+  <EntityType Name="PhaseModel" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="CountdownTimerSecondsInternal" Type="Int32" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="IconType" Type="SynergyModel.PhaseIconType" />
+    <Property Name="DurationSecondsInternal" Type="Int32" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="AcquireDataInternal" Type="Boolean" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="RepeatCountInternal" Type="Int32" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="TimerVisible" Type="Boolean" />
+    <Property Name="VisibleChannelsInternal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <NavigationProperty Name="ChallengeTemplateModels" Relationship="SynergyModel.FK_ChallengeTemplateModel_PhaseModel" FromRole="PhaseModel" ToRole="ChallengeTemplateModel" />
+    <Property Name="PhaseOrder" Type="Int32" Nullable="false" />
+    <Property Name="ParentPhaseId" Type="Int32" />
+    <NavigationProperty Name="ChildPhases" Relationship="SynergyModel.FK_PhaseModel_ParentPhase" FromRole="PhaseModel" ToRole="PhaseModel1" />
+    <NavigationProperty Name="ParentPhase" Relationship="SynergyModel.FK_PhaseModel_ParentPhase" FromRole="PhaseModel1" ToRole="PhaseModel" />
+    <NavigationProperty Name="StimulationSettingsModels" Relationship="SynergyModel.FK_StimulationSettingsModel_PhaseModel" FromRole="PhaseModel" ToRole="StimulationSettingsModel" />
+    <Property Name="ControlPanelId" Type="Int32" />
+    <NavigationProperty Name="ControlPanelModel" Relationship="SynergyModel.FK_PhaseModel_ControlPanelModel1" FromRole="PhaseModel" ToRole="ControlPanelModel" />
+    <Property Name="EventScopeInternal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="AfterFlowTimeInternal" Type="Int32" a:SetterAccess="Internal" a:GetterAccess="Internal" />
+    <Property Name="PhaseType" Type="SynergyModel.PhaseModelTypes" Nullable="false" />
+    <Property Name="ChannelValuesShownSeparatelyInternal" Type="String" MaxLength="500" FixedLength="false" Unicode="false" a:GetterAccess="Internal" a:SetterAccess="Internal" />
+    <Property Name="PumpSpeed" Type="Int32" />
+    <Property Name="PullerSpeed" Type="Int32" />
+    <Property Name="AutoCoughArtifactDetection" Type="Boolean" Nullable="false" />
+    <Property Name="AutoProfileDetection" Type="Boolean" Nullable="false" />
+    <Property Name="AutoTransmissionDetection" Type="Boolean" Nullable="false" />
+    <Property Name="AdditionalStatusBarItems" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="AutoBristolArtifactDetection" Type="Boolean" Nullable="false" />
+    <Property Name="AutoFlowDetection" Type="Boolean" Nullable="false" />
+    <Property Name="EnablePvrDialog" Type="Boolean" Nullable="false" />
+    <Property Name="EnableAutomaticPostVoidedResidual" Type="Boolean" Nullable="false" />
+    <Property Name="QCTotalScore" Type="Int32" Nullable="false" />
+    <Property Name="QCMaximumScore" Type="Int32" Nullable="false" />
+    <Property Name="AutoStartPhase" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="QCScores" Relationship="SynergyModel.FK__QCScores__PhaseM__7869D707" FromRole="PhaseModel" ToRole="QCScore" />
+    <Property Name="SpecificGravity" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+    <NavigationProperty Name="PhaseEvents" Relationship="SynergyModel.FK_PhaseEvents_PhaseModel" FromRole="PhaseModel" ToRole="PhaseEvent" />
+  </EntityType>
+  <EntityType Name="ReviewModel" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" BaseType="SynergyModel.WorkflowStepConfiguration">
+    <Property Name="ControlPanelId" Type="Int32" />
+    <NavigationProperty Name="ControlPanelModel" Relationship="SynergyModel.FK_ReviewModel_ControlPanelModel1" FromRole="ReviewModel" ToRole="ControlPanelModel" />
+    <Property Name="AutoExecute" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StimulationSettingsModel" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="RampUpTimer" Type="Int32" Nullable="false" />
+    <Property Name="StimulationTimer" Type="Int32" Nullable="false" />
+    <Property Name="RampDownTimer" Type="Int32" Nullable="false" />
+    <Property Name="FrequencyValue" Type="Int32" Nullable="false" />
+    <Property Name="BandValue" Type="Int32" Nullable="false" />
+    <Property Name="MaxCurrent" Type="Int32" Nullable="false" />
+    <Property Name="ChannelNumberToDrawOn" Type="Int32" Nullable="false" />
+    <Property Name="PhaseModel_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkflowConfiguration" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InvestigationType" Nullable="false" Type="SynergyModel.WorkflowInvestigationType" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="WorkflowStepConfigurations" Relationship="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration" FromRole="WorkflowConfiguration" ToRole="WorkflowStepConfiguration" />
+    <Property Name="IsPredefined" Type="Boolean" Nullable="false" />
+    <Property Name="IsClinical" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="WorkflowStepConfiguration" a:TypeAccess="Public" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="WorkflowConfig_Id" Type="Int32" Nullable="false" />
+    <Property Name="WorkflowStepType" Type="SynergyModel.WorkflowStepType" Nullable="false" />
+    <NavigationProperty Name="WorkflowConfiguration" Relationship="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration" FromRole="WorkflowStepConfiguration" ToRole="WorkflowConfiguration" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ExecuteOnlyFromAnotherStep" Type="Boolean" Nullable="false" />
+    <Property Name="CompletionStatus" Type="Int32" Nullable="false" />
+    <Property Name="WorkflowStepOrder" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ChallengeTemplateModel_PhaseModel">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ChallengeTemplateModel" Role="ChallengeTemplateModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeTemplateModel">
+        <PropertyRef Name="PhaseModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Studies_WorkflowConfiguration">
+    <End Type="SynergyModel.WorkflowConfiguration" Role="WorkflowConfiguration" Multiplicity="1" />
+    <End Type="SynergyModel.Study" Role="Study" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Study">
+        <PropertyRef Name="WorkflowConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkflowStepConfiguration_WorkflowConfiguration">
+    <End Type="SynergyModel.WorkflowConfiguration" Role="WorkflowConfiguration" Multiplicity="1" />
+    <End Type="SynergyModel.WorkflowStepConfiguration" Role="WorkflowStepConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkflowStepConfiguration">
+        <PropertyRef Name="WorkflowConfig_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="WorkflowInvestigationType" a:ExternalTypeName="WorkflowInvestigationType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="WorkflowStepType" a:ExternalTypeName="WorkflowStepType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="QuestionnaireModel" BaseType="SynergyModel.WorkflowStepConfiguration">
+    <Property Name="QuestionnaireId" Type="Int32" Nullable="false" />
+    <Property Name="FilledInStatus" Type="SynergyModel.FilledInStatus" Nullable="false" />
+    <Property Name="AutoExecute" Type="Boolean" Nullable="false" />
+    <Property Name="SkipIfFilledCompletly" Type="Boolean" Nullable="false" />
+    <Property Name="SkipIfFilledPartially" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportModel" BaseType="SynergyModel.WorkflowStepConfiguration">
+    <Property Name="ReportId" Type="Int32" Nullable="false" />
+    <Property Name="ReportConfiguration_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ReportConfiguration" Relationship="SynergyModel.FK_ReportModel_ReportConfiguration" FromRole="ReportModel" ToRole="ReportConfiguration" />
+    <Property Name="ReportTemplateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsSilentPrint" Type="Boolean" Nullable="false" />
+    <Property Name="IsPrintToPdf" Type="Boolean" Nullable="false" />
+    <Property Name="IsPrintToPrinter" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EnumType Name="ChartScrollingMode" a:ExternalTypeName="ChartScrollingMode" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="DataQuantityUnit" a:ExternalTypeName="DataQuantityUnit" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="DataQuantityType" a:ExternalTypeName="DataQuantityType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="PhaseIconType" a:ExternalTypeName="PhaseIconType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="ControlAction" a:ExternalTypeName="ControlAction" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="FunctionKey" a:ExternalTypeName="FunctionKey" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="GeneratedReportComponent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GeneratedReports_ID" Type="Int32" Nullable="false" />
+    <Property Name="ReportComponents_ID" Type="Int32" />
+    <Property Name="Include" Type="Boolean" Nullable="false" />
+    <Property Name="WorkflowStepResultId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="WorkflowStepResult" Relationship="SynergyModel.FK_GeneratedReportComponents_WorkflowStepResults" FromRole="GeneratedReportComponent" ToRole="WorkflowStepResult" />
+  </EntityType>
+  <EntityType Name="ReportComponent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Reports_ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Report" Relationship="SynergyModel.FK_ReportComponents_Reports" FromRole="ReportComponent" ToRole="Report" />
+  </EntityType>
+  <Association Name="FK_GeneratedReportComponents_GeneratedReports">
+    <End Type="SynergyModel.GeneratedReport" Role="GeneratedReport" Multiplicity="1" />
+    <End Type="SynergyModel.GeneratedReportComponent" Role="GeneratedReportComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneratedReport">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponent">
+        <PropertyRef Name="GeneratedReports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneratedReportComponents_ReportComponents">
+    <End Type="SynergyModel.ReportComponent" Role="ReportComponent" Multiplicity="0..1" />
+    <End Type="SynergyModel.GeneratedReportComponent" Role="GeneratedReportComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReportComponent">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponent">
+        <PropertyRef Name="ReportComponents_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportComponents_Reports">
+    <End Type="SynergyModel.Report" Role="Report" Multiplicity="1" />
+    <End Type="SynergyModel.ReportComponent" Role="ReportComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Report">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportComponent">
+        <PropertyRef Name="Reports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Formula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QuestionnaireFormula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireID" Type="Int32" Nullable="false" />
+    <Property Name="FormulaID" Type="Int32" Nullable="false" />
+    <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Formula" Relationship="SynergyModel.FK_QuestionnaireFormulas_Formulas" FromRole="QuestionnaireFormula" ToRole="Formula" />
+    <NavigationProperty Name="SQuestionnaire" Relationship="SynergyModel.FK_QuestionnaireFormulas_Qustionnaire" FromRole="QuestionnaireFormula" ToRole="SQuestionnaire" />
+  </EntityType>
+  <EntityType Name="QuestionnaireScore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PatientQnrID" Type="Int32" Nullable="false" />
+    <Property Name="FormulaID" Type="Int32" Nullable="false" />
+    <Property Name="Score" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <NavigationProperty Name="Formula" Relationship="SynergyModel.FK_QuestionnaireScore_Formulas" FromRole="QuestionnaireScore" ToRole="Formula" />
+    <NavigationProperty Name="Patient_Questionnaires" Relationship="SynergyModel.FK_QuestionnaireScore_Patient_Questionnaires" FromRole="QuestionnaireScore" ToRole="Patient_Questionnaire" />
+  </EntityType>
+  <Association Name="FK_QuestionnaireFormulas_Formulas">
+    <End Type="SynergyModel.Formula" Role="Formula" Multiplicity="1" />
+    <End Type="SynergyModel.QuestionnaireFormula" Role="QuestionnaireFormula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formula">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireFormula">
+        <PropertyRef Name="FormulaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireScore_Formulas">
+    <End Type="SynergyModel.Formula" Role="Formula" Multiplicity="1" />
+    <End Type="SynergyModel.QuestionnaireScore" Role="QuestionnaireScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formula">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireScore">
+        <PropertyRef Name="FormulaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireScore_Patient_Questionnaires">
+    <End Type="SynergyModel.Patient_Questionnaire" Role="Patient_Questionnaire" Multiplicity="1" />
+    <End Type="SynergyModel.QuestionnaireScore" Role="QuestionnaireScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Questionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireScore">
+        <PropertyRef Name="PatientQnrID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireFormulas_Qustionnaire">
+    <End Type="SynergyModel.SQuestionnaire" Role="SQuestionnaire" Multiplicity="1" />
+    <End Type="SynergyModel.QuestionnaireFormula" Role="QuestionnaireFormula" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireFormula">
+        <PropertyRef Name="QuestionnaireID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseModel_ParentPhase">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="0..1" />
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseModel1">
+        <PropertyRef Name="ParentPhaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StimulationSettingsModel_PhaseModel">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.StimulationSettingsModel" Role="StimulationSettingsModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StimulationSettingsModel">
+        <PropertyRef Name="PhaseModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseModel_ControlPanelModel1">
+    <End Type="SynergyModel.ControlPanelModel" Role="ControlPanelModel" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseModel">
+        <PropertyRef Name="ControlPanelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewModel_ControlPanelModel1">
+    <End Type="SynergyModel.ControlPanelModel" Role="ControlPanelModel" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ReviewModel" Role="ReviewModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReviewModel">
+        <PropertyRef Name="ControlPanelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BridgePatternModel" BaseType="SynergyModel.ChallengeTemplateModel">
+    <Property Name="RampPreDelaySeconds" Type="Int32" Nullable="false" />
+    <Property Name="RampPostDelaySeconds" Type="Int32" Nullable="false" />
+    <Property Name="DelayTargetPercentage" Type="Int32" Nullable="false" />
+    <Property Name="RampUpSeconds" Type="Int32" Nullable="false" />
+    <Property Name="RampDownSeconds" Type="Int32" Nullable="false" />
+    <Property Name="WorkTargetSeconds" Type="Int32" Nullable="false" />
+    <Property Name="WorkTargetPercentage" Type="Int32" Nullable="false" />
+    <Property Name="TargetArea" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LinePatternModel" BaseType="SynergyModel.ChallengeTemplateModel">
+    <Property Name="SignalTarget" Type="Int32" Nullable="false" />
+    <Property Name="TargetArea" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EnumType Name="EventType" a:ExternalTypeName="EventType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <Association Name="FK_WorkflowStepResult_WorkflowStepConfiguration">
+    <End Type="SynergyModel.WorkflowStepConfiguration" Role="WorkflowStepConfiguration" Multiplicity="0..1" />
+    <End Type="SynergyModel.WorkflowStepResult" Role="WorkflowStepResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkflowStepResult">
+        <PropertyRef Name="WorkflowStepConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TemplateEvent" BaseType="SynergyModel.ChartChannelEvent">
+    <Property Name="DataQuantityUnit" Type="SynergyModel.DataQuantityUnit" Nullable="false" />
+    <Property Name="DataQuantityType" Type="SynergyModel.DataQuantityType" Nullable="false" />
+    <Property Name="ScaleMin" Type="Int32" Nullable="false" />
+    <Property Name="ScaleMax" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChartEvent" BaseType="SynergyModel.Event">
+    <Property Name="DisplayType" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChartChannelEvent" BaseType="SynergyModel.Event">
+    <Property Name="ChannelDisplayType" Type="Int32" Nullable="false" />
+    <Property Name="ChannelId" Type="Int32" Nullable="false" />
+    <Property Name="ChannelIndex" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChannelModel" Relationship="SynergyModel.FK_ChartChannelEvents_ChannelModel" FromRole="ChartChannelEvent" ToRole="ChannelModel" />
+  </EntityType>
+  <EntityType Name="BaseDevice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Alias" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ConnectionType" Type="SynergyModel.DeviceConnectionType" Nullable="false" />
+    <Property Name="DeviceType" Type="SynergyModel.DeviceTypes" Nullable="false" />
+    <Property Name="IsRegistered" Type="Boolean" />
+    <Property Name="FirmwareVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BatteryLevel" Type="Int32" />
+    <Property Name="ConnectionStatus" Type="SynergyModel.DeviceConnectionStatus" />
+    <Property Name="DataFilePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BtMacAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UsbSerialNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TcpDevice" BaseType="SynergyModel.BaseDevice">
+    <Property Name="URL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EnumType Name="DeviceTypes" UnderlyingType="Int16">
+    <Member Name="PM2" Value="1" />
+    <Member Name="PL2" Value="2" />
+    <Member Name="RO2" Value="3" />
+    <Member Name="UC6" Value="4" />
+    <Member Name="RC1600" Value="5" />
+    <Member Name="RO2Simulator" Value="6" />
+    <Member Name="UC6Simulator" Value="7" />
+    <Member Name="US2Simulator" Value="8" />
+    <Member Name="US2" Value="9" />
+    <Member Name="PM2Simulator" Value="10" />
+    <Member Name="PL2Simulator" Value="11" />
+    <Member Name="BTD" Value="12" />
+    <Member Name="MMSRCBPE17" Value="13" />
+    <Member Name="FileSimulator" Value="14" />
+    <Member Name="BT2" Value="15" />
+  </EnumType>
+  <EnumType Name="DeviceConnectionStatus" UnderlyingType="Int16">
+    <Member Name="Unknown" Value="0" />
+    <Member Name="Connected" Value="1" />
+    <Member Name="Disconnected" Value="2" />
+    <Member Name="Failed" Value="3" />
+    <Member Name="Connecting" Value="4" />
+    <Member Name="USBError" Value="5" />
+    <Member Name="BluetoothError" Value="6" />
+    <Member Name="CommunicationError" Value="7" />
+  </EnumType>
+  <EnumType Name="DeviceConnectionType">
+    <Member Name="USB" />
+    <Member Name="BLUETOOTH" />
+    <Member Name="TCP" />
+    <Member Name="SIMULATOR" />
+    <Member Name="BLUETOOTHLE" />
+  </EnumType>
+  <Association Name="FK_GeneratedReportComponents_WorkflowStepResults">
+    <End Type="SynergyModel.WorkflowStepResult" Role="WorkflowStepResult" Multiplicity="1" />
+    <End Type="SynergyModel.GeneratedReportComponent" Role="GeneratedReportComponent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepResult">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponent">
+        <PropertyRef Name="WorkflowStepResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="ReadPatients_Result">
+    <Property Type="Int32" Name="DbId" Nullable="false" />
+    <Property Type="Guid" Name="Uuid" Nullable="false" />
+    <Property Type="Byte" Name="VisibilityStatus" Nullable="false" />
+    <Property Type="String" Name="PatientId" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="64" />
+    <Property Type="Byte" Name="GenderId" Nullable="false" />
+    <Property Type="Int32" Name="Height" Nullable="true" />
+    <Property Type="Int32" Name="Weight" Nullable="true" />
+    <Property Type="DateTime" Name="DateOfBirth" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Notes" Nullable="true" />
+    <Property Type="String" Name="Allergy" Nullable="true" />
+    <Property Type="String" Name="PersonalNumber" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SecurityCode" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="AddressID" Nullable="true" />
+    <Property Type="String" Name="Street" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SuiteNumber" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="City" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="State" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Country" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PostalCode" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="PoBoxNumber" Nullable="true" MaxLength="20" />
+    <Property Type="Int64" Name="ContactID" Nullable="true" />
+    <Property Type="String" Name="PhoneHome" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="PhoneMobile" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="CreateDateTime" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="GroupId" Nullable="true" />
+    <Property Type="Int32" Name="DoctorId" Nullable="true" />
+    <Property Type="Int32" Name="InvestigatorId" Nullable="true" />
+    <Property Type="Int32" Name="ReferringDoctorId" Nullable="true" />
+    <Property Type="String" Name="InsuranceCompany" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="InsurancePolicyNo" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="InsuranceID" Nullable="true" />
+    <Property Type="String" Name="History" Nullable="true" />
+  </ComplexType>
+  <EnumType Name="ResultTypes" a:ExternalTypeName="ResultTypes" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="Username" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Privilege" Type="Byte" Nullable="false" />
+    <Property Name="UserGrid" Type="Guid" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Roles" Relationship="SynergyModel.User_Role" FromRole="User" ToRole="Role" />
+  </EntityType>
+  <EnumType Name="PhaseModelTypes" a:ExternalTypeName="PhaseModelTypes" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="AppSecurity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Value" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Result">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Event_Id" Type="Int64" Nullable="false" />
+    <Property Name="ResultType" Type="SynergyModel.ResultTypes" Nullable="false" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="Unit" Type="SynergyModel.DataQuantityUnit" Nullable="false" />
+    <Property Name="Channel" Type="Int32" />
+    <NavigationProperty Name="Event" Relationship="SynergyModel.FK_Results_To_Events" FromRole="Result" ToRole="Event" />
+    <Property Name="Parent_Id" Type="Int64" />
+    <NavigationProperty Name="ChildrenPrivate" Relationship="SynergyModel.FK_Results_Results" FromRole="Result" ToRole="Result1" a:GetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:SetterAccess="Private" />
+    <NavigationProperty Name="Parent" Relationship="SynergyModel.FK_Results_Results" FromRole="Result1" ToRole="Result" />
+  </EntityType>
+  <Association Name="FK_Results_To_Events">
+    <End Type="SynergyModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="SynergyModel.Result" Role="Result" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Result">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="ControlPanelControlType">
+    <Member Name="NormalButton" />
+    <Member Name="ToggleButton" />
+    <Member Name="SequentialButton" />
+  </EnumType>
+  <EntityType Name="PumpSpeedEvent" BaseType="SynergyModel.Event">
+    <Property Name="PumpSpeed" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VcpDevice" BaseType="SynergyModel.BaseDevice">
+    <Property Name="COMPortNumber" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsedService">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ServiceType" Type="SynergyModel.ServiceType" Nullable="false" />
+    <Property Name="ProtocolModel_Id" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EnumType Name="ServiceType" a:ExternalTypeName="ServiceType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="Permission">
+    <Key>
+      <PropertyRef Name="Permission_ID" />
+    </Key>
+    <Property Name="Permission_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Permission_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role_Types">
+    <Key>
+      <PropertyRef Name="Role_Type_ID" />
+    </Key>
+    <Property Name="Role_Type_ID" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role_Type_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Role_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Role_Type_ID" Type="Int16" Nullable="false" />
+    <Property Name="isDefault" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Role_Types" Relationship="SynergyModel.FK_Roles_Role_Type_ID" FromRole="Role" ToRole="Role_Types" />
+    <NavigationProperty Name="Permissions" Relationship="SynergyModel.Role_Permission" FromRole="Role" ToRole="Permission" />
+    <NavigationProperty Name="Users" Relationship="SynergyModel.User_Role" FromRole="Role" ToRole="User" />
+  </EntityType>
+  <Association Name="FK_Roles_Role_Type_ID">
+    <End Type="SynergyModel.Role_Types" Role="Role_Types" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Role" Role="Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_Types">
+        <PropertyRef Name="Role_Type_ID" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="Role_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Role_Permission">
+    <End Type="SynergyModel.Permission" Role="Permission" Multiplicity="*" />
+    <End Type="SynergyModel.Role" Role="Role" Multiplicity="*" />
+  </Association>
+  <Association Name="User_Role">
+    <End Type="SynergyModel.Role" Role="Role" Multiplicity="*" />
+    <End Type="SynergyModel.User" Role="User" Multiplicity="*" />
+  </Association>
+  <EntityType Name="PatientsGroup">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+      <PropertyRef Name="Patient_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="Int32" Nullable="false" />
+    <Property Name="Patient_ID" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UI" Type="Guid" Nullable="false" />
+    <Property Name="Event_Id" Type="Int64" Nullable="false" />
+    <Property Name="ImageFile" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="ImageType" Type="SynergyModel.ImageType" Nullable="false" />
+    <Property Name="ImageSubType" Type="SynergyModel.ImageSubType" Nullable="false" />
+    <NavigationProperty Name="ImageFrameResults" Relationship="SynergyModel.FK_ImageFrameResults_To_ImageResults" FromRole="ImageResult" ToRole="ImageFrameResult" />
+    <Property Name="ImageTimestamp" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ImageResults_To_Events">
+    <End Type="SynergyModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="SynergyModel.ImageResult" Role="ImageResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImageResult">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Question_SubQuestionRowHeader">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionID" Type="Int32" Nullable="false" />
+    <Property Name="SubQuestionRowHeaderID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Answers" Relationship="SynergyModel.FK_Answers_Question_SubQuestionRowHeader" FromRole="Question_SubQuestionRowHeader" ToRole="Answer" />
+    <NavigationProperty Name="SQuestion" Relationship="SynergyModel.FK_Question_SubQuestionRowHeader_SQuestion" FromRole="Question_SubQuestionRowHeader" ToRole="SQuestion" />
+    <NavigationProperty Name="SubQuestionRowHeader" Relationship="SynergyModel.FK_Question_SubQuestionRowHeader_SubQuestionRowHeader" FromRole="Question_SubQuestionRowHeader" ToRole="SubQuestionRowHeader" />
+  </EntityType>
+  <EntityType Name="SubQuestionRowHeader">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="DisplayText" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="QuestionnaireID" Type="Int32" Nullable="false" />
+    <Property Name="DisplayIndex" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Question_SubQuestionRowHeader" Relationship="SynergyModel.FK_Question_SubQuestionRowHeader_SubQuestionRowHeader" FromRole="SubQuestionRowHeader" ToRole="Question_SubQuestionRowHeader" />
+    <NavigationProperty Name="SQuestionnaire" Relationship="SynergyModel.FK_SubQuestionRowHeader_SQuestionnaire" FromRole="SubQuestionRowHeader" ToRole="SQuestionnaire" />
+  </EntityType>
+  <Association Name="FK_Answers_Question_SubQuestionRowHeader">
+    <End Type="SynergyModel.Question_SubQuestionRowHeader" Role="Question_SubQuestionRowHeader" Multiplicity="0..1" />
+    <End Type="SynergyModel.Answer" Role="Answer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answer">
+        <PropertyRef Name="Question_SubQuestionRowHeader_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_SubQuestionRowHeader_SQuestion">
+    <End Type="SynergyModel.SQuestion" Role="SQuestion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Question_SubQuestionRowHeader" Role="Question_SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_SubQuestionRowHeader_SubQuestionRowHeader">
+    <End Type="SynergyModel.SubQuestionRowHeader" Role="SubQuestionRowHeader" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Question_SubQuestionRowHeader" Role="Question_SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubQuestionRowHeader">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="SubQuestionRowHeaderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubQuestionRowHeader_SQuestionnaire">
+    <End Type="SynergyModel.SQuestionnaire" Role="SQuestionnaire" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.SubQuestionRowHeader" Role="SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SubQuestionRowHeader">
+        <PropertyRef Name="QuestionnaireID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PullerDistanceEvent" BaseType="SynergyModel.Event">
+    <Property Name="Distance" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResourceGUID" Type="Guid" Nullable="false" />
+    <Property Name="ResourceExtension" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ResourceFolder" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TestID" Type="Int32" Nullable="false" />
+    <Property Name="Timestamp" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="FrameDetails" Relationship="SynergyModel.FK_MediaFrameDetails" FromRole="Media" ToRole="FrameDetail" />
+    <Property Name="Event_Id" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Event" Relationship="SynergyModel.FK_Media_Events" FromRole="Media" ToRole="Event" />
+  </EntityType>
+  <Association Name="FK_TestMedia">
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="1" />
+    <End Type="SynergyModel.Media" Role="Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="TestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Group">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="Hospital_id" Type="Int32" />
+    <Property Name="Visible" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PatientsGroups" Relationship="SynergyModel.FK_PatientsGroups_Groups" FromRole="Group" ToRole="PatientsGroup" />
+  </EntityType>
+  <Association Name="FK_PatientsGroups_Groups">
+    <End Type="SynergyModel.Group" Role="Group" Multiplicity="1" />
+    <End Type="SynergyModel.PatientsGroup" Role="PatientsGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientsGroup">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tests_Groups">
+    <End Type="SynergyModel.Group" Role="Group" Multiplicity="0..1" />
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Group">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Test">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="HardwareCompatibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileSignature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="JSON" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="AuditLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="7" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <ComplexType Name="ReadDoctors_Result">
+    <Property Type="Int32" Name="doctor_id" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="64" />
+    <Property Type="Boolean" Name="Visible" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="64" />
+  </ComplexType>
+  <ComplexType Name="ReadInvestigators_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="64" />
+    <Property Type="Boolean" Name="Visible" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="64" />
+  </ComplexType>
+  <ComplexType Name="ReadReferrals_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Title" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="64" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="64" />
+    <Property Type="Boolean" Name="Visible" Nullable="false" />
+    <Property Type="String" Name="FullName" Nullable="true" MaxLength="64" />
+  </ComplexType>
+  <EntityType Name="StudyPrimaryReason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StudiesID" Type="Int32" Nullable="false" />
+    <Property Name="PrimaryReasonsID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PrimaryReason" Relationship="SynergyModel.FK__StudyPrim__Prima__062DE679" FromRole="StudyPrimaryReason" ToRole="PrimaryReason" />
+  </EntityType>
+  <Association Name="FK__StudyPrim__Studi__5C37ACAD">
+    <End Type="SynergyModel.Study" Role="Study" Multiplicity="1" />
+    <End Type="SynergyModel.StudyPrimaryReason" Role="StudyPrimaryReason" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Study">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudyPrimaryReason">
+        <PropertyRef Name="StudiesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PrimaryReason">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GroupingID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PrimaryReasonsPhasesConfigurations" Relationship="SynergyModel.FK_PrimaryReasonsPhases_PrimaryReasonsID" FromRole="PrimaryReason" ToRole="PrimaryReasonsPhasesConfiguration" />
+    <NavigationProperty Name="PrimaryReasonsQuestionnairesConfigurations" Relationship="SynergyModel.FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID" FromRole="PrimaryReason" ToRole="PrimaryReasonsQuestionnairesConfiguration" />
+  </EntityType>
+  <Association Name="FK__StudyPrim__Prima__062DE679">
+    <End Type="SynergyModel.PrimaryReason" Role="PrimaryReason" Multiplicity="1" />
+    <End Type="SynergyModel.StudyPrimaryReason" Role="StudyPrimaryReason" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudyPrimaryReason">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ReportConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="InvestigationType" Type="Int32" Nullable="false" />
+    <Property Name="Default" Type="Int32" Nullable="false" />
+    <Property Name="Settings" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="FK_ReportModel_ReportConfiguration">
+    <End Type="SynergyModel.ReportConfiguration" Role="ReportConfiguration" Multiplicity="1" />
+    <End Type="SynergyModel.ReportModel" Role="ReportModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReportConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReportModel">
+        <PropertyRef Name="ReportConfiguration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ChannelMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="HardwareDeviceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="HardwareChannelId" Type="Int32" />
+    <Property Name="HardwareServiceId" Type="Int32" />
+    <Property Name="ChannelModelId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChannelModel" Relationship="SynergyModel.FK_ChannelMapping_ChannelModel" FromRole="ChannelMapping" ToRole="ChannelModel" />
+  </EntityType>
+  <EntityType Name="ChannelModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ProtocolModel_Id" Type="Int32" Nullable="false" />
+    <Property Name="DataQuantityUnit" Type="SynergyModel.DataQuantityUnit" Nullable="false" />
+    <Property Name="DataQuantityType" Type="SynergyModel.DataQuantityType" Nullable="false" />
+    <Property Name="ScaleMin" Type="Int32" Nullable="false" />
+    <Property Name="ScaleMax" Type="Int32" Nullable="false" />
+    <Property Name="LineColorInternal" Type="String" MaxLength="50" FixedLength="false" Unicode="true" a:SetterAccess="Private" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" a:GetterAccess="Private" />
+    <Property Name="ChannelIndex" Type="Int32" Nullable="false" />
+    <Property Name="ChannelType" Type="SynergyModel.ChannelType" Nullable="false" />
+    <Property Name="DependentChannelIndexesString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="MasterZeroChannelIndex" Type="Int32" Nullable="false" />
+    <Property Name="CalculationString" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ChannelMappings" Relationship="SynergyModel.FK_ChannelMapping_ChannelModel" FromRole="ChannelModel" ToRole="ChannelMapping" />
+    <Property Name="ChannelCalculationType" Type="SynergyModel.ChannelCalculationType" Nullable="false" />
+    <NavigationProperty Name="ProtocolModel" Relationship="SynergyModel.FK_ChannelModel_ProtocolModel" FromRole="ChannelModel" ToRole="ProtocolModel" />
+    <Property Name="ChannelPosition" Type="Int32" Nullable="false" />
+    <Property Name="ChartDownSampler" Type="SynergyModel.ChartDownSamplerType" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ChannelMapping_ChannelModel">
+    <End Type="SynergyModel.ChannelModel" Role="ChannelModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ChannelMapping" Role="ChannelMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChannelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChannelMapping">
+        <PropertyRef Name="ChannelModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChartChannelEvents_ChannelModel">
+    <End Type="SynergyModel.ChannelModel" Role="ChannelModel" Multiplicity="1" />
+    <End Type="SynergyModel.ChartChannelEvent" Role="ChartChannelEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChannelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChartChannelEvent">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PrimaryReasonsPhasesConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimaryReasonsID" Type="Int32" Nullable="false" />
+    <Property Name="PhasessID" Type="SynergyModel.PhaseModelTypes" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_PrimaryReasonsPhases_PrimaryReasonsID">
+    <End Type="SynergyModel.PrimaryReason" Role="PrimaryReason" Multiplicity="1" />
+    <End Type="SynergyModel.PrimaryReasonsPhasesConfiguration" Role="PrimaryReasonsPhasesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimaryReasonsPhasesConfiguration">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ConsumableCompatibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileSignature" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="JSON" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Eula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="ActionDateTime" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="NumberOfSkipped" Type="Byte" Nullable="false" />
+    <Property Name="EulaState" Type="SynergyModel.EulaStates" Nullable="false" />
+  </EntityType>
+  <EnumType Name="EulaStates" UnderlyingType="Byte" a:ExternalTypeName="Laborie.Synergy.DataModel.EulaStates" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="ChannelType" a:ExternalTypeName="ChannelType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="ChannelCalculationType" a:ExternalTypeName="ChannelCalculationType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="ButtonModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ControlType" Type="SynergyModel.ControlPanelControlType" Nullable="false" />
+    <Property Name="ControlPanelModel_Id" Type="Int32" Nullable="false" />
+    <Property Name="ActionIdentifier" Type="SynergyModel.ControlAction" Nullable="false" />
+    <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="ActionRepeatCount" Type="Int32" Nullable="false" />
+    <Property Name="Label" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="X" Type="Int32" Nullable="false" />
+    <Property Name="Y" Type="Int32" Nullable="false" />
+    <Property Name="AllowRepeat" Type="Boolean" Nullable="false" />
+    <Property Name="AllowDropDown" Type="Boolean" Nullable="false" />
+    <Property Name="AutoGoToNext" Type="Boolean" Nullable="false" />
+    <Property Name="BaseControlPreset" Type="SynergyModel.PresetControl" Nullable="false" />
+    <Property Name="EditableButtonModelProperties" Type="SynergyModel.EditableButtonModelProperties" Nullable="false" />
+    <Property Name="FunctionKey" Type="SynergyModel.FunctionKey" Nullable="false" />
+    <NavigationProperty Name="ControlPanelModel" Relationship="SynergyModel.FK_ButtonModel_ControlPanelModel" FromRole="ButtonModel" ToRole="ControlPanelModel" />
+    <NavigationProperty Name="ControlModels" Relationship="SynergyModel.FK_ControlModel_ButtonModel" FromRole="ButtonModel" ToRole="ControlModel" />
+    <NavigationProperty Name="PumpSpeedChanges" Relationship="SynergyModel.FK_PumpSpeedChange_ButtonModel" FromRole="ButtonModel" ToRole="PumpSpeedChange" />
+    <NavigationProperty Name="PumpSpeedLevels" Relationship="SynergyModel.FK_PumpSpeedLevel_ButtonModel" FromRole="ButtonModel" ToRole="PumpSpeedLevel" />
+  </EntityType>
+  <Association Name="FK_ButtonModel_ControlPanelModel">
+    <End Type="SynergyModel.ControlPanelModel" Role="ControlPanelModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ButtonModel" Role="ButtonModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ButtonModel">
+        <PropertyRef Name="ControlPanelModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="PresetControl" a:ExternalTypeName="PresetControl" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="EditableButtonModelProperties" a:ExternalTypeName="EditableButtonModelProperties" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="ControlModel">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ButtonModel_Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ActionIdentifier" Type="SynergyModel.ControlAction" Nullable="false" />
+    <Property Name="IsEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="Label" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="ButtonModel_Id" Type="Int32" Nullable="false" />
+    <Property Name="ControlModelIndex" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ButtonModel" Relationship="SynergyModel.FK_ControlModel_ButtonModel" FromRole="ControlModel" ToRole="ButtonModel" />
+    <Property Name="BackGroundColor" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_ControlModel_ButtonModel">
+    <End Type="SynergyModel.ButtonModel" Role="ButtonModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ControlModel" Role="ControlModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ControlModel">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="ChannelDataType" a:ExternalTypeName="ChannelDataType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="FilledInStatus" a:ExternalTypeName="FilledInStatus" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="UDS_TestData">
+    <Key>
+      <PropertyRef Name="Test_Id" />
+      <PropertyRef Name="ChannelID" />
+    </Key>
+    <Property Name="Test_Id" Type="Int32" Nullable="false" />
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="DataRate" Type="Double" Nullable="false" />
+    <Property Name="ResourceGUID" Type="Guid" Nullable="false" />
+    <Property Name="ChannelDataType" Type="SynergyModel.ChannelDataType" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__UDS_TestD__Test___090A5324">
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="1" />
+    <End Type="SynergyModel.UDS_TestData" Role="UDS_TestData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UDS_TestData">
+        <PropertyRef Name="Test_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ProtocolModel" BaseType="SynergyModel.WorkflowStepConfiguration">
+    <Property Name="Style" Type="SynergyModel.ChartScrollingMode" Nullable="false" />
+    <Property Name="WorkflowStepConfig_Id" Type="Int32" Nullable="false" />
+    <Property Name="SampleRate" Type="Double" Nullable="false" />
+    <Property Name="RootPhaseId" Type="Int32" Nullable="false" />
+    <Property Name="EnableVideo" Type="Boolean" Nullable="false" />
+    <Property Name="VideoFrameRate" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChannelModels" Relationship="SynergyModel.FK_ChannelModel_ProtocolModel" FromRole="ProtocolModel" ToRole="ChannelModel" />
+    <NavigationProperty Name="PhaseModel" Relationship="SynergyModel.FK_ProtocolModel_RootPhase" FromRole="ProtocolModel" ToRole="PhaseModel" />
+    <NavigationProperty Name="UsedServices" Relationship="SynergyModel.FK_UsedServices_ProtocolModel" FromRole="ProtocolModel" ToRole="UsedService" />
+    <Property Name="FlowDelay" Type="Double" Nullable="false" />
+    <Property Name="EnableGridLines" Type="Boolean" Nullable="false" />
+    <Property Name="DisplayFullEMG" Type="Boolean" Nullable="false" />
+    <Property Name="ChannelPanelRightAligned" Type="Boolean" Nullable="false" />
+    <Property Name="EmgFilterRate" Type="SynergyModel.EmgFilterRate" Nullable="false" />
+    <Property Name="Monochrome" Type="Boolean" Nullable="false" />
+    <Property Name="ClipEMG" Type="Boolean" Nullable="false" />
+    <Property Name="UseQCProgressBar" Type="Boolean" Nullable="false" />
+    <Property Name="SpecificGravity" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+  </EntityType>
+  <Association Name="FK_ChannelModel_ProtocolModel">
+    <End Type="SynergyModel.ProtocolModel" Role="ProtocolModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ChannelModel" Role="ChannelModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProtocolModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChannelModel">
+        <PropertyRef Name="ProtocolModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProtocolModel_RootPhase">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="1" />
+    <End Type="SynergyModel.ProtocolModel" Role="ProtocolModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProtocolModel">
+        <PropertyRef Name="RootPhaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsedServices_ProtocolModel">
+    <End Type="SynergyModel.ProtocolModel" Role="ProtocolModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.UsedService" Role="UsedService" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProtocolModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsedService">
+        <PropertyRef Name="ProtocolModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="FrameDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MediaID" Type="Int32" Nullable="false" />
+    <Property Name="GUID" Type="Guid" Nullable="false" />
+    <Property Name="Index" Type="Int64" Nullable="false" />
+    <Property Name="TimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="SampleTime" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+    <NavigationProperty Name="Medium" Relationship="SynergyModel.FK_MediaFrameDetails" FromRole="FrameDetail" ToRole="Media" />
+  </EntityType>
+  <Association Name="FK_MediaFrameDetails">
+    <End Type="SynergyModel.Media" Role="Media" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.FrameDetail" Role="FrameDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Media">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FrameDetail">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Consumable">
+    <Key>
+      <PropertyRef Name="BarcodeID" />
+    </Key>
+    <Property Name="BarcodeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Gtin" Type="Int64" />
+    <Property Name="ProductionDate" Type="DateTime" Precision="3" />
+    <Property Name="ExpirationDate" Type="DateTime" Precision="3" />
+    <Property Name="Lot" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="Serial" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="ScanDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="QualifyLevel" Type="Int32" />
+    <NavigationProperty Name="Tests" Relationship="SynergyModel.Tests_Consumables" FromRole="Consumable" ToRole="Test" />
+    <Property Name="QualifyLevelType" Type="Int32" />
+    <Property Name="UsedDate" Type="DateTime" Precision="3" />
+    <Property Name="PatientId" Type="Guid" />
+    <Property Name="EncryptedBytes" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="TagId" Type="Binary" Nullable="true" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="Tests_Consumables">
+    <End Type="SynergyModel.Consumable" Role="Consumable" Multiplicity="*" />
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Results_Results">
+    <End Type="SynergyModel.Result" Role="Result" Multiplicity="0..1" />
+    <End Type="SynergyModel.Result" Role="Result1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Result">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Result1">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PrimaryReasonsQuestionnairesConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PrimaryReasonsID" Type="Int32" Nullable="false" />
+    <Property Name="QuestionnaireID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PrimaryReason" Relationship="SynergyModel.FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID" FromRole="PrimaryReasonsQuestionnairesConfiguration" ToRole="PrimaryReason" />
+  </EntityType>
+  <Association Name="FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID">
+    <End Type="SynergyModel.PrimaryReason" Role="PrimaryReason" Multiplicity="1" />
+    <End Type="SynergyModel.PrimaryReasonsQuestionnairesConfiguration" Role="PrimaryReasonsQuestionnairesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReason">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimaryReasonsQuestionnairesConfiguration">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PumpSettingsModel" BaseType="SynergyModel.UsedService">
+    <Property Name="PressureLimit" Type="Int32" Nullable="false" DefaultValue="150" />
+  </EntityType>
+  <EnumType Name="ImageType" IsFlags="true" a:ExternalTypeName="ImageType" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EntityType Name="QualityControlStep">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ParentID" Type="Int32" Nullable="false" />
+    <Property Name="StepType" Type="Int32" Nullable="false" />
+    <Property Name="StepName" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="QualityControlStepsWithPhases" Relationship="SynergyModel.FK_Quality_Step" FromRole="QualityControlStep" ToRole="QualityControlStepsWithPhase" />
+  </EntityType>
+  <EntityType Name="QualityControlStepsWithPhase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhaseID" Type="Int32" Nullable="false" />
+    <Property Name="QualityControlStepID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="QualityControlStep" Relationship="SynergyModel.FK_Quality_Step" FromRole="QualityControlStepsWithPhase" ToRole="QualityControlStep" />
+  </EntityType>
+  <Association Name="FK_Quality_Step">
+    <End Type="SynergyModel.QualityControlStep" Role="QualityControlStep" Multiplicity="1" />
+    <End Type="SynergyModel.QualityControlStepsWithPhase" Role="QualityControlStepsWithPhase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QualityControlStep">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QualityControlStepsWithPhase">
+        <PropertyRef Name="QualityControlStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Media_Events">
+    <End Type="SynergyModel.Event" Role="Event" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.Media" Role="Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="EventsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EventID" Type="Int64" Nullable="false" />
+    <Property Name="BeginTime" Type="Int64" Nullable="false" />
+    <Property Name="EndTime" Type="Int64" Nullable="false" />
+    <Property Name="ChangedBy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateTimeChanged" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Event" Relationship="SynergyModel.FK_EventHistory" FromRole="EventsHistory" ToRole="Event" />
+  </EntityType>
+  <Association Name="FK_EventHistory">
+    <End Type="SynergyModel.Event" Role="Event" Multiplicity="1" />
+    <End Type="SynergyModel.EventsHistory" Role="EventsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Event">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventsHistory">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="ImageSubType">
+    <Member Name="Unused" Value="0" />
+    <Member Name="SchaeferNomogram" Value="1" />
+    <Member Name="ICSNomogram" Value="2" />
+    <Member Name="LiverpoolAverageFlowRateNomogram" Value="3" />
+    <Member Name="LiverpoolMaximumFlowRateNomogram" Value="4" />
+    <Member Name="MiskolcAverageFlowRateNomogram" Value="5" />
+    <Member Name="MiskolcMaximumFlowRateNomogram" Value="6" />
+    <Member Name="SingleImage" Value="7" />
+    <Member Name="VideoFrame" Value="8" />
+  </EnumType>
+  <EntityType Name="PhaseTextMarker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="PhaseType" Type="SynergyModel.PhaseModelTypes" Nullable="false" />
+    <Property Name="TextMarker" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PumpSpeedChange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonModel_Id" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="ButtonModel" Relationship="SynergyModel.FK_PumpSpeedChange_ButtonModel" FromRole="PumpSpeedChange" ToRole="ButtonModel" />
+  </EntityType>
+  <EntityType Name="PumpSpeedLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ButtonModel_Id" Type="Int32" Nullable="false" />
+    <Property Name="Value" Type="Int16" Nullable="false" />
+    <NavigationProperty Name="ButtonModel" Relationship="SynergyModel.FK_PumpSpeedLevel_ButtonModel" FromRole="PumpSpeedLevel" ToRole="ButtonModel" />
+  </EntityType>
+  <Association Name="FK_PumpSpeedChange_ButtonModel">
+    <End Type="SynergyModel.ButtonModel" Role="ButtonModel" Multiplicity="1" />
+    <End Type="SynergyModel.PumpSpeedChange" Role="PumpSpeedChange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PumpSpeedChange">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PumpSpeedLevel_ButtonModel">
+    <End Type="SynergyModel.ButtonModel" Role="ButtonModel" Multiplicity="1" />
+    <End Type="SynergyModel.PumpSpeedLevel" Role="PumpSpeedLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PumpSpeedLevel">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="OffsetEvent">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Test_id" Type="Int32" Nullable="false" />
+    <Property Name="Time" Type="Decimal" Nullable="false" Precision="18" Scale="3" />
+    <Property Name="Offset" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+    <Property Name="ChannelID" Type="Int32" Nullable="false" />
+    <Property Name="EqualChannelID" Type="Int32" />
+    <NavigationProperty Name="Test" Relationship="SynergyModel.FK_OffsetEvents_Tests1" FromRole="OffsetEvent" ToRole="Test" />
+  </EntityType>
+  <Association Name="FK_OffsetEvents_Tests1">
+    <End Type="SynergyModel.Test" Role="Test" Multiplicity="1" />
+    <End Type="SynergyModel.OffsetEvent" Role="OffsetEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Test">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OffsetEvent">
+        <PropertyRef Name="Test_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PvrInputEvent" BaseType="SynergyModel.Event">
+    <Property Name="PvrValue" Type="Decimal" Nullable="false" Precision="6" Scale="2" />
+  </EntityType>
+  <EnumType Name="EmgFilterRate">
+    <Member Name="Milliseconds0" Value="0" />
+    <Member Name="Milliseconds10" Value="10" />
+    <Member Name="Milliseconds20" Value="20" />
+    <Member Name="Milliseconds50" Value="50" />
+    <Member Name="Milliseconds100" Value="100" />
+    <Member Name="Milliseconds800" Value="800" />
+  </EnumType>
+  <EntityType Name="LoginFailureInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="TimeOfLastAttempt" Type="DateTime" Precision="3" />
+    <Property Name="MachineName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ImageFrameResult">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageResult_ID" Type="Int32" Nullable="false" />
+    <Property Name="FrameDetails_ID" Type="Int32" />
+    <Property Name="Position" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ImageResult" Relationship="SynergyModel.FK_ImageFrameResults_To_ImageResults" FromRole="ImageFrameResult" ToRole="ImageResult" />
+    <Property Name="Burst" Type="Int32" />
+    <Property Name="Index" Type="Int32" />
+  </EntityType>
+  <Association Name="FK_ImageFrameResults_To_ImageResults">
+    <End Type="SynergyModel.ImageResult" Role="ImageResult" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="SynergyModel.ImageFrameResult" Role="ImageFrameResult" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageResult">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImageFrameResult">
+        <PropertyRef Name="ImageResult_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ReferenceData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="ReferenceType" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="Reference" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="ResultNormalValue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ResultType" Type="Int32" Nullable="false" />
+    <Property Name="RangeType" Type="Int32" Nullable="false" />
+    <Property Name="MaxValue" Type="Double" Nullable="false" />
+    <Property Name="MinValue" Type="Double" Nullable="false" />
+    <Property Name="TargetGroup" Type="Int32" Nullable="false" />
+    <Property Name="VisualRangeMax" Type="Int32" Nullable="false" />
+    <Property Name="VisualRangeMin" Type="Int32" Nullable="false" />
+    <Property Name="Notes" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReferenceNumbers" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="QCScore">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PhaseModelId" Type="Int32" Nullable="false" />
+    <Property Name="QCScoreTypeId" Type="SynergyModel.QCScoreType" Nullable="false" />
+    <Property Name="QCScoreValue" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="PhaseModel" Relationship="SynergyModel.FK__QCScores__PhaseM__7869D707" FromRole="QCScore" ToRole="PhaseModel" />
+    <Property Name="IsScoreApplicable" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <Association Name="FK__QCScores__PhaseM__7869D707">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="1" />
+    <End Type="SynergyModel.QCScore" Role="QCScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QCScore">
+        <PropertyRef Name="PhaseModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EnumType Name="QCScoreType" a:ExternalTypeName="Laborie.Synergy.DataModel" xmlns:a="http://schemas.microsoft.com/ado/2006/04/codegeneration" />
+  <EnumType Name="ChartDownSamplerType">
+    <Member Name="None" Value="0" />
+    <Member Name="Max" Value="1" />
+    <Member Name="MinMax" Value="2" />
+    <Member Name="Median" Value="3" />
+  </EnumType>
+  <EntityType Name="License">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int16" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Key" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Licenses" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ByPassCount" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="StudyCount" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Studies" Relationship="SynergyModel.FK_License_Studies" FromRole="License" ToRole="Study" />
+  </EntityType>
+  <Association Name="FK_License_Studies">
+    <End Type="SynergyModel.License" Role="License" Multiplicity="0..1" />
+    <End Type="SynergyModel.Study" Role="Study" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="License">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Study">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="InfusionBagSpecificGravityChangeEvent" BaseType="SynergyModel.Event">
+    <Property Name="SpecificGravityValue" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+  </EntityType>
+  <EntityType Name="SpecificGravity">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpecificGravityValue" Type="Decimal" Nullable="false" Precision="4" Scale="3" />
+  </EntityType>
+  <ComplexType Name="ReadAuditLog_Result">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Message" Nullable="true" />
+    <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+  </ComplexType>
+  <Association Name="FK_PhaseEvents_PhaseModel">
+    <End Type="SynergyModel.PhaseModel" Role="PhaseModel" Multiplicity="1" />
+    <End Type="SynergyModel.PhaseEvent" Role="PhaseEvent" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseEvent">
+        <PropertyRef Name="PhaseProtocolIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

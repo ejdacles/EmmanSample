@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.Consumable">
+    <Position X="0.5" Y="0.5" Width="2.25" />
+    <Members>
+      <Method Name="AddConsumableCategory" Hidden="true" />
+      <Property Name="ScannedSerial" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAABAIAAAIAAAAAAmAUAAAIEAAAABAAEAQ=</HashCode>
+      <FileName>Model\Consumable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.BarcodeModel">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <Members>
+      <Property Name="IsLaborieCode" Hidden="true" />
+      <Property Name="IsUsed" Hidden="true" />
+      <Property Name="ProductionDate" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>BCAEgAAAABGAgIAQAJQAmAAIABgAAAQAAAAQAAAIABA=</HashCode>
+      <FileName>Model\BarcodeModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.BarcodeReviewModel" Collapsed="true">
+    <Position X="2.75" Y="6.75" Width="2" />
+    <InheritanceLine Type="Laborie.Synergy.BarcodeTraceability.Model.BarcodeModel" FixedToPoint="true">
+      <Path>
+        <Point X="2" Y="7.062" />
+        <Point X="2.75" Y="7.062" />
+      </Path>
+    </InheritanceLine>
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>Model\BarcodeReviewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.BarcodeTraceabilityManager">
+    <Position X="4.5" Y="3.25" Width="2.25" />
+    <Members>
+      <Property Name="BarcodeReviewList" Hidden="true" />
+      <Method Name="BarcodeTraceabilityManager" Hidden="true" />
+      <Property Name="BypassCount" Hidden="true" />
+      <Property Name="ExpireTimeInHours" Hidden="true" />
+      <Method Name="GetAvailableBarcodes" Hidden="true" />
+      <Method Name="GetChannelIdForConsumables" Hidden="true" />
+      <Method Name="GetConsumableType" Hidden="true" />
+      <Method Name="GetRequiredConsumables" Hidden="true" />
+      <Method Name="InitConsumables" Hidden="true" />
+      <Method Name="InitReviewConsumables" Hidden="true" />
+      <Method Name="IsAllScanCompleted" Hidden="true" />
+      <Property Name="IsBypassUsed" Hidden="true" />
+      <Property Name="ProcedureDataManager" Hidden="true" />
+      <Property Name="Protocol" Hidden="true" />
+      <Property Name="RecordStarted" Hidden="true" />
+      <Method Name="RegisterBarcode" Hidden="true" />
+      <Method Name="RemoveBarcode" Hidden="true" />
+      <Property Name="Review" Hidden="true" />
+      <Method Name="SaveBarcode" Hidden="true" />
+      <Method Name="UseBypass" Hidden="true" />
+      <Method Name="ValidateBarcode" Hidden="true" />
+    </Members>
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAIWAYggAAAiJEKAAAJCAEDAQAMiAAQAAAjCBQAAAAI=</HashCode>
+      <FileName>BarcodeTraceabilityManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="RequiredConsumables" />
+      <Property Name="BarcodeList" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.36" />
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Views.BarcodeView" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Views\BarcodeView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.1" />
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Views.BarcodeReviewView" Collapsed="true">
+    <Position X="10.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>Views\BarcodeReviewView.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.ViewModel.BarcodeViewModel" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AUIACBEAAiEiBAICBgIAAIAAAAAAAABAABgAAQAEAAA=</HashCode>
+      <FileName>ViewModel\BarcodeViewModel.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.ViewModel.BarcodeReviewViewModel" Collapsed="true">
+    <Position X="10" Y="3.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAABAAAAIAAAAAAAAAAAAAABBAAAAQAAAA=</HashCode>
+      <FileName>ViewModel\BarcodeReviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.JsonConsumableRootobject">
+    <Position X="7.5" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAIAAAAAEABAAAAAAAAAAYAAAAEA=</HashCode>
+      <FileName>Model\JsonConsumableRootobject.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ConsumableTypes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.ConsumableType">
+    <Position X="7.5" Y="3" Width="1.75" />
+    <Members>
+      <Property Name="InfusionRate" Hidden="true" />
+      <Property Name="Obstructed" Hidden="true" />
+      <Property Name="Pediatric" Hidden="true" />
+      <Property Name="Technology" Hidden="true" />
+      <Property Name="Video" Hidden="true" />
+    </Members>
+    <TypeIdentifier>
+      <HashCode>gAAAAARAQAAgAAAgCAAIiIyAAQgAhIAAAgAQgAACAAw=</HashCode>
+      <FileName>Model\ConsumableType.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Laborie.Synergy.BarcodeTraceability.Model.ChannelConsumableCategory">
+    <Position X="4" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAgAAAAAAAIAAAAAAAAAAAAQAAAAgAAA=</HashCode>
+      <FileName>Model\ChannelConsumableCategory.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Laborie.Synergy.BarcodeTraceability.Model.ConsumableCategory" Collapsed="true">
+    <Position X="10" Y="5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAQAAAAAAgCAAIiAgAAAABAIAAAAAAAAEAAAA=</HashCode>
+      <FileName>Model\ConsumableCategory.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

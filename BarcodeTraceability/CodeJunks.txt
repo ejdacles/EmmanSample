@@ -1,0 +1,22 @@
+﻿
+ var ScannedBarcodes = new List<Barcode>()
+            {
+new Barcode()
+                {
+                    BarcodeID = 1,
+                    Gtin = long.Parse("10627825000010"),
+                    ProductionDate = DateTime.ParseExact("15/12/25", "yy/MM/dd", null),
+                    ExpirationDate = DateTime.ParseExact("18/12/25", "yy/MM/dd", null),
+                    Lot = 1212,
+                    Serial = 2121
+                },
+                new Barcode()
+                {
+                    BarcodeID = 2,
+                    Gtin = long.Parse("00627825000030"),
+                    ProductionDate = DateTime.ParseExact("15/12/25", "yy/MM/dd", null),
+                    ExpirationDate = DateTime.ParseExact("18/12/25", "yy/MM/dd", null),
+                    Lot = 1313,
+                    Serial = 3131
+                }
+            }.AsQueryable();

@@ -1,0 +1,2770 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SynergyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Answers">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Patient_Questionnaires_ID" Type="int" Nullable="false" />
+    <Property Name="Questionnaire_Question_ID" Type="bigint" Nullable="false" />
+    <Property Name="Choice_ID" Type="bigint" />
+    <Property Name="TextAnswer" Type="nvarchar(max)" />
+    <Property Name="Processed" Type="smallint" />
+    <Property Name="DB_ID" Type="bigint" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="Question_Choice_ID" Type="bigint" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="Question_SubQuestionRowHeader_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="ApplicationSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="32" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AppSecurity">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Value" Type="varbinary(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditLog">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreateDate" Type="datetime2" Precision="7" Nullable="false" StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="BaseDevices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="50" />
+    <Property Name="ConnectionType" Type="int" />
+    <Property Name="DeviceType" Type="int" Nullable="false" />
+    <Property Name="IsRegistered" Type="bit" />
+    <Property Name="FirmwareVersion" Type="nvarchar" MaxLength="50" />
+    <Property Name="BatteryLevel" Type="int" />
+    <Property Name="ConnectionStatus" Type="int" />
+    <Property Name="DataFilePath" Type="nvarchar(max)" />
+    <Property Name="BtMacAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="UsbSerialNumber" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="BridgePatternModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RampPreDelaySeconds" Type="int" Nullable="false" />
+    <Property Name="RampPostDelaySeconds" Type="int" Nullable="false" />
+    <Property Name="DelayTargetPercentage" Type="int" Nullable="false" />
+    <Property Name="RampUpSeconds" Type="int" Nullable="false" />
+    <Property Name="RampDownSeconds" Type="int" Nullable="false" />
+    <Property Name="WorkTargetSeconds" Type="int" Nullable="false" />
+    <Property Name="WorkTargetPercentage" Type="int" Nullable="false" />
+    <Property Name="TargetArea" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ButtonModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ControlType" Type="int" Nullable="false" />
+    <Property Name="ControlPanelModel_Id" Type="int" Nullable="false" />
+    <Property Name="ActionIdentifier" Type="int" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="ActionRepeatCount" Type="int" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="255" />
+    <Property Name="X" Type="int" Nullable="false" />
+    <Property Name="Y" Type="int" Nullable="false" />
+    <Property Name="AllowRepeat" Type="bit" Nullable="false" />
+    <Property Name="AllowDropDown" Type="bit" Nullable="false" />
+    <Property Name="AutoGoToNext" Type="bit" Nullable="false" />
+    <Property Name="BaseControlPreset" Type="int" Nullable="false" />
+    <Property Name="EditableButtonModelProperties" Type="int" Nullable="false" />
+    <Property Name="FunctionKey" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChallengeTemplateModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" />
+    <Property Name="ChannelNumberToDrawOn" Type="int" Nullable="false" />
+    <Property Name="PhaseModel_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChannelMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="HardwareChannelId" Type="int" />
+    <Property Name="HardwareServiceId" Type="int" />
+    <Property Name="ChannelModelId" Type="int" Nullable="false" />
+    <Property Name="HardwareDeviceId" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="ChannelModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="ProtocolModel_Id" Type="int" Nullable="false" />
+    <Property Name="DataQuantityUnit" Type="int" Nullable="false" />
+    <Property Name="DataQuantityType" Type="int" Nullable="false" />
+    <Property Name="ScaleMin" Type="int" Nullable="false" />
+    <Property Name="ScaleMax" Type="int" Nullable="false" />
+    <Property Name="LineColor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ChannelIndex" Type="int" Nullable="false" />
+    <Property Name="ChannelCalculationType" Type="int" Nullable="false" />
+    <Property Name="DependentChannelIndexesString" Type="nvarchar" MaxLength="500" />
+    <Property Name="MasterZeroChannelIndex" Type="int" Nullable="false" />
+    <Property Name="CalculationString" Type="nvarchar" MaxLength="500" />
+    <Property Name="ChannelType" Type="int" Nullable="false" />
+    <Property Name="ChannelPosition" Type="int" Nullable="false" />
+    <Property Name="ChartDownSampler" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChartChannelEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="ChannelDisplayType" Type="int" Nullable="false" />
+    <Property Name="ChannelId" Type="int" Nullable="false" />
+    <Property Name="ChannelIndex" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChartEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="DisplayType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Choice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChoiceGroup_ID" Type="bigint" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar(max)" />
+    <Property Name="ChoiceIndex" Type="smallint" />
+    <Property Name="Score" Type="int" Nullable="false" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ChoiceDetails" Type="nvarchar(max)" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChoiceGroup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" />
+    <Property Name="Editable" Type="bit" Nullable="false" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ConsumableCompatibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileSignature" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="JSON" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Consumables">
+    <Key>
+      <PropertyRef Name="BarcodeID" />
+    </Key>
+    <Property Name="BarcodeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Gtin" Type="bigint" />
+    <Property Name="ProductionDate" Type="datetime" />
+    <Property Name="ExpirationDate" Type="datetime" />
+    <Property Name="Lot" Type="nvarchar" MaxLength="20" />
+    <Property Name="Serial" Type="nvarchar" MaxLength="20" />
+    <Property Name="ScanDate" Type="datetime" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar" MaxLength="255" />
+    <Property Name="QualifyLevel" Type="int" />
+    <Property Name="QualifyLevelType" Type="int" />
+    <Property Name="UsedDate" Type="datetime" />
+    <Property Name="PatientId" Type="uniqueidentifier" />
+    <Property Name="TagId" Type="varbinary(max)" />
+    <Property Name="EncryptedBytes" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="ControlModel">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="ButtonModel_Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActionIdentifier" Type="int" Nullable="false" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="Label" Type="nvarchar" MaxLength="255" />
+    <Property Name="ButtonModel_Id" Type="int" Nullable="false" />
+    <Property Name="ControlModelIndex" Type="int" Nullable="false" />
+    <Property Name="BackGroundColor" Type="varchar" MaxLength="15" />
+  </EntityType>
+  <EntityType Name="ControlPanelModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RowCount" Type="int" Nullable="false" />
+    <Property Name="ColumnCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Eula">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="EulaState" Type="tinyint" Nullable="false" />
+    <Property Name="ActionDateTime" Type="datetime" Nullable="false" />
+    <Property Name="NumberOfSkipped" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Events">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="test_id" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" />
+    <Property Name="Tag" Type="nvarchar" MaxLength="50" />
+    <Property Name="Time" Type="nvarchar" MaxLength="32" />
+    <Property Name="ShowInSummary" Type="bit" Nullable="false" />
+    <Property Name="BeginTime" Type="bigint" Nullable="false" />
+    <Property Name="EndTime" Type="bigint" Nullable="false" />
+    <Property Name="Parent_Id" Type="bigint" />
+    <Property Name="Event_Type" Type="int" Nullable="false" />
+    <Property Name="Origin" Type="int" />
+    <Property Name="CreatedBy" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="EventsHistory">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EventID" Type="bigint" Nullable="false" />
+    <Property Name="BeginTime" Type="bigint" Nullable="false" />
+    <Property Name="EndTime" Type="bigint" Nullable="false" />
+    <Property Name="ChangedBy" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DateTimeChanged" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Formulas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="FrameDetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MediaID" Type="int" Nullable="false" />
+    <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Index" Type="bigint" Nullable="false" />
+    <Property Name="TimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="SampleTime" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GeneratedReportComponents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GeneratedReports_ID" Type="int" Nullable="false" />
+    <Property Name="WorkflowStepResultId" Type="int" Nullable="false" />
+    <Property Name="ReportComponents_ID" Type="int" />
+    <Property Name="Include" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GeneratedReports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Reports_ID" Type="int" Nullable="false" />
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="Saved" Type="bit" Nullable="false" />
+    <Property Name="MRN" Type="nvarchar" MaxLength="20" />
+    <Property Name="LastViewed" Type="datetime" />
+    <Property Name="EMRSent" Type="bit" />
+    <Property Name="MemberIDConfirmed" Type="int" Nullable="false" />
+    <Property Name="MemberIDSubmittedToEMR" Type="int" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="ExportedFormat" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Groups">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Hospital_id" Type="int" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="HardwareCompatibility">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FileSignature" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="JSON" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ImageFrameResults">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageResult_ID" Type="int" Nullable="false" />
+    <Property Name="FrameDetails_ID" Type="int" />
+    <Property Name="Burst" Type="int" />
+    <Property Name="Index" Type="int" />
+    <Property Name="Position" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="ImageResults">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UI" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="Event_Id" Type="bigint" Nullable="false" />
+    <Property Name="ImageFile" Type="varbinary(max)" />
+    <Property Name="ImageType" Type="int" Nullable="false" />
+    <Property Name="ImageSubType" Type="int" Nullable="false" />
+    <Property Name="ImageTimestamp" Type="nvarchar" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="InfusionBagSpecificGravityChangeEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="SpecificGravityValue" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="License">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Key" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Licenses" Type="varbinary(max)" Nullable="false" />
+    <Property Name="ByPassCount" Type="varchar(max)" Nullable="false" />
+    <Property Name="StudyCount" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="LinePatternModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="SignalTarget" Type="int" Nullable="false" />
+    <Property Name="TargetArea" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LoginFailureInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="Count" Type="int" />
+    <Property Name="TimeOfLastAttempt" Type="datetime" />
+    <Property Name="MachineName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Media">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResourceGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ResourceExtension" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ResourceFolder" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TestID" Type="int" Nullable="false" />
+    <Property Name="Timestamp" Type="datetime" />
+    <Property Name="Event_Id" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OffsetEvents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Test_id" Type="int" Nullable="false" />
+    <Property Name="Time" Type="decimal" Precision="18" Scale="3" Nullable="false" />
+    <Property Name="Offset" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+    <Property Name="ChannelID" Type="int" Nullable="false" />
+    <Property Name="EqualChannelID" Type="int" />
+  </EntityType>
+  <EntityType Name="Patient_Questionnaires">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="DateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="Questionnaire_ID" Type="int" Nullable="false" />
+    <Property Name="Test_ID" Type="int" />
+    <Property Name="EmailSent" Type="bit" Nullable="false" />
+    <Property Name="EmailID" Type="int" />
+    <Property Name="Processed" Type="smallint" Nullable="false" />
+    <Property Name="DB_CID" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="bigint" />
+    <Property Name="DateAndTimeSubmitted" Type="datetime" />
+    <Property Name="mod_datetime" Type="datetime" />
+    <Property Name="mod_by_id" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="MemberIDValidated" Type="int" Nullable="false" />
+    <Property Name="PercentComplete" Type="decimal" Precision="5" Scale="2" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="QuestionsPerPage" Type="int" />
+  </EntityType>
+  <EntityType Name="PatientsGroups">
+    <Key>
+      <PropertyRef Name="Group_ID" />
+      <PropertyRef Name="Patient_ID" />
+    </Key>
+    <Property Name="Group_ID" Type="int" Nullable="false" />
+    <Property Name="Patient_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Permissions">
+    <Key>
+      <PropertyRef Name="Permission_ID" />
+    </Key>
+    <Property Name="Permission_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Permission_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhaseEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Phase" Type="int" Nullable="false" />
+    <Property Name="PhaseProtocolIndex" Type="int" Nullable="false" />
+    <Property Name="PhaseRepeatNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhaseModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentPhaseId" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="CountdownTimerSeconds" Type="int" />
+    <Property Name="IconType" Type="int" />
+    <Property Name="DurationSeconds" Type="int" />
+    <Property Name="AcquireData" Type="bit" />
+    <Property Name="RepeatCount" Type="int" />
+    <Property Name="TimerVisible" Type="bit" />
+    <Property Name="AfterFlowTimeInternal" Type="int" />
+    <Property Name="VisibleChannels" Type="varchar" MaxLength="500" />
+    <Property Name="PhaseOrder" Type="int" Nullable="false" />
+    <Property Name="ControlPanelId" Type="int" />
+    <Property Name="EventScope" Type="varchar" MaxLength="500" />
+    <Property Name="PhaseType" Type="int" Nullable="false" />
+    <Property Name="ChannelValuesShownSeparately" Type="varchar" MaxLength="500" />
+    <Property Name="PumpSpeed" Type="int" />
+    <Property Name="PullerSpeed" Type="int" />
+    <Property Name="AutoCoughArtifactDetection" Type="bit" Nullable="false" />
+    <Property Name="AutoProfileDetection" Type="bit" Nullable="false" />
+    <Property Name="AutoTransmissionDetection" Type="bit" Nullable="false" />
+    <Property Name="AdditionalStatusBarItems" Type="varchar" MaxLength="500" />
+    <Property Name="AutoBristolArtifactDetection" Type="bit" Nullable="false" />
+    <Property Name="EnablePvrDialog" Type="bit" Nullable="false" />
+    <Property Name="AutoFlowDetection" Type="bit" Nullable="false" />
+    <Property Name="EnableAutomaticPostVoidedResidual" Type="bit" Nullable="false" />
+    <Property Name="QCTotalScore" Type="int" Nullable="false" />
+    <Property Name="QCMaximumScore" Type="int" Nullable="false" />
+    <Property Name="AutoStartPhase" Type="bit" Nullable="false" />
+    <Property Name="SpecificGravity" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PhaseTextMarker">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhaseType" Type="int" Nullable="false" />
+    <Property Name="TextMarker" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrimaryReasons">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupingID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrimaryReasonsPhasesConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimaryReasonsID" Type="int" Nullable="false" />
+    <Property Name="PhasessID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PrimaryReasonsQuestionnairesConfiguration">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PrimaryReasonsID" Type="int" Nullable="false" />
+    <Property Name="QuestionnaireID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProtocolModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Style" Type="int" Nullable="false" />
+    <Property Name="WorkflowStepConfig_Id" Type="int" Nullable="false" />
+    <Property Name="SampleRate" Type="float" Nullable="false" />
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="RootPhaseId" Type="int" Nullable="false" />
+    <Property Name="EnableVideo" Type="bit" Nullable="false" />
+    <Property Name="VideoFrameRate" Type="int" Nullable="false" />
+    <Property Name="FlowDelay" Type="float" Nullable="false" />
+    <Property Name="EnableGridLines" Type="bit" Nullable="false" />
+    <Property Name="DisplayFullEMG" Type="bit" Nullable="false" />
+    <Property Name="ChannelPanelRightAligned" Type="bit" Nullable="false" />
+    <Property Name="EmgFilterRate" Type="int" Nullable="false" />
+    <Property Name="Monochrome" Type="bit" Nullable="false" />
+    <Property Name="ClipEMG" Type="bit" Nullable="false" />
+    <Property Name="UseQCProgressBar" Type="bit" Nullable="false" />
+    <Property Name="SpecificGravity" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PullerDistanceEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Distance" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PumpService">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="PressureLimit" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PumpSpeedChange">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonModel_Id" Type="int" Nullable="false" />
+    <Property Name="Value" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PumpSpeedEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="PumpSpeed" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PumpSpeedLevel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ButtonModel_Id" Type="int" Nullable="false" />
+    <Property Name="Value" Type="smallint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PvrInputEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="PvrValue" Type="decimal" Precision="6" Scale="2" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QCScores">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhaseModelId" Type="int" Nullable="false" />
+    <Property Name="QCScoreTypeId" Type="int" Nullable="false" />
+    <Property Name="QCScoreValue" Type="int" Nullable="false" />
+    <Property Name="IsScoreApplicable" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QualityControlSteps">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ParentID" Type="int" Nullable="false" />
+    <Property Name="StepType" Type="int" Nullable="false" />
+    <Property Name="StepName" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QualityControlStepsWithPhase">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PhaseID" Type="int" Nullable="false" />
+    <Property Name="QualityControlStepID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Question_Choice">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Question_ID" Type="int" />
+    <Property Name="ChoiceGroup_ID" Type="bigint" Nullable="false" />
+    <Property Name="OrderBy" Type="smallint" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="ChoiceType_ID" Type="int" />
+  </EntityType>
+  <EntityType Name="Question_SubQuestionRowHeader">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionID" Type="int" Nullable="false" />
+    <Property Name="SubQuestionRowHeaderID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Questionnaire_Question">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Questionnaire_ID" Type="int" Nullable="false" />
+    <Property Name="Question_ID" Type="int" Nullable="false" />
+    <Property Name="X" Type="int" />
+    <Property Name="Y" Type="int" />
+    <Property Name="Width" Type="int" />
+    <Property Name="Length" Type="int" />
+    <Property Name="PageIndex" Type="int" />
+    <Property Name="Columns" Type="int" />
+    <Property Name="QuestionIndex" Type="smallint" />
+    <Property Name="Color" Type="nvarchar" MaxLength="50" />
+    <Property Name="DefaultValue" Type="nvarchar(max)" />
+    <Property Name="Visible" Type="nvarchar(max)" />
+    <Property Name="AlwaysCopyAnswer" Type="bit" Nullable="false" />
+    <Property Name="DependentOn" Type="nvarchar(max)" />
+    <Property Name="AddToY" Type="int" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionnaireFormulas">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="QuestionnaireID" Type="int" Nullable="false" />
+    <Property Name="FormulaID" Type="int" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionnaireModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="QuestionnaireId" Type="int" Nullable="false" />
+    <Property Name="FilledInStatus" Type="int" Nullable="false" />
+    <Property Name="AutoExecute" Type="bit" Nullable="false" />
+    <Property Name="SkipIfFilledCompletly" Type="bit" Nullable="false" />
+    <Property Name="SkipIfFilledPartially" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="QuestionnaireScore">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="PatientQnrID" Type="int" Nullable="false" />
+    <Property Name="FormulaID" Type="int" Nullable="false" />
+    <Property Name="Score" Type="decimal" Precision="9" Scale="2" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReferenceData">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ReferenceType" Type="int" />
+    <Property Name="Name" Type="nvarchar" MaxLength="150" />
+    <Property Name="Reference" Type="nvarchar" MaxLength="4000" />
+  </EntityType>
+  <EntityType Name="ReportComponents">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Reports_ID" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="ReportConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="InvestigationType" Type="int" Nullable="false" />
+    <Property Name="Default" Type="int" Nullable="false" />
+    <Property Name="Settings" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ReportModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ReportId" Type="int" Nullable="false" />
+    <Property Name="ReportConfiguration_Id" Type="int" Nullable="false" />
+    <Property Name="ReportTemplateName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsSilentPrint" Type="bit" Nullable="false" />
+    <Property Name="IsPrintToPdf" Type="bit" Nullable="false" />
+    <Property Name="IsPrintToPrinter" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Reports">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="SoftwareMode" Type="int" Nullable="false" />
+    <Property Name="Alias" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Visible" Type="bit" Nullable="false" />
+    <Property Name="DisplayOrder" Type="int" Nullable="false" />
+    <Property Name="InvestigationType" Type="int" />
+  </EntityType>
+  <EntityType Name="ResultNormalValues">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ResultType" Type="int" Nullable="false" />
+    <Property Name="RangeType" Type="int" Nullable="false" />
+    <Property Name="MaxValue" Type="float" Nullable="false" />
+    <Property Name="MinValue" Type="float" Nullable="false" />
+    <Property Name="TargetGroup" Type="int" Nullable="false" />
+    <Property Name="VisualRangeMax" Type="int" Nullable="false" />
+    <Property Name="VisualRangeMin" Type="int" Nullable="false" />
+    <Property Name="Notes" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="ReferenceNumbers" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Results">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Event_Id" Type="bigint" Nullable="false" />
+    <Property Name="ResultType" Type="int" Nullable="false" />
+    <Property Name="Value" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Unit" Type="int" Nullable="false" />
+    <Property Name="Channel" Type="int" />
+    <Property Name="Parent_Id" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ReviewModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="ControlPanelId" Type="int" />
+    <Property Name="AutoExecute" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_Permission">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+      <PropertyRef Name="Permission_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="int" Nullable="false" />
+    <Property Name="Permission_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Role_Types">
+    <Key>
+      <PropertyRef Name="Role_Type_ID" />
+    </Key>
+    <Property Name="Role_Type_ID" Type="smallint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_Type_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Role_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Role_Type_ID" Type="smallint" Nullable="false" />
+    <Property Name="isDefault" Type="nchar" MaxLength="1" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SpecificGravities">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SpecificGravityValue" Type="decimal" Precision="4" Scale="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SQuestion">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar(max)" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="ForGender" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SQuestionnaire">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SerialNumber" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="Filename" Type="nvarchar" MaxLength="50" />
+    <Property Name="QuestionnaireType" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsEnabled" Type="bit" Nullable="false" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="DB_CID" Type="int" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="ForGender" Type="tinyint" Nullable="false" />
+    <Property Name="Format" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StimulationSettingsModel">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" />
+    <Property Name="PhaseModel_Id" Type="int" Nullable="false" />
+    <Property Name="RampUpTimer" Type="int" Nullable="false" />
+    <Property Name="StimulationTimer" Type="int" Nullable="false" />
+    <Property Name="RampDownTimer" Type="int" Nullable="false" />
+    <Property Name="FrequencyValue" Type="int" Nullable="false" />
+    <Property Name="BandValue" Type="int" Nullable="false" />
+    <Property Name="MaxCurrent" Type="int" Nullable="false" />
+    <Property Name="ChannelNumberToDrawOn" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Studies">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="patient_id" Type="int" Nullable="false" />
+    <Property Name="WorkflowConfigurationId" Type="int" Nullable="false" />
+    <Property Name="LicenseId" Type="smallint" />
+    <Property Name="StartTime" Type="datetime" />
+    <Property Name="Mode" Type="bit" Nullable="false" />
+    <Property Name="UUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="QualityControlStepTree" Type="nvarchar(max)" />
+    <Property Name="IsDirty" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StudyPrimaryReasons">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StudiesID" Type="int" Nullable="false" />
+    <Property Name="PrimaryReasonsID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SubQuestionRowHeader">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="DisplayText" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="QuestionnaireID" Type="int" Nullable="false" />
+    <Property Name="DisplayIndex" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TcpDevices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="URL" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TemplateEvents">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="DataQuantityUnit" Type="int" Nullable="false" />
+    <Property Name="DataQuantityType" Type="int" Nullable="false" />
+    <Property Name="ScaleMin" Type="int" Nullable="false" />
+    <Property Name="ScaleMax" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tests">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="doctor_id" Type="int" />
+    <Property Name="test_time" Type="datetime" Nullable="false" />
+    <Property Name="test_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="clinic_name" Type="nvarchar" MaxLength="50" />
+    <Property Name="test_type" Type="nvarchar" MaxLength="15" />
+    <Property Name="sched_machine" Type="nvarchar" MaxLength="50" />
+    <Property Name="test_machine" Type="nvarchar" MaxLength="50" />
+    <Property Name="cfg_file" Type="nvarchar" MaxLength="255" />
+    <Property Name="catheter_size" Type="nvarchar" MaxLength="20" />
+    <Property Name="emg_type" Type="tinyint" Nullable="false" />
+    <Property Name="upp_measured" Type="bit" Nullable="false" />
+    <Property Name="emg_guard_reflex" Type="bit" Nullable="false" />
+    <Property Name="Hl7AppointmentId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Hl7AppointmentDatetime" Type="datetime" />
+    <Property Name="Hl7Comments" Type="nvarchar" MaxLength="255" />
+    <Property Name="Hl7EventType" Type="nvarchar" MaxLength="10" />
+    <Property Name="TestStatus" Type="tinyint" Nullable="false" />
+    <Property Name="reportSentStatus" Type="tinyint" Nullable="false" />
+    <Property Name="UDS_Test_Id" Type="nvarchar" MaxLength="50" />
+    <Property Name="XML_Content" Type="xml" />
+    <Property Name="SoftwareType" Type="tinyint" Nullable="false" />
+    <Property Name="SoftwareVersion" Type="nvarchar" MaxLength="15" />
+    <Property Name="Processed" Type="smallint" />
+    <Property Name="DB_CID" Type="int" Nullable="false" />
+    <Property Name="DB_ID" Type="int" />
+    <Property Name="diagnosis_ENC" Type="varbinary(max)" />
+    <Property Name="comments_ENC" Type="varbinary(max)" />
+    <Property Name="comments2_ENC" Type="varbinary(max)" />
+    <Property Name="recommendations_ENC" Type="varbinary(max)" />
+    <Property Name="Hl7Comments_ENC" Type="varbinary" MaxLength="800" />
+    <Property Name="dta_file_ENC" Type="varbinary" MaxLength="800" />
+    <Property Name="Xml_Content_ENC" Type="varbinary(max)" />
+    <Property Name="Ref_Test_Id" Type="int" />
+    <Property Name="Visit_Type" Type="nvarchar" MaxLength="50" />
+    <Property Name="Reffering_Doctor_id" Type="int" />
+    <Property Name="other_doctor_name" Type="nvarchar" MaxLength="255" />
+    <Property Name="group_id" Type="int" />
+    <Property Name="create_datetime" Type="datetime" />
+    <Property Name="create_by_id" Type="int" />
+    <Property Name="mod_datetime" Type="datetime" />
+    <Property Name="mod_by_id" Type="int" />
+    <Property Name="SenderDBID" Type="int" />
+    <Property Name="Revision" Type="int" Nullable="false" />
+    <Property Name="SyncError" Type="int" Nullable="false" />
+    <Property Name="dta_file_ENCRevision" Type="int" />
+    <Property Name="dta_file_ENCDateTimeModified" Type="datetime" />
+    <Property Name="ScrollingRate" Type="int" />
+    <Property Name="ModifiedByUser" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="ModifiedDatetime" Type="datetime" Nullable="false" />
+    <Property Name="dta_file_ENCSyncError" Type="int" Nullable="false" />
+    <Property Name="VisitDataSubmittedToEMR" Type="bit" Nullable="false" />
+    <Property Name="OriginalDirectoryToMoveFileTo" Type="nvarchar(max)" />
+    <Property Name="ProtocolName" Type="nvarchar" MaxLength="64" />
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IsConsumableBypassed" Type="bit" Nullable="false" />
+    <Property Name="NewConsumableCount" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Tests_Consumables">
+    <Key>
+      <PropertyRef Name="Test_Id" />
+      <PropertyRef Name="BarcodeId" />
+    </Key>
+    <Property Name="Test_Id" Type="int" Nullable="false" />
+    <Property Name="BarcodeId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UDS_TestData">
+    <Key>
+      <PropertyRef Name="Test_Id" />
+      <PropertyRef Name="ChannelID" />
+    </Key>
+    <Property Name="Test_Id" Type="int" Nullable="false" />
+    <Property Name="ChannelID" Type="int" Nullable="false" />
+    <Property Name="DataRate" Type="float" Nullable="false" />
+    <Property Name="ResourceGUID" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ChannelDataType" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UsedServices">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ServiceType" Type="int" Nullable="false" />
+    <Property Name="ProtocolModel_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User_Role">
+    <Key>
+      <PropertyRef Name="User_ID" />
+      <PropertyRef Name="Role_ID" />
+    </Key>
+    <Property Name="User_ID" Type="int" Nullable="false" />
+    <Property Name="Role_ID" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="Username" Type="varchar" MaxLength="64" Nullable="false" />
+    <Property Name="Password" Type="varchar(max)" Nullable="false" />
+    <Property Name="UserGrid" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="64" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="64" />
+    <Property Name="Email" Type="nvarchar" MaxLength="64" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Privilege" Type="tinyint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserSettings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="32" Nullable="false" />
+    <Property Name="Value" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="UserName" Type="nchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VcpDevices">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="COMPortNumber" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkflowConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InvestigationType" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="IsPredefined" Type="bit" Nullable="false" />
+    <Property Name="IsClinical" Type="bit" />
+  </EntityType>
+  <EntityType Name="WorkflowStepConfiguration">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="WorkflowConfig_Id" Type="int" Nullable="false" />
+    <Property Name="WorkflowStepType" Type="int" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="ExecuteOnlyFromAnotherStep" Type="bit" Nullable="false" />
+    <Property Name="CompletionStatus" Type="int" Nullable="false" />
+    <Property Name="WorkflowStepOrder" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="WorkflowStepResults">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="study_id" Type="int" />
+    <Property Name="WorkflowStepConfigurationId" Type="int" />
+  </EntityType>
+  <Association Name="FK__QCScores__PhaseM__190BB0C3">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="1" />
+    <End Role="QCScores" Type="Self.QCScores" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QCScores">
+        <PropertyRef Name="PhaseModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudyPrim__Prima__5D2BD0E6">
+    <End Role="PrimaryReasons" Type="Self.PrimaryReasons" Multiplicity="1" />
+    <End Role="StudyPrimaryReasons" Type="Self.StudyPrimaryReasons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReasons">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudyPrimaryReasons">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__StudyPrim__Studi__5C37ACAD">
+    <End Role="Studies" Type="Self.Studies" Multiplicity="1" />
+    <End Role="StudyPrimaryReasons" Type="Self.StudyPrimaryReasons" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Studies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="StudyPrimaryReasons">
+        <PropertyRef Name="StudiesID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Tests__ID__408F9238">
+    <End Role="WorkflowStepResults" Type="Self.WorkflowStepResults" Multiplicity="1" />
+    <End Role="Tests" Type="Self.Tests" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepResults">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tests">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__UDS_TestD__Test___297722B6">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="UDS_TestData" Type="Self.UDS_TestData" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="UDS_TestData">
+        <PropertyRef Name="Test_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__WorkflowS__study__4B0D20AB">
+    <End Role="Studies" Type="Self.Studies" Multiplicity="0..1" />
+    <End Role="WorkflowStepResults" Type="Self.WorkflowStepResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Studies">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="WorkflowStepResults">
+        <PropertyRef Name="study_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Choice">
+    <End Role="Choice" Type="Self.Choice" Multiplicity="0..1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Choice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Choice_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Patient_Questionnaires">
+    <End Role="Patient_Questionnaires" Type="Self.Patient_Questionnaires" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Questionnaires">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Patient_Questionnaires_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Question_Choice">
+    <End Role="Question_Choice" Type="Self.Question_Choice" Multiplicity="0..1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question_Choice">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Question_Choice_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Question_SubQuestionRowHeader">
+    <End Role="Question_SubQuestionRowHeader" Type="Self.Question_SubQuestionRowHeader" Multiplicity="0..1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Question_SubQuestionRowHeader_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Answers_Questionnaire_Question">
+    <End Role="Questionnaire_Question" Type="Self.Questionnaire_Question" Multiplicity="1" />
+    <End Role="Answers" Type="Self.Answers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Questionnaire_Question">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Answers">
+        <PropertyRef Name="Questionnaire_Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BridgePatternModel_ChallengeTemplateModel">
+    <End Role="ChallengeTemplateModel" Type="Self.ChallengeTemplateModel" Multiplicity="1" />
+    <End Role="BridgePatternModel" Type="Self.BridgePatternModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ChallengeTemplateModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="BridgePatternModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ButtonModel_ControlPanelModel">
+    <End Role="ControlPanelModel" Type="Self.ControlPanelModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ButtonModel" Type="Self.ButtonModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ButtonModel">
+        <PropertyRef Name="ControlPanelModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChallengeTemplateModel_PhaseModel">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChallengeTemplateModel" Type="Self.ChallengeTemplateModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChallengeTemplateModel">
+        <PropertyRef Name="PhaseModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelMapping_ChannelModel">
+    <End Role="ChannelModel" Type="Self.ChannelModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChannelMapping" Type="Self.ChannelMapping" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChannelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChannelMapping">
+        <PropertyRef Name="ChannelModelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChannelModel_ProtocolModel">
+    <End Role="ProtocolModel" Type="Self.ProtocolModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ChannelModel" Type="Self.ChannelModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProtocolModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChannelModel">
+        <PropertyRef Name="ProtocolModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChartChannelEvents_ChannelModel">
+    <End Role="ChannelModel" Type="Self.ChannelModel" Multiplicity="1" />
+    <End Role="ChartChannelEvents" Type="Self.ChartChannelEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChannelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ChartChannelEvents">
+        <PropertyRef Name="ChannelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Choice_ChoiceGroup">
+    <End Role="ChoiceGroup" Type="Self.ChoiceGroup" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Choice" Type="Self.Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Choice">
+        <PropertyRef Name="ChoiceGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Consumables_TestsConsumables">
+    <End Role="Consumables" Type="Self.Consumables" Multiplicity="1" />
+    <End Role="Tests_Consumables" Type="Self.Tests_Consumables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Consumables">
+        <PropertyRef Name="BarcodeID" />
+      </Principal>
+      <Dependent Role="Tests_Consumables">
+        <PropertyRef Name="BarcodeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ControlModel_ButtonModel">
+    <End Role="ButtonModel" Type="Self.ButtonModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ControlModel" Type="Self.ControlModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ControlModel">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ChartChannelEvents_dbo_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="ChartChannelEvents" Type="Self.ChartChannelEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChartChannelEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ChartEvents_dbo_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="ChartEvents" Type="Self.ChartEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChartEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_InfusionBagSpecificGravityChangeEvents_dbo_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="InfusionBagSpecificGravityChangeEvents" Type="Self.InfusionBagSpecificGravityChangeEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="InfusionBagSpecificGravityChangeEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PhaseEvents_dbo_ChartEvents_Id">
+    <End Role="ChartEvents" Type="Self.ChartEvents" Multiplicity="1" />
+    <End Role="PhaseEvents" Type="Self.PhaseEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ChartEvents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PullerDistanceEvents_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="PullerDistanceEvents" Type="Self.PullerDistanceEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PullerDistanceEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PumpSpeedEvents_dbo_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="PumpSpeedEvents" Type="Self.PumpSpeedEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PumpSpeedEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PvrInputEvents_dbo_Events_Id">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="PvrInputEvents" Type="Self.PvrInputEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PvrInputEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_TemplateEvents_dbo_ChannelEvents_Id">
+    <End Role="ChartChannelEvents" Type="Self.ChartChannelEvents" Multiplicity="1" />
+    <End Role="TemplateEvents" Type="Self.TemplateEvents" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ChartChannelEvents">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TemplateEvents">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EventHistory">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="EventsHistory" Type="Self.EventsHistory" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="EventsHistory">
+        <PropertyRef Name="EventID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Events_Events">
+    <End Role="Events" Type="Self.Events" Multiplicity="0..1" />
+    <End Role="Events1" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Events1">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneratedReportComponents_GeneratedReports">
+    <End Role="GeneratedReports" Type="Self.GeneratedReports" Multiplicity="1" />
+    <End Role="GeneratedReportComponents" Type="Self.GeneratedReportComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GeneratedReports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponents">
+        <PropertyRef Name="GeneratedReports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneratedReportComponents_ReportComponents">
+    <End Role="ReportComponents" Type="Self.ReportComponents" Multiplicity="0..1" />
+    <End Role="GeneratedReportComponents" Type="Self.GeneratedReportComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReportComponents">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponents">
+        <PropertyRef Name="ReportComponents_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneratedReportComponents_WorkflowStepResults">
+    <End Role="WorkflowStepResults" Type="Self.WorkflowStepResults" Multiplicity="1" />
+    <End Role="GeneratedReportComponents" Type="Self.GeneratedReportComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepResults">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReportComponents">
+        <PropertyRef Name="WorkflowStepResultId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_GeneratedReports_Reports">
+    <End Role="Reports" Type="Self.Reports" Multiplicity="1" />
+    <End Role="GeneratedReports" Type="Self.GeneratedReports" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="GeneratedReports">
+        <PropertyRef Name="Reports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageFrameResults_To_ImageResults">
+    <End Role="ImageResults" Type="Self.ImageResults" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="ImageFrameResults" Type="Self.ImageFrameResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ImageResults">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ImageFrameResults">
+        <PropertyRef Name="ImageResult_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ImageResults_To_Events">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="ImageResults" Type="Self.ImageResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ImageResults">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_License_Studies">
+    <End Role="License" Type="Self.License" Multiplicity="0..1" />
+    <End Role="Studies" Type="Self.Studies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="License">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Studies">
+        <PropertyRef Name="LicenseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LinePatternModel_ChallengeTemplateModel">
+    <End Role="ChallengeTemplateModel" Type="Self.ChallengeTemplateModel" Multiplicity="1" />
+    <End Role="LinePatternModel" Type="Self.LinePatternModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="ChallengeTemplateModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="LinePatternModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Media_Events">
+    <End Role="Events" Type="Self.Events" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Media" Type="Self.Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MediaFrameDetails">
+    <End Role="Media" Type="Self.Media" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FrameDetails" Type="Self.FrameDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Media">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FrameDetails">
+        <PropertyRef Name="MediaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OffsetEvents_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="OffsetEvents" Type="Self.OffsetEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="OffsetEvents">
+        <PropertyRef Name="Test_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Questionnaires_Questionnaire">
+    <End Role="SQuestionnaire" Type="Self.SQuestionnaire" Multiplicity="1" />
+    <End Role="Patient_Questionnaires" Type="Self.Patient_Questionnaires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient_Questionnaires">
+        <PropertyRef Name="Questionnaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Patient_Questionnaires_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="0..1" />
+    <End Role="Patient_Questionnaires" Type="Self.Patient_Questionnaires" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Patient_Questionnaires">
+        <PropertyRef Name="Test_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PatientsGroups_Groups">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="1" />
+    <End Role="PatientsGroups" Type="Self.PatientsGroups" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PatientsGroups">
+        <PropertyRef Name="Group_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseEvents_PhaseModel">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="1" />
+    <End Role="PhaseEvents" Type="Self.PhaseEvents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseEvents">
+        <PropertyRef Name="PhaseProtocolIndex" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseModel_ControlPanelModel">
+    <End Role="ControlPanelModel" Type="Self.ControlPanelModel" Multiplicity="0..1" />
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseModel">
+        <PropertyRef Name="ControlPanelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PhaseModel_ParentPhase">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="0..1" />
+    <End Role="PhaseModel1" Type="Self.PhaseModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PhaseModel1">
+        <PropertyRef Name="ParentPhaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrimaryReasonsPhases_PrimaryReasonsID">
+    <End Role="PrimaryReasons" Type="Self.PrimaryReasons" Multiplicity="1" />
+    <End Role="PrimaryReasonsPhasesConfiguration" Type="Self.PrimaryReasonsPhasesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReasons">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimaryReasonsPhasesConfiguration">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID">
+    <End Role="PrimaryReasons" Type="Self.PrimaryReasons" Multiplicity="1" />
+    <End Role="PrimaryReasonsQuestionnairesConfiguration" Type="Self.PrimaryReasonsQuestionnairesConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PrimaryReasons">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PrimaryReasonsQuestionnairesConfiguration">
+        <PropertyRef Name="PrimaryReasonsID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProtocolModel_RootPhase">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="1" />
+    <End Role="ProtocolModel" Type="Self.ProtocolModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProtocolModel">
+        <PropertyRef Name="RootPhaseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProtocolModel_WorkflowStepConfiguration">
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="1" />
+    <End Role="ProtocolModel" Type="Self.ProtocolModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProtocolModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PumpService_UsedServices">
+    <End Role="UsedServices" Type="Self.UsedServices" Multiplicity="1" />
+    <End Role="PumpService" Type="Self.PumpService" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="UsedServices">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PumpService">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PumpSpeedChange_ButtonModel">
+    <End Role="ButtonModel" Type="Self.ButtonModel" Multiplicity="1" />
+    <End Role="PumpSpeedChange" Type="Self.PumpSpeedChange" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PumpSpeedChange">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PumpSpeedLevel_ButtonModel">
+    <End Role="ButtonModel" Type="Self.ButtonModel" Multiplicity="1" />
+    <End Role="PumpSpeedLevel" Type="Self.PumpSpeedLevel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ButtonModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PumpSpeedLevel">
+        <PropertyRef Name="ButtonModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Quality_Step">
+    <End Role="QualityControlSteps" Type="Self.QualityControlSteps" Multiplicity="1" />
+    <End Role="QualityControlStepsWithPhase" Type="Self.QualityControlStepsWithPhase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="QualityControlSteps">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QualityControlStepsWithPhase">
+        <PropertyRef Name="QualityControlStepID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Choice_ChoiceGroup">
+    <End Role="ChoiceGroup" Type="Self.ChoiceGroup" Multiplicity="1" />
+    <End Role="Question_Choice" Type="Self.Question_Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChoiceGroup">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_Choice">
+        <PropertyRef Name="ChoiceGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_Choice_Question">
+    <End Role="SQuestion" Type="Self.SQuestion" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Question_Choice" Type="Self.Question_Choice" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_Choice">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_SubQuestionRowHeader_SQuestion">
+    <End Role="SQuestion" Type="Self.SQuestion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Question_SubQuestionRowHeader" Type="Self.Question_SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="QuestionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Question_SubQuestionRowHeader_SubQuestionRowHeader">
+    <End Role="SubQuestionRowHeader" Type="Self.SubQuestionRowHeader" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Question_SubQuestionRowHeader" Type="Self.Question_SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SubQuestionRowHeader">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Question_SubQuestionRowHeader">
+        <PropertyRef Name="SubQuestionRowHeaderID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questionnaire_Question_Question">
+    <End Role="SQuestion" Type="Self.SQuestion" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Questionnaire_Question" Type="Self.Questionnaire_Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestion">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Question">
+        <PropertyRef Name="Question_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Questionnaire_Question_SQuestionnaire">
+    <End Role="SQuestionnaire" Type="Self.SQuestionnaire" Multiplicity="1" />
+    <End Role="Questionnaire_Question" Type="Self.Questionnaire_Question" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Questionnaire_Question">
+        <PropertyRef Name="Questionnaire_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireFormulas_Formulas">
+    <End Role="Formulas" Type="Self.Formulas" Multiplicity="1" />
+    <End Role="QuestionnaireFormulas" Type="Self.QuestionnaireFormulas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireFormulas">
+        <PropertyRef Name="FormulaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireFormulas_Qustionnaire">
+    <End Role="SQuestionnaire" Type="Self.SQuestionnaire" Multiplicity="1" />
+    <End Role="QuestionnaireFormulas" Type="Self.QuestionnaireFormulas" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireFormulas">
+        <PropertyRef Name="QuestionnaireID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireModel_WorkflowStepConfiguration">
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="1" />
+    <End Role="QuestionnaireModel" Type="Self.QuestionnaireModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="QuestionnaireModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireScore_Formulas">
+    <End Role="Formulas" Type="Self.Formulas" Multiplicity="1" />
+    <End Role="QuestionnaireScore" Type="Self.QuestionnaireScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Formulas">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireScore">
+        <PropertyRef Name="FormulaID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_QuestionnaireScore_Patient_Questionnaires">
+    <End Role="Patient_Questionnaires" Type="Self.Patient_Questionnaires" Multiplicity="1" />
+    <End Role="QuestionnaireScore" Type="Self.QuestionnaireScore" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Patient_Questionnaires">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="QuestionnaireScore">
+        <PropertyRef Name="PatientQnrID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportComponents_Reports">
+    <End Role="Reports" Type="Self.Reports" Multiplicity="1" />
+    <End Role="ReportComponents" Type="Self.ReportComponents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Reports">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ReportComponents">
+        <PropertyRef Name="Reports_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportModel_ReportConfiguration">
+    <End Role="ReportConfiguration" Type="Self.ReportConfiguration" Multiplicity="1" />
+    <End Role="ReportModel" Type="Self.ReportModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ReportConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReportModel">
+        <PropertyRef Name="ReportConfiguration_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReportModel_WorkflowStepConfiguration">
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="1" />
+    <End Role="ReportModel" Type="Self.ReportModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReportModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_Results">
+    <End Role="Results" Type="Self.Results" Multiplicity="0..1" />
+    <End Role="Results1" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Results">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Results1">
+        <PropertyRef Name="Parent_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Results_To_Events">
+    <End Role="Events" Type="Self.Events" Multiplicity="1" />
+    <End Role="Results" Type="Self.Results" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Events">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Results">
+        <PropertyRef Name="Event_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewModel_ControlPanelModel">
+    <End Role="ControlPanelModel" Type="Self.ControlPanelModel" Multiplicity="0..1" />
+    <End Role="ReviewModel" Type="Self.ReviewModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ControlPanelModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReviewModel">
+        <PropertyRef Name="ControlPanelId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ReviewModel_WorkflowStepConfiguration">
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="1" />
+    <End Role="ReviewModel" Type="Self.ReviewModel" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReviewModel">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Permission_Permission_ID">
+    <End Role="Permissions" Type="Self.Permissions" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Role_Permission" Type="Self.Role_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Permissions">
+        <PropertyRef Name="Permission_ID" />
+      </Principal>
+      <Dependent Role="Role_Permission">
+        <PropertyRef Name="Permission_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_Permission_Role_ID">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Role_Permission" Type="Self.Role_Permission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="Role_Permission">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Roles_Role_Type_ID">
+    <End Role="Role_Types" Type="Self.Role_Types" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Roles" Type="Self.Roles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role_Types">
+        <PropertyRef Name="Role_Type_ID" />
+      </Principal>
+      <Dependent Role="Roles">
+        <PropertyRef Name="Role_Type_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StimulationSettingsModel_PhaseModel">
+    <End Role="PhaseModel" Type="Self.PhaseModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="StimulationSettingsModel" Type="Self.StimulationSettingsModel" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PhaseModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="StimulationSettingsModel">
+        <PropertyRef Name="PhaseModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Studies_WorkflowConfiguration">
+    <End Role="WorkflowConfiguration" Type="Self.WorkflowConfiguration" Multiplicity="1" />
+    <End Role="Studies" Type="Self.Studies" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Studies">
+        <PropertyRef Name="WorkflowConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SubQuestionRowHeader_SQuestionnaire">
+    <End Role="SQuestionnaire" Type="Self.SQuestionnaire" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SubQuestionRowHeader" Type="Self.SubQuestionRowHeader" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SQuestionnaire">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SubQuestionRowHeader">
+        <PropertyRef Name="QuestionnaireID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TestMedia">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="Media" Type="Self.Media" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Media">
+        <PropertyRef Name="TestID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tests_Groups">
+    <End Role="Groups" Type="Self.Groups" Multiplicity="0..1" />
+    <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Groups">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tests">
+        <PropertyRef Name="group_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tests_TestsConsumables">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="Tests_Consumables" Type="Self.Tests_Consumables" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Tests_Consumables">
+        <PropertyRef Name="Test_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UDS_Events_Tests">
+    <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+    <End Role="Events" Type="Self.Events" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tests">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Events">
+        <PropertyRef Name="test_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsedServices_ProtocolModel">
+    <End Role="ProtocolModel" Type="Self.ProtocolModel" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UsedServices" Type="Self.UsedServices" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProtocolModel">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsedServices">
+        <PropertyRef Name="ProtocolModel_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role_Role_ID">
+    <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_Role" Type="Self.User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Roles">
+        <PropertyRef Name="Role_ID" />
+      </Principal>
+      <Dependent Role="User_Role">
+        <PropertyRef Name="Role_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Role_User_ID">
+    <End Role="Users" Type="Self.Users" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="User_Role" Type="Self.User_Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="User_Role">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_VcpDevices_BaseDevices">
+    <End Role="BaseDevices" Type="Self.BaseDevices" Multiplicity="1" />
+    <End Role="VcpDevices" Type="Self.VcpDevices" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="BaseDevices">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="VcpDevices">
+        <PropertyRef Name="ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkflowStepConfiguration_WorkflowConfiguration">
+    <End Role="WorkflowConfiguration" Type="Self.WorkflowConfiguration" Multiplicity="1" />
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkflowStepConfiguration">
+        <PropertyRef Name="WorkflowConfig_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_WorkflowStepResult_WorkflowStepConfiguration">
+    <End Role="WorkflowStepConfiguration" Type="Self.WorkflowStepConfiguration" Multiplicity="0..1" />
+    <End Role="WorkflowStepResults" Type="Self.WorkflowStepResults" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="WorkflowStepConfiguration">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="WorkflowStepResults">
+        <PropertyRef Name="WorkflowStepConfigurationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="CreateAuditLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="Message" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CreateDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CreateInvestigator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="CreatePatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patientId" Type="nvarchar" Mode="In" />
+    <Parameter Name="uuid" Type="uniqueidentifier" Mode="In" />
+    <Parameter Name="visibilityStatus" Type="int" Mode="In" />
+    <Parameter Name="hospitalId" Type="int" Mode="In" />
+    <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="middleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="genderId" Type="int" Mode="In" />
+    <Parameter Name="dateOfBirth" Type="datetime" Mode="In" />
+    <Parameter Name="maritalStatusId" Type="char" Mode="In" />
+    <Parameter Name="ethnicityId" Type="char" Mode="In" />
+    <Parameter Name="icn" Type="varbinary" Mode="In" />
+    <Parameter Name="height" Type="int" Mode="In" />
+    <Parameter Name="weight" Type="int" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="allergy" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="personalNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="securityCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="street" Type="nvarchar" Mode="In" />
+    <Parameter Name="suiteNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="state" Type="nvarchar" Mode="In" />
+    <Parameter Name="country" Type="nvarchar" Mode="In" />
+    <Parameter Name="postalCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="poBoxNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneHome" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="insuranceCompany" Type="nvarchar" Mode="In" />
+    <Parameter Name="insurancePolicyNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="doctorId" Type="int" Mode="In" />
+    <Parameter Name="investigatorId" Type="int" Mode="In" />
+    <Parameter Name="referringDoctorId" Type="int" Mode="In" />
+    <Parameter Name="history" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="CreateReferral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fname" Type="nvarchar" Mode="In" />
+    <Parameter Name="lname" Type="nvarchar" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="GetPatientQuestionnaireScore" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="patientQnrId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="ReadAuditLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID" Type="int" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ReadDoctors" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ReadInvestigators" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ReadPatients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="hospitalId" Type="int" Mode="In" />
+    <Parameter Name="dbId" Type="int" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="ReadReferrals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="fullName" Type="nvarchar" Mode="In" />
+    <Parameter Name="pwd" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UpdateDoctor" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="doctorId" Type="int" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="newFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="newLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="visible" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdateInvestigator" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="investigatorId" Type="int" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="newFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="newLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="visible" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="UpdatePatient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="dbId" Type="int" Mode="In" />
+    <Parameter Name="visibilityStatus" Type="int" Mode="In" />
+    <Parameter Name="patientId" Type="nvarchar" Mode="In" />
+    <Parameter Name="hospitalId" Type="int" Mode="In" />
+    <Parameter Name="firstName" Type="nvarchar" Mode="In" />
+    <Parameter Name="middleName" Type="nvarchar" Mode="In" />
+    <Parameter Name="lastName" Type="nvarchar" Mode="In" />
+    <Parameter Name="genderId" Type="int" Mode="In" />
+    <Parameter Name="dateOfBirth" Type="datetime" Mode="In" />
+    <Parameter Name="maritalStatusId" Type="char" Mode="In" />
+    <Parameter Name="ethnicityId" Type="char" Mode="In" />
+    <Parameter Name="icn" Type="varbinary" Mode="In" />
+    <Parameter Name="height" Type="int" Mode="In" />
+    <Parameter Name="weight" Type="int" Mode="In" />
+    <Parameter Name="notes" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="allergy" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="personalNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="securityCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="street" Type="nvarchar" Mode="In" />
+    <Parameter Name="suiteNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="city" Type="nvarchar" Mode="In" />
+    <Parameter Name="state" Type="nvarchar" Mode="In" />
+    <Parameter Name="country" Type="nvarchar" Mode="In" />
+    <Parameter Name="postalCode" Type="nvarchar" Mode="In" />
+    <Parameter Name="poBoxNumber" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneHome" Type="nvarchar" Mode="In" />
+    <Parameter Name="phoneMobile" Type="nvarchar" Mode="In" />
+    <Parameter Name="groupId" Type="int" Mode="In" />
+    <Parameter Name="insuranceCompany" Type="nvarchar" Mode="In" />
+    <Parameter Name="insurancePolicyNo" Type="nvarchar" Mode="In" />
+    <Parameter Name="doctorId" Type="int" Mode="In" />
+    <Parameter Name="investigatorId" Type="int" Mode="In" />
+    <Parameter Name="referringDoctorId" Type="int" Mode="In" />
+    <Parameter Name="history" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="UpdateReferral" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="referralId" Type="int" Mode="In" />
+    <Parameter Name="title" Type="nvarchar" Mode="In" />
+    <Parameter Name="newFName" Type="nvarchar" Mode="In" />
+    <Parameter Name="newLName" Type="nvarchar" Mode="In" />
+    <Parameter Name="visible" Type="bit" Mode="In" />
+  </Function>
+  <EntityContainer Name="SynergyModelStoreContainer">
+    <EntitySet Name="Answers" EntityType="Self.Answers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ApplicationSettings" EntityType="Self.ApplicationSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AppSecurity" EntityType="Self.AppSecurity" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuditLog" EntityType="Self.AuditLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BaseDevices" EntityType="Self.BaseDevices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BridgePatternModel" EntityType="Self.BridgePatternModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ButtonModel" EntityType="Self.ButtonModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChallengeTemplateModel" EntityType="Self.ChallengeTemplateModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelMapping" EntityType="Self.ChannelMapping" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChannelModel" EntityType="Self.ChannelModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChartChannelEvents" EntityType="Self.ChartChannelEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChartEvents" EntityType="Self.ChartEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Choice" EntityType="Self.Choice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChoiceGroup" EntityType="Self.ChoiceGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ConsumableCompatibility" EntityType="Self.ConsumableCompatibility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consumables" EntityType="Self.Consumables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ControlModel" EntityType="Self.ControlModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ControlPanelModel" EntityType="Self.ControlPanelModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Eula" EntityType="Self.Eula" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Events" EntityType="Self.Events" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EventsHistory" EntityType="Self.EventsHistory" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Formulas" EntityType="Self.Formulas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FrameDetails" EntityType="Self.FrameDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneratedReportComponents" EntityType="Self.GeneratedReportComponents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GeneratedReports" EntityType="Self.GeneratedReports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Groups" EntityType="Self.Groups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="HardwareCompatibility" EntityType="Self.HardwareCompatibility" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageFrameResults" EntityType="Self.ImageFrameResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ImageResults" EntityType="Self.ImageResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InfusionBagSpecificGravityChangeEvents" EntityType="Self.InfusionBagSpecificGravityChangeEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="License" EntityType="Self.License" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LinePatternModel" EntityType="Self.LinePatternModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LoginFailureInfo" EntityType="Self.LoginFailureInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Media" EntityType="Self.Media" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OffsetEvents" EntityType="Self.OffsetEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Patient_Questionnaires" EntityType="Self.Patient_Questionnaires" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PatientsGroups" EntityType="Self.PatientsGroups" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Permissions" EntityType="Self.Permissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhaseEvents" EntityType="Self.PhaseEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhaseModel" EntityType="Self.PhaseModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PhaseTextMarker" EntityType="Self.PhaseTextMarker" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrimaryReasons" EntityType="Self.PrimaryReasons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrimaryReasonsPhasesConfiguration" EntityType="Self.PrimaryReasonsPhasesConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PrimaryReasonsQuestionnairesConfiguration" EntityType="Self.PrimaryReasonsQuestionnairesConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProtocolModel" EntityType="Self.ProtocolModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PullerDistanceEvents" EntityType="Self.PullerDistanceEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PumpService" EntityType="Self.PumpService" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PumpSpeedChange" EntityType="Self.PumpSpeedChange" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PumpSpeedEvents" EntityType="Self.PumpSpeedEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PumpSpeedLevel" EntityType="Self.PumpSpeedLevel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PvrInputEvents" EntityType="Self.PvrInputEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QCScores" EntityType="Self.QCScores" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QualityControlSteps" EntityType="Self.QualityControlSteps" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QualityControlStepsWithPhase" EntityType="Self.QualityControlStepsWithPhase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question_Choice" EntityType="Self.Question_Choice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question_SubQuestionRowHeader" EntityType="Self.Question_SubQuestionRowHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Questionnaire_Question" EntityType="Self.Questionnaire_Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionnaireFormulas" EntityType="Self.QuestionnaireFormulas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionnaireModel" EntityType="Self.QuestionnaireModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="QuestionnaireScore" EntityType="Self.QuestionnaireScore" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReferenceData" EntityType="Self.ReferenceData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportComponents" EntityType="Self.ReportComponents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportConfiguration" EntityType="Self.ReportConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReportModel" EntityType="Self.ReportModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Reports" EntityType="Self.Reports" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ResultNormalValues" EntityType="Self.ResultNormalValues" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Results" EntityType="Self.Results" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ReviewModel" EntityType="Self.ReviewModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role_Permission" EntityType="Self.Role_Permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role_Types" EntityType="Self.Role_Types" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SpecificGravities" EntityType="Self.SpecificGravities" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SQuestion" EntityType="Self.SQuestion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SQuestionnaire" EntityType="Self.SQuestionnaire" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StimulationSettingsModel" EntityType="Self.StimulationSettingsModel" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Studies" EntityType="Self.Studies" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StudyPrimaryReasons" EntityType="Self.StudyPrimaryReasons" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SubQuestionRowHeader" EntityType="Self.SubQuestionRowHeader" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TcpDevices" EntityType="Self.TcpDevices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TemplateEvents" EntityType="Self.TemplateEvents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tests_Consumables" EntityType="Self.Tests_Consumables" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UDS_TestData" EntityType="Self.UDS_TestData" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UsedServices" EntityType="Self.UsedServices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Role" EntityType="Self.User_Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserSettings" EntityType="Self.UserSettings" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VcpDevices" EntityType="Self.VcpDevices" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkflowConfiguration" EntityType="Self.WorkflowConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkflowStepConfiguration" EntityType="Self.WorkflowStepConfiguration" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="WorkflowStepResults" EntityType="Self.WorkflowStepResults" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__QCScores__PhaseM__190BB0C3" Association="Self.FK__QCScores__PhaseM__190BB0C3">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="QCScores" EntitySet="QCScores" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudyPrim__Prima__5D2BD0E6" Association="Self.FK__StudyPrim__Prima__5D2BD0E6">
+      <End Role="PrimaryReasons" EntitySet="PrimaryReasons" />
+      <End Role="StudyPrimaryReasons" EntitySet="StudyPrimaryReasons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__StudyPrim__Studi__5C37ACAD" Association="Self.FK__StudyPrim__Studi__5C37ACAD">
+      <End Role="Studies" EntitySet="Studies" />
+      <End Role="StudyPrimaryReasons" EntitySet="StudyPrimaryReasons" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Tests__ID__408F9238" Association="Self.FK__Tests__ID__408F9238">
+      <End Role="WorkflowStepResults" EntitySet="WorkflowStepResults" />
+      <End Role="Tests" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK__UDS_TestD__Test___297722B6" Association="Self.FK__UDS_TestD__Test___297722B6">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="UDS_TestData" EntitySet="UDS_TestData" />
+    </AssociationSet>
+    <AssociationSet Name="FK__WorkflowS__study__4B0D20AB" Association="Self.FK__WorkflowS__study__4B0D20AB">
+      <End Role="Studies" EntitySet="Studies" />
+      <End Role="WorkflowStepResults" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Choice" Association="Self.FK_Answers_Choice">
+      <End Role="Choice" EntitySet="Choice" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Patient_Questionnaires" Association="Self.FK_Answers_Patient_Questionnaires">
+      <End Role="Patient_Questionnaires" EntitySet="Patient_Questionnaires" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Question_Choice" Association="Self.FK_Answers_Question_Choice">
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Question_SubQuestionRowHeader" Association="Self.FK_Answers_Question_SubQuestionRowHeader">
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Answers_Questionnaire_Question" Association="Self.FK_Answers_Questionnaire_Question">
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+      <End Role="Answers" EntitySet="Answers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BridgePatternModel_ChallengeTemplateModel" Association="Self.FK_BridgePatternModel_ChallengeTemplateModel">
+      <End Role="ChallengeTemplateModel" EntitySet="ChallengeTemplateModel" />
+      <End Role="BridgePatternModel" EntitySet="BridgePatternModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ButtonModel_ControlPanelModel" Association="Self.FK_ButtonModel_ControlPanelModel">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModel" />
+      <End Role="ButtonModel" EntitySet="ButtonModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChallengeTemplateModel_PhaseModel" Association="Self.FK_ChallengeTemplateModel_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="ChallengeTemplateModel" EntitySet="ChallengeTemplateModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelMapping_ChannelModel" Association="Self.FK_ChannelMapping_ChannelModel">
+      <End Role="ChannelModel" EntitySet="ChannelModel" />
+      <End Role="ChannelMapping" EntitySet="ChannelMapping" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChannelModel_ProtocolModel" Association="Self.FK_ChannelModel_ProtocolModel">
+      <End Role="ProtocolModel" EntitySet="ProtocolModel" />
+      <End Role="ChannelModel" EntitySet="ChannelModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChartChannelEvents_ChannelModel" Association="Self.FK_ChartChannelEvents_ChannelModel">
+      <End Role="ChannelModel" EntitySet="ChannelModel" />
+      <End Role="ChartChannelEvents" EntitySet="ChartChannelEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Choice_ChoiceGroup" Association="Self.FK_Choice_ChoiceGroup">
+      <End Role="ChoiceGroup" EntitySet="ChoiceGroup" />
+      <End Role="Choice" EntitySet="Choice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Consumables_TestsConsumables" Association="Self.FK_Consumables_TestsConsumables">
+      <End Role="Consumables" EntitySet="Consumables" />
+      <End Role="Tests_Consumables" EntitySet="Tests_Consumables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ControlModel_ButtonModel" Association="Self.FK_ControlModel_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModel" />
+      <End Role="ControlModel" EntitySet="ControlModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ChartChannelEvents_dbo_Events_Id" Association="Self.FK_dbo_ChartChannelEvents_dbo_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="ChartChannelEvents" EntitySet="ChartChannelEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ChartEvents_dbo_Events_Id" Association="Self.FK_dbo_ChartEvents_dbo_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="ChartEvents" EntitySet="ChartEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_InfusionBagSpecificGravityChangeEvents_dbo_Events_Id" Association="Self.FK_dbo_InfusionBagSpecificGravityChangeEvents_dbo_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="InfusionBagSpecificGravityChangeEvents" EntitySet="InfusionBagSpecificGravityChangeEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PhaseEvents_dbo_ChartEvents_Id" Association="Self.FK_dbo_PhaseEvents_dbo_ChartEvents_Id">
+      <End Role="ChartEvents" EntitySet="ChartEvents" />
+      <End Role="PhaseEvents" EntitySet="PhaseEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PullerDistanceEvents_Events_Id" Association="Self.FK_dbo_PullerDistanceEvents_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="PullerDistanceEvents" EntitySet="PullerDistanceEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PumpSpeedEvents_dbo_Events_Id" Association="Self.FK_dbo_PumpSpeedEvents_dbo_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="PumpSpeedEvents" EntitySet="PumpSpeedEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PvrInputEvents_dbo_Events_Id" Association="Self.FK_dbo_PvrInputEvents_dbo_Events_Id">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="PvrInputEvents" EntitySet="PvrInputEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_TemplateEvents_dbo_ChannelEvents_Id" Association="Self.FK_dbo_TemplateEvents_dbo_ChannelEvents_Id">
+      <End Role="ChartChannelEvents" EntitySet="ChartChannelEvents" />
+      <End Role="TemplateEvents" EntitySet="TemplateEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EventHistory" Association="Self.FK_EventHistory">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="EventsHistory" EntitySet="EventsHistory" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Events_Events" Association="Self.FK_Events_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Events1" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneratedReportComponents_GeneratedReports" Association="Self.FK_GeneratedReportComponents_GeneratedReports">
+      <End Role="GeneratedReports" EntitySet="GeneratedReports" />
+      <End Role="GeneratedReportComponents" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneratedReportComponents_ReportComponents" Association="Self.FK_GeneratedReportComponents_ReportComponents">
+      <End Role="ReportComponents" EntitySet="ReportComponents" />
+      <End Role="GeneratedReportComponents" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneratedReportComponents_WorkflowStepResults" Association="Self.FK_GeneratedReportComponents_WorkflowStepResults">
+      <End Role="WorkflowStepResults" EntitySet="WorkflowStepResults" />
+      <End Role="GeneratedReportComponents" EntitySet="GeneratedReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_GeneratedReports_Reports" Association="Self.FK_GeneratedReports_Reports">
+      <End Role="Reports" EntitySet="Reports" />
+      <End Role="GeneratedReports" EntitySet="GeneratedReports" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageFrameResults_To_ImageResults" Association="Self.FK_ImageFrameResults_To_ImageResults">
+      <End Role="ImageResults" EntitySet="ImageResults" />
+      <End Role="ImageFrameResults" EntitySet="ImageFrameResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ImageResults_To_Events" Association="Self.FK_ImageResults_To_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="ImageResults" EntitySet="ImageResults" />
+    </AssociationSet>
+    <AssociationSet Name="FK_License_Studies" Association="Self.FK_License_Studies">
+      <End Role="License" EntitySet="License" />
+      <End Role="Studies" EntitySet="Studies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LinePatternModel_ChallengeTemplateModel" Association="Self.FK_LinePatternModel_ChallengeTemplateModel">
+      <End Role="ChallengeTemplateModel" EntitySet="ChallengeTemplateModel" />
+      <End Role="LinePatternModel" EntitySet="LinePatternModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Media_Events" Association="Self.FK_Media_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MediaFrameDetails" Association="Self.FK_MediaFrameDetails">
+      <End Role="Media" EntitySet="Media" />
+      <End Role="FrameDetails" EntitySet="FrameDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OffsetEvents_Tests" Association="Self.FK_OffsetEvents_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="OffsetEvents" EntitySet="OffsetEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Questionnaires_Questionnaire" Association="Self.FK_Patient_Questionnaires_Questionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaire" />
+      <End Role="Patient_Questionnaires" EntitySet="Patient_Questionnaires" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Patient_Questionnaires_Tests" Association="Self.FK_Patient_Questionnaires_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Patient_Questionnaires" EntitySet="Patient_Questionnaires" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PatientsGroups_Groups" Association="Self.FK_PatientsGroups_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="PatientsGroups" EntitySet="PatientsGroups" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseEvents_PhaseModel" Association="Self.FK_PhaseEvents_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="PhaseEvents" EntitySet="PhaseEvents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseModel_ControlPanelModel" Association="Self.FK_PhaseModel_ControlPanelModel">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModel" />
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PhaseModel_ParentPhase" Association="Self.FK_PhaseModel_ParentPhase">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="PhaseModel1" EntitySet="PhaseModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrimaryReasonsPhases_PrimaryReasonsID" Association="Self.FK_PrimaryReasonsPhases_PrimaryReasonsID">
+      <End Role="PrimaryReasons" EntitySet="PrimaryReasons" />
+      <End Role="PrimaryReasonsPhasesConfiguration" EntitySet="PrimaryReasonsPhasesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID" Association="Self.FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID">
+      <End Role="PrimaryReasons" EntitySet="PrimaryReasons" />
+      <End Role="PrimaryReasonsQuestionnairesConfiguration" EntitySet="PrimaryReasonsQuestionnairesConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProtocolModel_RootPhase" Association="Self.FK_ProtocolModel_RootPhase">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="ProtocolModel" EntitySet="ProtocolModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProtocolModel_WorkflowStepConfiguration" Association="Self.FK_ProtocolModel_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+      <End Role="ProtocolModel" EntitySet="ProtocolModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PumpService_UsedServices" Association="Self.FK_PumpService_UsedServices">
+      <End Role="UsedServices" EntitySet="UsedServices" />
+      <End Role="PumpService" EntitySet="PumpService" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PumpSpeedChange_ButtonModel" Association="Self.FK_PumpSpeedChange_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModel" />
+      <End Role="PumpSpeedChange" EntitySet="PumpSpeedChange" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PumpSpeedLevel_ButtonModel" Association="Self.FK_PumpSpeedLevel_ButtonModel">
+      <End Role="ButtonModel" EntitySet="ButtonModel" />
+      <End Role="PumpSpeedLevel" EntitySet="PumpSpeedLevel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Quality_Step" Association="Self.FK_Quality_Step">
+      <End Role="QualityControlSteps" EntitySet="QualityControlSteps" />
+      <End Role="QualityControlStepsWithPhase" EntitySet="QualityControlStepsWithPhase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Choice_ChoiceGroup" Association="Self.FK_Question_Choice_ChoiceGroup">
+      <End Role="ChoiceGroup" EntitySet="ChoiceGroup" />
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_Choice_Question" Association="Self.FK_Question_Choice_Question">
+      <End Role="SQuestion" EntitySet="SQuestion" />
+      <End Role="Question_Choice" EntitySet="Question_Choice" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_SubQuestionRowHeader_SQuestion" Association="Self.FK_Question_SubQuestionRowHeader_SQuestion">
+      <End Role="SQuestion" EntitySet="SQuestion" />
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Question_SubQuestionRowHeader_SubQuestionRowHeader" Association="Self.FK_Question_SubQuestionRowHeader_SubQuestionRowHeader">
+      <End Role="SubQuestionRowHeader" EntitySet="SubQuestionRowHeader" />
+      <End Role="Question_SubQuestionRowHeader" EntitySet="Question_SubQuestionRowHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questionnaire_Question_Question" Association="Self.FK_Questionnaire_Question_Question">
+      <End Role="SQuestion" EntitySet="SQuestion" />
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Questionnaire_Question_SQuestionnaire" Association="Self.FK_Questionnaire_Question_SQuestionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaire" />
+      <End Role="Questionnaire_Question" EntitySet="Questionnaire_Question" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireFormulas_Formulas" Association="Self.FK_QuestionnaireFormulas_Formulas">
+      <End Role="Formulas" EntitySet="Formulas" />
+      <End Role="QuestionnaireFormulas" EntitySet="QuestionnaireFormulas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireFormulas_Qustionnaire" Association="Self.FK_QuestionnaireFormulas_Qustionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaire" />
+      <End Role="QuestionnaireFormulas" EntitySet="QuestionnaireFormulas" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireModel_WorkflowStepConfiguration" Association="Self.FK_QuestionnaireModel_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+      <End Role="QuestionnaireModel" EntitySet="QuestionnaireModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireScore_Formulas" Association="Self.FK_QuestionnaireScore_Formulas">
+      <End Role="Formulas" EntitySet="Formulas" />
+      <End Role="QuestionnaireScore" EntitySet="QuestionnaireScore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_QuestionnaireScore_Patient_Questionnaires" Association="Self.FK_QuestionnaireScore_Patient_Questionnaires">
+      <End Role="Patient_Questionnaires" EntitySet="Patient_Questionnaires" />
+      <End Role="QuestionnaireScore" EntitySet="QuestionnaireScore" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportComponents_Reports" Association="Self.FK_ReportComponents_Reports">
+      <End Role="Reports" EntitySet="Reports" />
+      <End Role="ReportComponents" EntitySet="ReportComponents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportModel_ReportConfiguration" Association="Self.FK_ReportModel_ReportConfiguration">
+      <End Role="ReportConfiguration" EntitySet="ReportConfiguration" />
+      <End Role="ReportModel" EntitySet="ReportModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReportModel_WorkflowStepConfiguration" Association="Self.FK_ReportModel_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+      <End Role="ReportModel" EntitySet="ReportModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_Results" Association="Self.FK_Results_Results">
+      <End Role="Results" EntitySet="Results" />
+      <End Role="Results1" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Results_To_Events" Association="Self.FK_Results_To_Events">
+      <End Role="Events" EntitySet="Events" />
+      <End Role="Results" EntitySet="Results" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewModel_ControlPanelModel" Association="Self.FK_ReviewModel_ControlPanelModel">
+      <End Role="ControlPanelModel" EntitySet="ControlPanelModel" />
+      <End Role="ReviewModel" EntitySet="ReviewModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ReviewModel_WorkflowStepConfiguration" Association="Self.FK_ReviewModel_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+      <End Role="ReviewModel" EntitySet="ReviewModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Permission_Permission_ID" Association="Self.FK_Role_Permission_Permission_ID">
+      <End Role="Permissions" EntitySet="Permissions" />
+      <End Role="Role_Permission" EntitySet="Role_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_Permission_Role_ID" Association="Self.FK_Role_Permission_Role_ID">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="Role_Permission" EntitySet="Role_Permission" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Roles_Role_Type_ID" Association="Self.FK_Roles_Role_Type_ID">
+      <End Role="Role_Types" EntitySet="Role_Types" />
+      <End Role="Roles" EntitySet="Roles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StimulationSettingsModel_PhaseModel" Association="Self.FK_StimulationSettingsModel_PhaseModel">
+      <End Role="PhaseModel" EntitySet="PhaseModel" />
+      <End Role="StimulationSettingsModel" EntitySet="StimulationSettingsModel" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Studies_WorkflowConfiguration" Association="Self.FK_Studies_WorkflowConfiguration">
+      <End Role="WorkflowConfiguration" EntitySet="WorkflowConfiguration" />
+      <End Role="Studies" EntitySet="Studies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SubQuestionRowHeader_SQuestionnaire" Association="Self.FK_SubQuestionRowHeader_SQuestionnaire">
+      <End Role="SQuestionnaire" EntitySet="SQuestionnaire" />
+      <End Role="SubQuestionRowHeader" EntitySet="SubQuestionRowHeader" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestMedia" Association="Self.FK_TestMedia">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Media" EntitySet="Media" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_Groups" Association="Self.FK_Tests_Groups">
+      <End Role="Groups" EntitySet="Groups" />
+      <End Role="Tests" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_TestsConsumables" Association="Self.FK_Tests_TestsConsumables">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Tests_Consumables" EntitySet="Tests_Consumables" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UDS_Events_Tests" Association="Self.FK_UDS_Events_Tests">
+      <End Role="Tests" EntitySet="Tests" />
+      <End Role="Events" EntitySet="Events" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsedServices_ProtocolModel" Association="Self.FK_UsedServices_ProtocolModel">
+      <End Role="ProtocolModel" EntitySet="ProtocolModel" />
+      <End Role="UsedServices" EntitySet="UsedServices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role_Role_ID" Association="Self.FK_User_Role_Role_ID">
+      <End Role="Roles" EntitySet="Roles" />
+      <End Role="User_Role" EntitySet="User_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Role_User_ID" Association="Self.FK_User_Role_User_ID">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="User_Role" EntitySet="User_Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_VcpDevices_BaseDevices" Association="Self.FK_VcpDevices_BaseDevices">
+      <End Role="BaseDevices" EntitySet="BaseDevices" />
+      <End Role="VcpDevices" EntitySet="VcpDevices" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkflowStepConfiguration_WorkflowConfiguration" Association="Self.FK_WorkflowStepConfiguration_WorkflowConfiguration">
+      <End Role="WorkflowConfiguration" EntitySet="WorkflowConfiguration" />
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+    </AssociationSet>
+    <AssociationSet Name="FK_WorkflowStepResult_WorkflowStepConfiguration" Association="Self.FK_WorkflowStepResult_WorkflowStepConfiguration">
+      <End Role="WorkflowStepConfiguration" EntitySet="WorkflowStepConfiguration" />
+      <End Role="WorkflowStepResults" EntitySet="WorkflowStepResults" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

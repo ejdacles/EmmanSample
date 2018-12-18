@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f1fcef7fa4df4bbe987c55689f1fee20" Name="Diagram1" ZoomLevel="62">
+        <EntityTypeShape EntityType="SynergyModel.ApplicationSetting" Width="1.5" PointX="0.875" PointY="2.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.Event" Width="1.5" PointX="4.125" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.PhaseEvent" Width="1.5" PointX="4.125" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.Study" Width="2.375" PointX="9.125" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.Test" Width="1.5" PointX="6.375" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.UserSetting" Width="1.5" PointX="0.875" PointY="1.25" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepResult" Width="1.875" PointX="9.25" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="SynergyModel.FK_Events_Events" ManuallyRouted="false" />
+        <AssociationConnector Association="SynergyModel.FK_UDS_Events_Tests" ManuallyRouted="false" >
+        </AssociationConnector>
+        <InheritanceConnector EntityType="SynergyModel.Test" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="SynergyModel.Question_Choice" Width="1.875" PointX="12.75" PointY="17.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.SQuestion" Width="2.25" PointX="10.125" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.SQuestionnaire" Width="1.5" PointX="9.625" PointY="14" IsExpanded="false" />
+        <AssociationConnector Association="SynergyModel.FK_Question_Choice_Question" />
+        <EntityTypeShape EntityType="SynergyModel.Choice" Width="1.5" PointX="15.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.Questionnaire_Question" Width="2.125" PointX="10.25" PointY="15" IsExpanded="false" />
+        <AssociationConnector Association="SynergyModel.FK_Questionnaire_Question_Question" />
+        <AssociationConnector Association="SynergyModel.FK_Questionnaire_Question_SQuestionnaire" />
+        <EntityTypeShape EntityType="SynergyModel.ChoiceGroup" Width="1.5" PointX="15.75" PointY="20" IsExpanded="true" />
+        <AssociationConnector Association="SynergyModel.FK_Choice_ChoiceGroup" />
+        <AssociationConnector Association="SynergyModel.FK_Question_Choice_ChoiceGroup" ManuallyRouted="false" >
+        </AssociationConnector>
+        <AssociationConnector Association="SynergyModel.FK__WorkflowS__study__02E7657A" />
+        <EntityTypeShape EntityType="SynergyModel.GeneratedReport" Width="2" PointX="3" PointY="6.375" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.Answer" Width="1.875" PointX="13.625" PointY="13.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.Patient_Questionnaire" Width="1.875" PointX="11.375" PointY="6.75" IsExpanded="true" />
+        <AssociationConnector Association="SynergyModel.FK_Answers_Choice" />
+        <AssociationConnector Association="SynergyModel.FK_Answers_Patient_Questionnaires" />
+        <AssociationConnector Association="SynergyModel.FK_Answers_Question_Choice" />
+        <AssociationConnector Association="SynergyModel.FK_Answers_Questionnaire_Question" />
+        <AssociationConnector Association="SynergyModel.FK_Patient_Questionnaires_Questionnaire" />
+        <AssociationConnector Association="SynergyModel.FK_Patient_Questionnaires_Tests" />
+        <InheritanceConnector EntityType="SynergyModel.Patient_Questionnaire" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <EntityTypeShape EntityType="SynergyModel.Report" Width="2.375" PointX="1.625" PointY="8.5" IsExpanded="false" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReports_Reports" />
+        <EntityTypeShape EntityType="SynergyModel.ChallengeTemplateModel" Width="2.375" PointX="31.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.ControlPanelModel" Width="2" PointX="22.125" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.PhaseModel" Width="2.125" PointX="26.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.ProcedureResult" Width="2.375" PointX="29.75" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.ReviewModel" Width="1.875" PointX="21.375" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.StimulationSettingsModel" Width="2.5" PointX="29.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowConfiguration" Width="2.125" PointX="19.875" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepConfiguration" Width="4.625" PointX="22.875" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="SynergyModel.FK_ChallengeTemplateModel_PhaseModel" />
+        <AssociationConnector Association="SynergyModel.FK_Studies_WorkflowConfiguration" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.QuestionnaireModel" Width="1.75" PointX="18.875" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.ReportModel" Width="1.5" PointX="16.75" PointY="4.875" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.GeneratedReportComponent" Width="1.5" PointX="0.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.ReportComponent" Width="1.5" PointX="0.5" PointY="9.375" IsExpanded="false" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReportComponents_GeneratedReports" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReportComponents_ReportComponents" />
+        <AssociationConnector Association="SynergyModel.FK_ReportComponents_Reports" />
+        <AssociationConnector Association="SynergyModel.FK_ReportComponents_SQuestionnaire" ManuallyRouted="false" >
+        </AssociationConnector>
+        <InheritanceConnector EntityType="SynergyModel.ReviewModel" />
+        <InheritanceConnector EntityType="SynergyModel.QuestionnaireModel" />
+        <InheritanceConnector EntityType="SynergyModel.ReportModel" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseModel_ParentPhase" />
+        <AssociationConnector Association="SynergyModel.FK_StimulationSettingsModel_PhaseModel" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseModel_ControlPanelModel1" />
+        <AssociationConnector Association="SynergyModel.FK_ReviewModel_ControlPanelModel1" />
+        <EntityTypeShape EntityType="SynergyModel.BridgePatternModel" Width="1.875" PointX="33.375" PointY="7.125" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.LinePatternModel" Width="1.875" PointX="31.125" PointY="7.125" IsExpanded="false" />
+        <InheritanceConnector EntityType="SynergyModel.LinePatternModel" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="SynergyModel.BridgePatternModel" />
+        <EntityTypeShape EntityType="SynergyModel.Formula" Width="1.5" PointX="20.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.QuestionnaireFormula" Width="2.5" PointX="18" PointY="14" IsExpanded="false" />
+        <EntityTypeShape EntityType="SynergyModel.QuestionnaireScore" Width="2.375" PointX="17.875" PointY="17" IsExpanded="false" />
+        <AssociationConnector Association="SynergyModel.FK_QuestionnaireFormulas_Formulas" />
+        <AssociationConnector Association="SynergyModel.FK_QuestionnaireScore_Formulas" />
+        <AssociationConnector Association="SynergyModel.FK_QuestionnaireScore_Patient_Questionnaires" />
+        <AssociationConnector Association="SynergyModel.FK_QuestionnaireFormulas_Qustionnaire" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepResult_WorkflowStepConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.TemplateEvent" Width="1.5" PointX="2.125" PointY="14" />
+        <EntityTypeShape EntityType="SynergyModel.ChartEvent" Width="1.5" PointX="1.875" PointY="10.375" IsExpanded="false" />
+        <InheritanceConnector EntityType="SynergyModel.ChartEvent" />
+        <EntityTypeShape EntityType="SynergyModel.ChartChannelEvent" Width="1.5" PointX="2.125" PointY="11.125" />
+        <InheritanceConnector EntityType="SynergyModel.ChartChannelEvent" ManuallyRouted="false" >
+        </InheritanceConnector>
+        <InheritanceConnector EntityType="SynergyModel.PhaseEvent" />
+        <InheritanceConnector EntityType="SynergyModel.PhaseEvent" />
+        <InheritanceConnector EntityType="SynergyModel.TemplateEvent" />
+        <InheritanceConnector EntityType="SynergyModel.TemplateEvent" />
+        <EntityTypeShape EntityType="SynergyModel.BaseDevice" Width="1.5" PointX="3.625" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SynergyModel.TcpDevice" Width="1.5" PointX="2.125" PointY="5.125" IsExpanded="false" />
+        <InheritanceConnector EntityType="SynergyModel.TcpDevice" />
+        <InheritanceConnector EntityType="SynergyModel.GeneratedReport" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReportComponents_WorkflowStepResults" />
+        <EntityTypeShape EntityType="SynergyModel.User" Width="1.5" PointX="14" PointY="1.875" IsExpanded="true" />
+        <AssociationConnector Association="SynergyModel.FK_Users_Doctors" />
+        <EntityTypeShape EntityType="SynergyModel.AppSecurity" Width="1.5" PointX="13.25" PointY="8.75" />
+        <EntityTypeShape EntityType="SynergyModel.Result" Width="1.5" PointX="8.625" PointY="18.625" />
+        <AssociationConnector Association="SynergyModel.FK_Results_To_Events" />
+        <EntityTypeShape EntityType="SynergyModel.PumpSpeedEvent" Width="1.5" PointX="3" PointY="17.125" />
+        <InheritanceConnector EntityType="SynergyModel.PumpSpeedEvent" />
+        <EntityTypeShape EntityType="SynergyModel.VcpDevice" Width="1.5" PointX="5.25" PointY="2.125" />
+        <InheritanceConnector EntityType="SynergyModel.VcpDevice" />
+        <EntityTypeShape EntityType="SynergyModel.UsedService" Width="1.5" PointX="34" PointY="0.75" />
+        <EntityTypeShape EntityType="SynergyModel.Permission" Width="1.5" PointX="9.5" PointY="24.625" />
+        <EntityTypeShape EntityType="SynergyModel.Role_Types" Width="1.5" PointX="9.5" PointY="22.25" />
+        <EntityTypeShape EntityType="SynergyModel.Role" Width="1.5" PointX="11.75" PointY="23.125" />
+        <AssociationConnector Association="SynergyModel.FK_Roles_Role_Type_ID" />
+        <AssociationConnector Association="SynergyModel.Role_Permission" />
+        <AssociationConnector Association="SynergyModel.User_Role" />
+        <EntityTypeShape EntityType="SynergyModel.PatientsGroup" Width="1.5" PointX="10.625" PointY="19.875" />
+        <EntityTypeShape EntityType="SynergyModel.ImageResult" Width="1.5" PointX="4.5" PointY="17.75" />
+        <AssociationConnector Association="SynergyModel.FK_ImageResults_To_Events" />
+        <EntityTypeShape EntityType="SynergyModel.Question_SubQuestionRowHeader" Width="1.5" PointX="14.125" PointY="21.75" />
+        <EntityTypeShape EntityType="SynergyModel.SubQuestionRowHeader" Width="1.5" PointX="11.875" PointY="26.25" />
+        <AssociationConnector Association="SynergyModel.FK_Answers_Question_SubQuestionRowHeader" />
+        <AssociationConnector Association="SynergyModel.FK_Question_SubQuestionRowHeader_SQuestion" />
+        <AssociationConnector Association="SynergyModel.FK_Question_SubQuestionRowHeader_SubQuestionRowHeader" />
+        <AssociationConnector Association="SynergyModel.FK_SubQuestionRowHeader_SQuestionnaire" />
+        <EntityTypeShape EntityType="SynergyModel.PullerDistanceEvent" Width="1.5" PointX="7.125" PointY="22.75" />
+        <InheritanceConnector EntityType="SynergyModel.PullerDistanceEvent" />
+        <EntityTypeShape EntityType="SynergyModel.Media" Width="1.5" PointX="3.375" PointY="23.5" />
+        <AssociationConnector Association="SynergyModel.FK_TestMedia" />
+        <EntityTypeShape EntityType="SynergyModel.Group" Width="1.5" PointX="0.75" PointY="13.5" />
+        <AssociationConnector Association="SynergyModel.FK_PatientsGroups_Groups" />
+        <AssociationConnector Association="SynergyModel.FK_Tests_Groups" />
+        <EntityTypeShape EntityType="SynergyModel.HardwareCompatibility" Width="1.5" PointX="15.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SynergyModel.AuditLog" Width="1.5" PointX="17.25" PointY="8.875" />
+        <EntityTypeShape EntityType="SynergyModel.StudyPrimaryReason" Width="1.5" PointX="12.25" PointY="0.75" />
+        <AssociationConnector Association="SynergyModel.FK__StudyPrim__Studi__5C37ACAD" />
+        <EntityTypeShape EntityType="SynergyModel.PrimaryReason" Width="1.5" PointX="15.375" PointY="6.875" />
+        <AssociationConnector Association="SynergyModel.FK__StudyPrim__Prima__062DE679" />
+        <EntityTypeShape EntityType="SynergyModel.ReportConfiguration" Width="1.5" PointX="19.625" PointY="6.75" />
+        <AssociationConnector Association="SynergyModel.FK_ReportModel_ReportConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.PrimaryReasonsPhasesConfiguration" Width="2.875" PointX="17.625" PointY="20.875" />
+        <AssociationConnector Association="SynergyModel.FK_PrimaryReasonsPhases_PrimaryReasonsID" />
+        <EntityTypeShape EntityType="SynergyModel.ConsumableCompatibility" Width="1.5" PointX="6.375" PointY="4.75" />
+        <EntityTypeShape EntityType="SynergyModel.ChannelMapping" Width="1.5" PointX="30.125" PointY="14" />
+        <EntityTypeShape EntityType="SynergyModel.ChannelModel" Width="2.375" PointX="26.25" PointY="12.875" />
+        <AssociationConnector Association="SynergyModel.FK_ChannelMapping_ChannelModel" />
+        <AssociationConnector Association="SynergyModel.FK_ChartChannelEvents_ChannelModel" />
+        <EntityTypeShape EntityType="SynergyModel.Eula" Width="1.5" PointX="16.375" PointY="0.75" />
+        <EntityTypeShape EntityType="SynergyModel.ButtonModel" Width="1.5" PointX="24.875" PointY="18.625" />
+        <AssociationConnector Association="SynergyModel.FK_ButtonModel_ControlPanelModel" />
+        <EntityTypeShape EntityType="SynergyModel.ControlModel" Width="1.5" PointX="27.125" PointY="19.5" />
+        <AssociationConnector Association="SynergyModel.FK_ControlModel_ButtonModel" />
+        <EntityTypeShape EntityType="SynergyModel.UDS_TestData" Width="1.5" PointX="8.625" PointY="27.25" />
+        <AssociationConnector Association="SynergyModel.FK__UDS_TestD__Test___090A5324" />
+        <EntityTypeShape EntityType="SynergyModel.ProtocolModel" Width="1.5" PointX="31.625" PointY="0.75" />
+        <AssociationConnector Association="SynergyModel.FK_ChannelModel_ProtocolModel" />
+        <AssociationConnector Association="SynergyModel.FK_ProtocolModel_RootPhase" />
+        <AssociationConnector Association="SynergyModel.FK_UsedServices_ProtocolModel" />
+        <InheritanceConnector EntityType="SynergyModel.ProtocolModel" />
+        <EntityTypeShape EntityType="SynergyModel.FrameDetail" Width="1.5" PointX="5.625" PointY="25.5" />
+        <AssociationConnector Association="SynergyModel.FK_MediaFrameDetails" />
+        <EntityTypeShape EntityType="SynergyModel.Consumable" Width="1.5" PointX="0.75" PointY="20" />
+        <AssociationConnector Association="SynergyModel.Tests_Consumables" />
+        <AssociationConnector Association="SynergyModel.FK_Results_Results" />
+        <EntityTypeShape EntityType="SynergyModel.PrimaryReasonsQuestionnairesConfiguration" Width="3.125" PointX="17.625" PointY="24.875" />
+        <AssociationConnector Association="SynergyModel.FK_PrimaryReasonsQuestionnaires_PrimaryReasonsID" />
+        <EntityTypeShape EntityType="SynergyModel.PumpSettingsModel" Width="1.5" PointX="36.25" PointY="0.875" />
+        <InheritanceConnector EntityType="SynergyModel.PumpSettingsModel" />
+        <EntityTypeShape EntityType="SynergyModel.QualityControlStep" Width="1.5" PointX="21.375" PointY="23.875" />
+        <EntityTypeShape EntityType="SynergyModel.QualityControlStepsWithPhase" Width="1.5" PointX="23.625" PointY="24" />
+        <AssociationConnector Association="SynergyModel.FK_Quality_Step" />
+        <AssociationConnector Association="SynergyModel.FK_Media_Events" />
+        <EntityTypeShape EntityType="SynergyModel.EventsHistory" Width="1.5" PointX="8.375" PointY="7.75" />
+        <AssociationConnector Association="SynergyModel.FK_EventHistory" />
+        <EntityTypeShape EntityType="SynergyModel.PhaseTextMarker" Width="1.5" PointX="19.375" PointY="9.75" />
+        <EntityTypeShape EntityType="SynergyModel.PumpSpeedChange" Width="1.5" PointX="27" PointY="23.875" />
+        <EntityTypeShape EntityType="SynergyModel.PumpSpeedLevel" Width="1.5" PointX="27.125" PointY="26.375" />
+        <AssociationConnector Association="SynergyModel.FK_PumpSpeedChange_ButtonModel" />
+        <AssociationConnector Association="SynergyModel.FK_PumpSpeedLevel_ButtonModel" />
+        <EntityTypeShape EntityType="SynergyModel.OffsetEvent" Width="1.5" PointX="8.625" PointY="30.25" />
+        <AssociationConnector Association="SynergyModel.FK_OffsetEvents_Tests1" />
+        <EntityTypeShape EntityType="SynergyModel.PvrInputEvent" Width="1.5" PointX="6.375" PointY="29" />
+        <InheritanceConnector EntityType="SynergyModel.PvrInputEvent" />
+        <InheritanceConnector EntityType="SynergyModel.PvrInputEvent" />
+        <EntityTypeShape EntityType="SynergyModel.LoginFailureInfo" Width="1.5" PointX="21.375" PointY="11.75" />
+        <EntityTypeShape EntityType="SynergyModel.ImageFrameResult" Width="1.5" PointX="14.875" PointY="24.875" />
+        <AssociationConnector Association="SynergyModel.FK_ImageFrameResults_To_FrameDetails" />
+        <AssociationConnector Association="SynergyModel.FK_ImageFrameResults_To_ImageResults" />
+        <EntityTypeShape EntityType="SynergyModel.ReferenceData" Width="1.5" PointX="3.375" PointY="20.75" />
+        <EntityTypeShape EntityType="SynergyModel.ResultNormalValue" Width="1.5" PointX="23.375" PointY="11.875" />
+        <EntityTypeShape EntityType="SynergyModel.QCScore" Width="1.5" PointX="29.625" PointY="17.875" />
+        <AssociationConnector Association="SynergyModel.FK__QCScores__PhaseM__7869D707" />
+        <EntityTypeShape EntityType="SynergyModel.License" Width="1.5" PointX="21.375" PointY="17.875" />
+        <AssociationConnector Association="SynergyModel.FK_License_Studies" />
+        <EntityTypeShape EntityType="SynergyModel.InfusionBagSpecificGravityChangeEvent" Width="1.5" PointX="6.375" PointY="31" />
+        <InheritanceConnector EntityType="SynergyModel.InfusionBagSpecificGravityChangeEvent" />
+        <EntityTypeShape EntityType="SynergyModel.SpecificGravity" Width="1.5" PointX="8.375" PointY="11.75" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseEvents_PhaseModel" />
+        </Diagram>
+      <Diagram DiagramId="d40fe3f2a55347309784d20df0c5b211" Name="Workflow" ZoomLevel="81" >
+        <EntityTypeShape EntityType="SynergyModel.WorkflowConfiguration" Width="2.125" PointX="10" PointY="3" />
+        <EntityTypeShape EntityType="SynergyModel.Study" Width="2.125" PointX="12.875" PointY="2.625" />
+        <AssociationConnector Association="SynergyModel.FK_Studies_WorkflowConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepConfiguration" Width="2.625" PointX="6.125" PointY="3" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepResult" Width="2.25" PointX="16" PointY="3.125" />
+        <AssociationConnector Association="SynergyModel.FK__WorkflowS__study__02E7657A" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepResult_WorkflowStepConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.ReviewModel" Width="2.375" PointX="3.75" PointY="6.125" />
+        <InheritanceConnector EntityType="SynergyModel.ReviewModel" />
+        <EntityTypeShape EntityType="SynergyModel.QuestionnaireModel" Width="2.875" PointX="0.5" PointY="6.125" />
+        <InheritanceConnector EntityType="SynergyModel.QuestionnaireModel" />
+        <EntityTypeShape EntityType="SynergyModel.ReportModel" Width="1.5" PointX="6.625" PointY="6.5" />
+        <InheritanceConnector EntityType="SynergyModel.ReportModel" />
+        <EntityTypeShape EntityType="SynergyModel.ProtocolModel" Width="2.25" PointX="9.5" PointY="5.625" />
+        <InheritanceConnector EntityType="SynergyModel.ProtocolModel" />
+        </Diagram>
+      <Diagram DiagramId="d0f839e545c44249a53b34e9264a18a0" Name="ProtocolModel" ZoomLevel="83" >
+        <EntityTypeShape EntityType="SynergyModel.ProtocolModel" Width="2.5" PointX="7.375" PointY="0.625" />
+        <EntityTypeShape EntityType="SynergyModel.ChannelModel" Width="2.625" PointX="11.5" PointY="2.875" />
+        <AssociationConnector Association="SynergyModel.FK_ChannelModel_ProtocolModel" />
+        <EntityTypeShape EntityType="SynergyModel.PhaseModel" Width="2.5" PointX="4.125" PointY="1.625" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseModel_ParentPhase" />
+        <AssociationConnector Association="SynergyModel.FK_ProtocolModel_RootPhase" />
+        <EntityTypeShape EntityType="SynergyModel.UsedService" Width="1.5" PointX="11.375" PointY="0.5" />
+        <AssociationConnector Association="SynergyModel.FK_UsedServices_ProtocolModel" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepConfiguration" Width="2.375" PointX="0.875" PointY="0.625" />
+        <InheritanceConnector EntityType="SynergyModel.ProtocolModel" />
+        <EntityTypeShape EntityType="SynergyModel.PumpSettingsModel" Width="2.25" PointX="15.375" PointY="2.875" />
+        <InheritanceConnector EntityType="SynergyModel.PumpSettingsModel" />
+      </Diagram>
+      <Diagram DiagramId="a58376f4087c492fb6a3091b5f73f4a0" Name="PhaseModel" ZoomLevel="95" >
+        <EntityTypeShape EntityType="SynergyModel.PhaseModel" Width="3.375" PointX="3.375" PointY="0.5" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseModel_ParentPhase" />
+        <EntityTypeShape EntityType="SynergyModel.ChallengeTemplateModel" Width="2.25" PointX="7.125" PointY="1.875" />
+        <AssociationConnector Association="SynergyModel.FK_ChallengeTemplateModel_PhaseModel" />
+        <EntityTypeShape EntityType="SynergyModel.StimulationSettingsModel" Width="2.25" PointX="9.625" PointY="2.875" />
+        <AssociationConnector Association="SynergyModel.FK_StimulationSettingsModel_PhaseModel" />
+        <EntityTypeShape EntityType="SynergyModel.ControlPanelModel" Width="2" PointX="9.625" PointY="0.5" />
+        <AssociationConnector Association="SynergyModel.FK_PhaseModel_ControlPanelModel1" />
+        <EntityTypeShape EntityType="SynergyModel.ProtocolModel" Width="2.25" PointX="0.5" PointY="0.5" />
+        <AssociationConnector Association="SynergyModel.FK_ProtocolModel_RootPhase" />
+        <EntityTypeShape EntityType="SynergyModel.QCScore" Width="2" PointX="7.5" PointY="6.125" />
+        <AssociationConnector Association="SynergyModel.FK__QCScores__PhaseM__7869D707" />
+        <EntityTypeShape EntityType="SynergyModel.ReviewModel" Width="1.75" PointX="12.375" PointY="1.75" />
+        <AssociationConnector Association="SynergyModel.FK_ReviewModel_ControlPanelModel1" />
+        <EntityTypeShape EntityType="SynergyModel.ButtonModel" Width="2.5" PointX="14.5" PointY="0.5" />
+        <AssociationConnector Association="SynergyModel.FK_ButtonModel_ControlPanelModel" />
+      </Diagram>
+      <Diagram DiagramId="4434b256019744bb8205a580e8a8c5dd" Name="Study" ZoomLevel="82" >
+        <EntityTypeShape EntityType="SynergyModel.Study" Width="2.125" PointX="3" PointY="0.5" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepResult" Width="2.375" PointX="8.5" PointY="0.625" />
+        <AssociationConnector Association="SynergyModel.FK__WorkflowS__study__02E7657A" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowConfiguration" Width="2.125" PointX="5.875" PointY="2.375" />
+        <AssociationConnector Association="SynergyModel.FK_Studies_WorkflowConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.StudyPrimaryReason" Width="1.875" PointX="4.375" PointY="5.125" />
+        <AssociationConnector Association="SynergyModel.FK__StudyPrim__Studi__5C37ACAD" />
+        <EntityTypeShape EntityType="SynergyModel.License" Width="1.5" PointX="2.125" PointY="4.75" />
+        <AssociationConnector Association="SynergyModel.FK_License_Studies" />
+        <EntityTypeShape EntityType="SynergyModel.WorkflowStepConfiguration" Width="2.5" PointX="7" PointY="4.875" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepConfiguration_WorkflowConfiguration" />
+        <AssociationConnector Association="SynergyModel.FK_WorkflowStepResult_WorkflowStepConfiguration" />
+        <EntityTypeShape EntityType="SynergyModel.GeneratedReportComponent" Width="2.125" PointX="10.875" PointY="6.875" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReportComponents_WorkflowStepResults" />
+        <EntityTypeShape EntityType="SynergyModel.Test" Width="2.375" PointX="14.375" PointY="0.5" />
+        <InheritanceConnector EntityType="SynergyModel.Test" />
+        <EntityTypeShape EntityType="SynergyModel.GeneratedReport" Width="2.25" PointX="11.125" PointY="2.5" />
+        <InheritanceConnector EntityType="SynergyModel.GeneratedReport" />
+        <AssociationConnector Association="SynergyModel.FK_GeneratedReportComponents_GeneratedReports" />
+        <EntityTypeShape EntityType="SynergyModel.Patient_Questionnaire" Width="2.5" PointX="7.125" PointY="8" />
+        <InheritanceConnector EntityType="SynergyModel.Patient_Questionnaire" />
+        <AssociationConnector Association="SynergyModel.FK_Patient_Questionnaires_Tests" />
+      </Diagram>
+      <Diagram DiagramId="2a9cd01900874387aea14040ad1b2487" Name="ImageResult" ZoomLevel="100" >
+        <EntityTypeShape EntityType="SynergyModel.ImageResult" Width="1.5" PointX="6.875" PointY="1.625" />
+        <EntityTypeShape EntityType="SynergyModel.Event" Width="1.5" PointX="3.25" PointY="1.75" />
+        <AssociationConnector Association="SynergyModel.FK_Events_Events" />
+        <AssociationConnector Association="SynergyModel.FK_ImageResults_To_Events" />
+        <EntityTypeShape EntityType="SynergyModel.ImageFrameResult" Width="2.125" PointX="10.25" PointY="1.75" />
+        <AssociationConnector Association="SynergyModel.FK_ImageFrameResults_To_ImageResults" />
+      </Diagram>
+      <Diagram DiagramId="26ca7a4bd35946a59bd8d55ac0e2e851" Name="QualityControl" >
+        <EntityTypeShape EntityType="SynergyModel.QualityControlStep" Width="2.75" PointX="9.25" PointY="1.125" />
+        <EntityTypeShape EntityType="SynergyModel.QualityControlStepsWithPhase" Width="2.375" PointX="5.375" PointY="1.125" />
+        <AssociationConnector Association="SynergyModel.FK_Quality_Step" />
+      </Diagram>
+      <Diagram DiagramId="175a57ab3567412c93ac653742b1a00d" Name="Device" >
+        <EntityTypeShape EntityType="SynergyModel.BaseDevice" Width="1.5" PointX="8.5" PointY="2.375" />
+        <EntityTypeShape EntityType="SynergyModel.TcpDevice" Width="1.5" PointX="5.25" PointY="5.125" />
+        <InheritanceConnector EntityType="SynergyModel.TcpDevice" />
+        <EntityTypeShape EntityType="SynergyModel.VcpDevice" Width="1.5" PointX="5.25" PointY="3.375" />
+        <InheritanceConnector EntityType="SynergyModel.VcpDevice" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

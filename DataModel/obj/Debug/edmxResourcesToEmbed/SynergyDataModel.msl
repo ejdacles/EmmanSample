@@ -1,0 +1,1229 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SynergyModelStoreContainer" CdmEntityContainer="DbEntities">
+    <EntitySetMapping Name="ApplicationSettings">
+      <EntityTypeMapping TypeName="SynergyModel.ApplicationSetting">
+        <MappingFragment StoreEntitySet="ApplicationSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Events">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.Event)">
+        <MappingFragment StoreEntitySet="Events">
+          <ScalarProperty Name="Origin" ColumnName="Origin" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Event_Type" ColumnName="Event_Type" />
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="ShowInSummary" ColumnName="ShowInSummary" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Tag" ColumnName="Tag" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="test_id" ColumnName="test_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ChartEvent)">
+        <MappingFragment StoreEntitySet="ChartEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="DisplayType" ColumnName="DisplayType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ChartChannelEvent)">
+        <MappingFragment StoreEntitySet="ChartChannelEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="ChannelDisplayType" ColumnName="ChannelDisplayType" />
+          <ScalarProperty Name="ChannelId" ColumnName="ChannelId" />
+          <ScalarProperty Name="ChannelIndex" ColumnName="ChannelIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.PhaseEvent)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="PhaseEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="Phase" ColumnName="Phase" />
+          <ScalarProperty Name="PhaseRepeatNumber" ColumnName="PhaseRepeatNumber" />
+          <ScalarProperty Name="PhaseProtocolIndex" ColumnName="PhaseProtocolIndex" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.TemplateEvent)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="TemplateEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="DataQuantityUnit" ColumnName="DataQuantityUnit" />
+          <ScalarProperty Name="DataQuantityType" ColumnName="DataQuantityType" />
+          <ScalarProperty Name="ScaleMin" ColumnName="ScaleMin" />
+          <ScalarProperty Name="ScaleMax" ColumnName="ScaleMax" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.PumpSpeedEvent)">
+        <MappingFragment StoreEntitySet="PumpSpeedEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="PumpSpeed" ColumnName="PumpSpeed" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.PullerDistanceEvent)">
+        <MappingFragment StoreEntitySet="PullerDistanceEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="Distance" ColumnName="Distance" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.PvrInputEvent)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="PvrInputEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="PvrValue" ColumnName="PvrValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.InfusionBagSpecificGravityChangeEvent)">
+        <MappingFragment StoreEntitySet="InfusionBagSpecificGravityChangeEvents">
+          <ScalarProperty Name="ID" ColumnName="Id" />
+          <ScalarProperty Name="SpecificGravityValue" ColumnName="SpecificGravityValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Studies">
+      <EntityTypeMapping TypeName="SynergyModel.Study">
+        <MappingFragment StoreEntitySet="Studies">
+          <ScalarProperty Name="IsDirty" ColumnName="IsDirty" />
+          <ScalarProperty Name="QualityControlStepTree" ColumnName="QualityControlStepTree" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="Mode" ColumnName="Mode" />
+          <ScalarProperty Name="StartTime" ColumnName="StartTime" />
+          <ScalarProperty Name="LicenseId" ColumnName="LicenseId" />
+          <ScalarProperty Name="WorkflowConfigurationId" ColumnName="WorkflowConfigurationId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="patient_id" ColumnName="patient_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserSettings">
+      <EntityTypeMapping TypeName="SynergyModel.UserSetting">
+        <MappingFragment StoreEntitySet="UserSettings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowStepResults">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.WorkflowStepResult)">
+        <MappingFragment StoreEntitySet="WorkflowStepResults">
+          <ScalarProperty Name="WorkflowStepConfigurationId" ColumnName="WorkflowStepConfigurationId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="study_id" ColumnName="study_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.Test)">
+        <MappingFragment StoreEntitySet="Tests">
+          <ScalarProperty Name="NewConsumableCount" ColumnName="NewConsumableCount" />
+          <ScalarProperty Name="IsConsumableBypassed" ColumnName="IsConsumableBypassed" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProtocolName" ColumnName="ProtocolName" />
+          <ScalarProperty Name="OriginalDirectoryToMoveFileTo" ColumnName="OriginalDirectoryToMoveFileTo" />
+          <ScalarProperty Name="VisitDataSubmittedToEMR" ColumnName="VisitDataSubmittedToEMR" />
+          <ScalarProperty Name="dta_file_ENCSyncError" ColumnName="dta_file_ENCSyncError" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="ScrollingRate" ColumnName="ScrollingRate" />
+          <ScalarProperty Name="dta_file_ENCDateTimeModified" ColumnName="dta_file_ENCDateTimeModified" />
+          <ScalarProperty Name="dta_file_ENCRevision" ColumnName="dta_file_ENCRevision" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="mod_by_id" ColumnName="mod_by_id" />
+          <ScalarProperty Name="mod_datetime" ColumnName="mod_datetime" />
+          <ScalarProperty Name="create_by_id" ColumnName="create_by_id" />
+          <ScalarProperty Name="create_datetime" ColumnName="create_datetime" />
+          <ScalarProperty Name="group_id" ColumnName="group_id" />
+          <ScalarProperty Name="other_doctor_name" ColumnName="other_doctor_name" />
+          <ScalarProperty Name="Reffering_Doctor_id" ColumnName="Reffering_Doctor_id" />
+          <ScalarProperty Name="Visit_Type" ColumnName="Visit_Type" />
+          <ScalarProperty Name="Ref_Test_Id" ColumnName="Ref_Test_Id" />
+          <ScalarProperty Name="Xml_Content_ENC" ColumnName="Xml_Content_ENC" />
+          <ScalarProperty Name="dta_file_ENC" ColumnName="dta_file_ENC" />
+          <ScalarProperty Name="Hl7Comments_ENC" ColumnName="Hl7Comments_ENC" />
+          <ScalarProperty Name="recommendations_ENC" ColumnName="recommendations_ENC" />
+          <ScalarProperty Name="comments2_ENC" ColumnName="comments2_ENC" />
+          <ScalarProperty Name="comments_ENC" ColumnName="comments_ENC" />
+          <ScalarProperty Name="diagnosis_ENC" ColumnName="diagnosis_ENC" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="SoftwareVersion" ColumnName="SoftwareVersion" />
+          <ScalarProperty Name="SoftwareType" ColumnName="SoftwareType" />
+          <ScalarProperty Name="XML_Content" ColumnName="XML_Content" />
+          <ScalarProperty Name="UDS_Test_Id" ColumnName="UDS_Test_Id" />
+          <ScalarProperty Name="reportSentStatus" ColumnName="reportSentStatus" />
+          <ScalarProperty Name="TestStatus" ColumnName="TestStatus" />
+          <ScalarProperty Name="Hl7EventType" ColumnName="Hl7EventType" />
+          <ScalarProperty Name="Hl7Comments" ColumnName="Hl7Comments" />
+          <ScalarProperty Name="Hl7AppointmentDatetime" ColumnName="Hl7AppointmentDatetime" />
+          <ScalarProperty Name="Hl7AppointmentId" ColumnName="Hl7AppointmentId" />
+          <ScalarProperty Name="emg_guard_reflex" ColumnName="emg_guard_reflex" />
+          <ScalarProperty Name="upp_measured" ColumnName="upp_measured" />
+          <ScalarProperty Name="emg_type" ColumnName="emg_type" />
+          <ScalarProperty Name="catheter_size" ColumnName="catheter_size" />
+          <ScalarProperty Name="cfg_file" ColumnName="cfg_file" />
+          <ScalarProperty Name="test_machine" ColumnName="test_machine" />
+          <ScalarProperty Name="sched_machine" ColumnName="sched_machine" />
+          <ScalarProperty Name="test_type" ColumnName="test_type" />
+          <ScalarProperty Name="clinic_name" ColumnName="clinic_name" />
+          <ScalarProperty Name="test_name" ColumnName="test_name" />
+          <ScalarProperty Name="test_time" ColumnName="test_time" />
+          <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.Patient_Questionnaire)">
+        <MappingFragment StoreEntitySet="Patient_Questionnaires">
+          <ScalarProperty Name="QuestionsPerPage" ColumnName="QuestionsPerPage" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="Questionnaire_ID" ColumnName="Questionnaire_ID" />
+          <ScalarProperty Name="Test_ID" ColumnName="Test_ID" />
+          <ScalarProperty Name="EmailSent" ColumnName="EmailSent" />
+          <ScalarProperty Name="EmailID" ColumnName="EmailID" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="DateAndTimeSubmitted" ColumnName="DateAndTimeSubmitted" />
+          <ScalarProperty Name="mod_datetime" ColumnName="mod_datetime" />
+          <ScalarProperty Name="mod_by_id" ColumnName="mod_by_id" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="MemberIDValidated" ColumnName="MemberIDValidated" />
+          <ScalarProperty Name="PercentComplete" ColumnName="PercentComplete" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.GeneratedReport)">
+        <MappingFragment StoreEntitySet="GeneratedReports">
+          <ScalarProperty Name="ExportedFormat" ColumnName="ExportedFormat" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Reports_ID" ColumnName="Reports_ID" />
+          <ScalarProperty Name="DateAndTime" ColumnName="DateAndTime" />
+          <ScalarProperty Name="Saved" ColumnName="Saved" />
+          <ScalarProperty Name="MRN" ColumnName="MRN" />
+          <ScalarProperty Name="LastViewed" ColumnName="LastViewed" />
+          <ScalarProperty Name="EMRSent" ColumnName="EMRSent" />
+          <ScalarProperty Name="MemberIDConfirmed" ColumnName="MemberIDConfirmed" />
+          <ScalarProperty Name="MemberIDSubmittedToEMR" ColumnName="MemberIDSubmittedToEMR" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question_Choice">
+      <EntityTypeMapping TypeName="SynergyModel.Question_Choice">
+        <MappingFragment StoreEntitySet="Question_Choice">
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="ChoiceType_ID" ColumnName="ChoiceType_ID" />
+          <ScalarProperty Name="ChoiceGroup_ID" ColumnName="ChoiceGroup_ID" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SQuestions">
+      <EntityTypeMapping TypeName="SynergyModel.SQuestion">
+        <MappingFragment StoreEntitySet="SQuestion">
+          <ScalarProperty Name="ForGender" ColumnName="ForGender" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SQuestionnaires">
+      <EntityTypeMapping TypeName="SynergyModel.SQuestionnaire">
+        <MappingFragment StoreEntitySet="SQuestionnaire">
+          <ScalarProperty Name="Format" ColumnName="Format" />
+          <ScalarProperty Name="ForGender" ColumnName="ForGender" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="QuestionnaireType" ColumnName="QuestionnaireType" />
+          <ScalarProperty Name="Filename" ColumnName="Filename" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Choices">
+      <EntityTypeMapping TypeName="SynergyModel.Choice">
+        <MappingFragment StoreEntitySet="Choice">
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="ChoiceDetails" ColumnName="ChoiceDetails" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="ChoiceIndex" ColumnName="ChoiceIndex" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="ChoiceGroup_ID" ColumnName="ChoiceGroup_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetPatientQuestionnaireScore" FunctionName="SynergyModel.Store.GetPatientQuestionnaireScore">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.GetPatientQuestionnaireScore_Result">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PatientQnrID" ColumnName="PatientQnrID" />
+          <ScalarProperty Name="FormulaID" ColumnName="FormulaID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="Questionnaire_Question">
+      <EntityTypeMapping TypeName="SynergyModel.Questionnaire_Question">
+        <MappingFragment StoreEntitySet="Questionnaire_Question">
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="AddToY" ColumnName="AddToY" />
+          <ScalarProperty Name="DependentOn" ColumnName="DependentOn" />
+          <ScalarProperty Name="AlwaysCopyAnswer" ColumnName="AlwaysCopyAnswer" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="DefaultValue" ColumnName="DefaultValue" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="QuestionIndex" ColumnName="QuestionIndex" />
+          <ScalarProperty Name="Columns" ColumnName="Columns" />
+          <ScalarProperty Name="PageIndex" ColumnName="PageIndex" />
+          <ScalarProperty Name="Length" ColumnName="Length" />
+          <ScalarProperty Name="Width" ColumnName="Width" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Question_ID" ColumnName="Question_ID" />
+          <ScalarProperty Name="Questionnaire_ID" ColumnName="Questionnaire_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChoiceGroups">
+      <EntityTypeMapping TypeName="SynergyModel.ChoiceGroup">
+        <MappingFragment StoreEntitySet="ChoiceGroup">
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="Editable" ColumnName="Editable" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answers">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.Answer)">
+        <MappingFragment StoreEntitySet="Answers">
+          <ScalarProperty Name="Question_SubQuestionRowHeader_ID" ColumnName="Question_SubQuestionRowHeader_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Patient_Questionnaires_ID" ColumnName="Patient_Questionnaires_ID" />
+          <ScalarProperty Name="Questionnaire_Question_ID" ColumnName="Questionnaire_Question_ID" />
+          <ScalarProperty Name="Choice_ID" ColumnName="Choice_ID" />
+          <ScalarProperty Name="TextAnswer" ColumnName="TextAnswer" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="DB_ID" ColumnName="DB_ID" />
+          <ScalarProperty Name="DB_CID" ColumnName="DB_CID" />
+          <ScalarProperty Name="Question_Choice_ID" ColumnName="Question_Choice_ID" />
+          <ScalarProperty Name="SenderDBID" ColumnName="SenderDBID" />
+          <ScalarProperty Name="Revision" ColumnName="Revision" />
+          <ScalarProperty Name="SyncError" ColumnName="SyncError" />
+          <ScalarProperty Name="ModifiedByUser" ColumnName="ModifiedByUser" />
+          <ScalarProperty Name="ModifiedDatetime" ColumnName="ModifiedDatetime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Reports">
+      <EntityTypeMapping TypeName="SynergyModel.Report">
+        <MappingFragment StoreEntitySet="Reports">
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="SoftwareMode" ColumnName="SoftwareMode" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GeneratedReportComponents">
+      <EntityTypeMapping TypeName="SynergyModel.GeneratedReportComponent">
+        <MappingFragment StoreEntitySet="GeneratedReportComponents">
+          <ScalarProperty Name="WorkflowStepResultId" ColumnName="WorkflowStepResultId" />
+          <ScalarProperty Name="Include" ColumnName="Include" />
+          <ScalarProperty Name="ReportComponents_ID" ColumnName="ReportComponents_ID" />
+          <ScalarProperty Name="GeneratedReports_ID" ColumnName="GeneratedReports_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportComponents">
+      <EntityTypeMapping TypeName="SynergyModel.ReportComponent">
+        <MappingFragment StoreEntitySet="ReportComponents">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Reports_ID" ColumnName="Reports_ID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChallengeTemplateModels">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ChallengeTemplateModel)">
+        <MappingFragment StoreEntitySet="ChallengeTemplateModel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ChannelNumberToDrawOn" ColumnName="ChannelNumberToDrawOn" />
+          <ScalarProperty Name="PhaseModel_Id" ColumnName="PhaseModel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.LinePatternModel)">
+        <MappingFragment StoreEntitySet="LinePatternModel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="SignalTarget" ColumnName="SignalTarget" />
+          <ScalarProperty Name="TargetArea" ColumnName="TargetArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.BridgePatternModel)">
+        <MappingFragment StoreEntitySet="BridgePatternModel">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RampPreDelaySeconds" ColumnName="RampPreDelaySeconds" />
+          <ScalarProperty Name="RampPostDelaySeconds" ColumnName="RampPostDelaySeconds" />
+          <ScalarProperty Name="DelayTargetPercentage" ColumnName="DelayTargetPercentage" />
+          <ScalarProperty Name="RampUpSeconds" ColumnName="RampUpSeconds" />
+          <ScalarProperty Name="RampDownSeconds" ColumnName="RampDownSeconds" />
+          <ScalarProperty Name="WorkTargetSeconds" ColumnName="WorkTargetSeconds" />
+          <ScalarProperty Name="WorkTargetPercentage" ColumnName="WorkTargetPercentage" />
+          <ScalarProperty Name="TargetArea" ColumnName="TargetArea" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ControlPanelModels">
+      <EntityTypeMapping TypeName="SynergyModel.ControlPanelModel">
+        <MappingFragment StoreEntitySet="ControlPanelModel">
+          <ScalarProperty Name="ColumnCount" ColumnName="ColumnCount" />
+          <ScalarProperty Name="RowCount" ColumnName="RowCount" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhaseModels">
+      <EntityTypeMapping TypeName="SynergyModel.PhaseModel">
+        <MappingFragment StoreEntitySet="PhaseModel">
+          <ScalarProperty Name="SpecificGravity" ColumnName="SpecificGravity" />
+          <ScalarProperty Name="AutoStartPhase" ColumnName="AutoStartPhase" />
+          <ScalarProperty Name="QCMaximumScore" ColumnName="QCMaximumScore" />
+          <ScalarProperty Name="QCTotalScore" ColumnName="QCTotalScore" />
+          <ScalarProperty Name="EnableAutomaticPostVoidedResidual" ColumnName="EnableAutomaticPostVoidedResidual" />
+          <ScalarProperty Name="AutoFlowDetection" ColumnName="AutoFlowDetection" />
+          <ScalarProperty Name="EnablePvrDialog" ColumnName="EnablePvrDialog" />
+          <ScalarProperty Name="AutoBristolArtifactDetection" ColumnName="AutoBristolArtifactDetection" />
+          <ScalarProperty Name="AdditionalStatusBarItems" ColumnName="AdditionalStatusBarItems" />
+          <ScalarProperty Name="AutoTransmissionDetection" ColumnName="AutoTransmissionDetection" />
+          <ScalarProperty Name="AutoProfileDetection" ColumnName="AutoProfileDetection" />
+          <ScalarProperty Name="AutoCoughArtifactDetection" ColumnName="AutoCoughArtifactDetection" />
+          <ScalarProperty Name="PullerSpeed" ColumnName="PullerSpeed" />
+          <ScalarProperty Name="PumpSpeed" ColumnName="PumpSpeed" />
+          <ScalarProperty Name="ChannelValuesShownSeparatelyInternal" ColumnName="ChannelValuesShownSeparately" />
+          <ScalarProperty Name="PhaseType" ColumnName="PhaseType" />
+          <ScalarProperty Name="AfterFlowTimeInternal" ColumnName="AfterFlowTimeInternal" />
+          <ScalarProperty Name="EventScopeInternal" ColumnName="EventScope" />
+          <ScalarProperty Name="ControlPanelId" ColumnName="ControlPanelId" />
+          <ScalarProperty Name="ParentPhaseId" ColumnName="ParentPhaseId" />
+          <ScalarProperty Name="PhaseOrder" ColumnName="PhaseOrder" />
+          <ScalarProperty Name="VisibleChannelsInternal" ColumnName="VisibleChannels" />
+          <ScalarProperty Name="TimerVisible" ColumnName="TimerVisible" />
+          <ScalarProperty Name="RepeatCountInternal" ColumnName="RepeatCount" />
+          <ScalarProperty Name="AcquireDataInternal" ColumnName="AcquireData" />
+          <ScalarProperty Name="DurationSecondsInternal" ColumnName="DurationSeconds" />
+          <ScalarProperty Name="IconType" ColumnName="IconType" />
+          <ScalarProperty Name="CountdownTimerSecondsInternal" ColumnName="CountdownTimerSeconds" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StimulationSettingsModels">
+      <EntityTypeMapping TypeName="SynergyModel.StimulationSettingsModel">
+        <MappingFragment StoreEntitySet="StimulationSettingsModel">
+          <ScalarProperty Name="PhaseModel_Id" ColumnName="PhaseModel_Id" />
+          <ScalarProperty Name="ChannelNumberToDrawOn" ColumnName="ChannelNumberToDrawOn" />
+          <ScalarProperty Name="MaxCurrent" ColumnName="MaxCurrent" />
+          <ScalarProperty Name="BandValue" ColumnName="BandValue" />
+          <ScalarProperty Name="FrequencyValue" ColumnName="FrequencyValue" />
+          <ScalarProperty Name="RampDownTimer" ColumnName="RampDownTimer" />
+          <ScalarProperty Name="StimulationTimer" ColumnName="StimulationTimer" />
+          <ScalarProperty Name="RampUpTimer" ColumnName="RampUpTimer" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowConfigurations">
+      <EntityTypeMapping TypeName="SynergyModel.WorkflowConfiguration">
+        <MappingFragment StoreEntitySet="WorkflowConfiguration">
+          <ScalarProperty Name="IsClinical" ColumnName="IsClinical" />
+          <ScalarProperty Name="IsPredefined" ColumnName="IsPredefined" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="WorkflowStepConfigurations">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.WorkflowStepConfiguration)">
+        <MappingFragment StoreEntitySet="WorkflowStepConfiguration">
+          <ScalarProperty Name="WorkflowStepOrder" ColumnName="WorkflowStepOrder" />
+          <ScalarProperty Name="CompletionStatus" ColumnName="CompletionStatus" />
+          <ScalarProperty Name="ExecuteOnlyFromAnotherStep" ColumnName="ExecuteOnlyFromAnotherStep" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="WorkflowConfig_Id" ColumnName="WorkflowConfig_Id" />
+          <ScalarProperty Name="WorkflowStepType" ColumnName="WorkflowStepType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ReviewModel)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="ReviewModel">
+          <ScalarProperty Name="AutoExecute" ColumnName="AutoExecute" />
+          <ScalarProperty Name="ControlPanelId" ColumnName="ControlPanelId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.QuestionnaireModel)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="QuestionnaireModel">
+          <ScalarProperty Name="SkipIfFilledPartially" ColumnName="SkipIfFilledPartially" />
+          <ScalarProperty Name="SkipIfFilledCompletly" ColumnName="SkipIfFilledCompletly" />
+          <ScalarProperty Name="AutoExecute" ColumnName="AutoExecute" />
+          <ScalarProperty Name="FilledInStatus" ColumnName="FilledInStatus" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="QuestionnaireId" ColumnName="QuestionnaireId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ReportModel)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="ReportModel">
+          <ScalarProperty Name="IsPrintToPrinter" ColumnName="IsPrintToPrinter" />
+          <ScalarProperty Name="IsPrintToPdf" ColumnName="IsPrintToPdf" />
+          <ScalarProperty Name="IsSilentPrint" ColumnName="IsSilentPrint" />
+          <ScalarProperty Name="ReportTemplateName" ColumnName="ReportTemplateName" />
+          <ScalarProperty Name="ReportConfiguration_Id" ColumnName="ReportConfiguration_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.ProtocolModel)">
+        <MappingFragment StoreEntitySet="ProtocolModel">
+          <ScalarProperty Name="SpecificGravity" ColumnName="SpecificGravity" />
+          <ScalarProperty Name="UseQCProgressBar" ColumnName="UseQCProgressBar" />
+          <ScalarProperty Name="ClipEMG" ColumnName="ClipEMG" />
+          <ScalarProperty Name="EmgFilterRate" ColumnName="EmgFilterRate" />
+          <ScalarProperty Name="Monochrome" ColumnName="Monochrome" />
+          <ScalarProperty Name="ChannelPanelRightAligned" ColumnName="ChannelPanelRightAligned" />
+          <ScalarProperty Name="EnableGridLines" ColumnName="EnableGridLines" />
+          <ScalarProperty Name="DisplayFullEMG" ColumnName="DisplayFullEMG" />
+          <ScalarProperty Name="FlowDelay" ColumnName="FlowDelay" />
+          <ScalarProperty Name="Style" ColumnName="Style" />
+          <ScalarProperty Name="WorkflowStepConfig_Id" ColumnName="WorkflowStepConfig_Id" />
+          <ScalarProperty Name="SampleRate" ColumnName="SampleRate" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RootPhaseId" ColumnName="RootPhaseId" />
+          <ScalarProperty Name="EnableVideo" ColumnName="EnableVideo" />
+          <ScalarProperty Name="VideoFrameRate" ColumnName="VideoFrameRate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Formulas">
+      <EntityTypeMapping TypeName="SynergyModel.Formula">
+        <MappingFragment StoreEntitySet="Formulas">
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionnaireFormulas">
+      <EntityTypeMapping TypeName="SynergyModel.QuestionnaireFormula">
+        <MappingFragment StoreEntitySet="QuestionnaireFormulas">
+          <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+          <ScalarProperty Name="FormulaID" ColumnName="FormulaID" />
+          <ScalarProperty Name="QuestionnaireID" ColumnName="QuestionnaireID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QuestionnaireScores">
+      <EntityTypeMapping TypeName="SynergyModel.QuestionnaireScore">
+        <MappingFragment StoreEntitySet="QuestionnaireScore">
+          <ScalarProperty Name="Score" ColumnName="Score" />
+          <ScalarProperty Name="FormulaID" ColumnName="FormulaID" />
+          <ScalarProperty Name="PatientQnrID" ColumnName="PatientQnrID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BaseDevices">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.BaseDevice)">
+        <MappingFragment StoreEntitySet="BaseDevices">
+          <ScalarProperty Name="UsbSerialNumber" ColumnName="UsbSerialNumber" />
+          <ScalarProperty Name="BtMacAddress" ColumnName="BtMacAddress" />
+          <ScalarProperty Name="DataFilePath" ColumnName="DataFilePath" />
+          <ScalarProperty Name="ConnectionStatus" ColumnName="ConnectionStatus" />
+          <ScalarProperty Name="BatteryLevel" ColumnName="BatteryLevel" />
+          <ScalarProperty Name="FirmwareVersion" ColumnName="FirmwareVersion" />
+          <ScalarProperty Name="IsRegistered" ColumnName="IsRegistered" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ConnectionType" ColumnName="ConnectionType" />
+          <ScalarProperty Name="Alias" ColumnName="Alias" />
+          <ScalarProperty Name="SerialNumber" ColumnName="SerialNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.TcpDevice)">
+        <MappingFragment StoreEntitySet="TcpDevices">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.VcpDevice)">
+        <MappingFragment StoreEntitySet="VcpDevices">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="COMPortNumber" ColumnName="COMPortNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="SynergyModel.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="UserGrid" ColumnName="UserGrid" />
+          <ScalarProperty Name="Privilege" ColumnName="Privilege" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AppSecurities">
+      <EntityTypeMapping TypeName="SynergyModel.AppSecurity">
+        <MappingFragment StoreEntitySet="AppSecurity">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Results">
+      <EntityTypeMapping TypeName="SynergyModel.Result">
+        <MappingFragment StoreEntitySet="Results">
+          <ScalarProperty Name="Parent_Id" ColumnName="Parent_Id" />
+          <ScalarProperty Name="Channel" ColumnName="Channel" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+          <ScalarProperty Name="Event_Id" ColumnName="Event_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UsedServices">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.UsedService)">
+        <MappingFragment StoreEntitySet="UsedServices">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ServiceType" ColumnName="ServiceType" />
+          <ScalarProperty Name="ProtocolModel_Id" ColumnName="ProtocolModel_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.PumpSettingsModel)">
+        <MappingFragment StoreEntitySet="PumpService">
+          <ScalarProperty Name="Id" ColumnName="ID" />
+          <ScalarProperty Name="PressureLimit" ColumnName="PressureLimit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Permissions">
+      <EntityTypeMapping TypeName="SynergyModel.Permission">
+        <MappingFragment StoreEntitySet="Permissions">
+          <ScalarProperty Name="Permission_Name" ColumnName="Permission_Name" />
+          <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role_Types">
+      <EntityTypeMapping TypeName="SynergyModel.Role_Types">
+        <MappingFragment StoreEntitySet="Role_Types">
+          <ScalarProperty Name="Role_Type_Name" ColumnName="Role_Type_Name" />
+          <ScalarProperty Name="Role_Type_ID" ColumnName="Role_Type_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="SynergyModel.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+          <ScalarProperty Name="Role_Type_ID" ColumnName="Role_Type_ID" />
+          <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+          <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Role_Permission" TypeName="SynergyModel.Role_Permission" StoreEntitySet="Role_Permission">
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+      </EndProperty>
+      <EndProperty Name="Permission">
+        <ScalarProperty Name="Permission_ID" ColumnName="Permission_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="User_Role" TypeName="SynergyModel.User_Role" StoreEntitySet="User_Role">
+      <EndProperty Name="User">
+        <ScalarProperty Name="ID" ColumnName="User_ID" />
+      </EndProperty>
+      <EndProperty Name="Role">
+        <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="PatientsGroups">
+      <EntityTypeMapping TypeName="SynergyModel.PatientsGroup">
+        <MappingFragment StoreEntitySet="PatientsGroups">
+          <ScalarProperty Name="Patient_ID" ColumnName="Patient_ID" />
+          <ScalarProperty Name="Group_ID" ColumnName="Group_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageResults">
+      <EntityTypeMapping TypeName="SynergyModel.ImageResult">
+        <MappingFragment StoreEntitySet="ImageResults">
+          <ScalarProperty Name="ImageTimestamp" ColumnName="ImageTimestamp" />
+          <ScalarProperty Name="ImageSubType" ColumnName="ImageSubType" />
+          <ScalarProperty Name="ImageType" ColumnName="ImageType" />
+          <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
+          <ScalarProperty Name="Event_Id" ColumnName="Event_Id" />
+          <ScalarProperty Name="UI" ColumnName="UI" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question_SubQuestionRowHeader">
+      <EntityTypeMapping TypeName="SynergyModel.Question_SubQuestionRowHeader">
+        <MappingFragment StoreEntitySet="Question_SubQuestionRowHeader">
+          <ScalarProperty Name="SubQuestionRowHeaderID" ColumnName="SubQuestionRowHeaderID" />
+          <ScalarProperty Name="QuestionID" ColumnName="QuestionID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubQuestionRowHeaders">
+      <EntityTypeMapping TypeName="SynergyModel.SubQuestionRowHeader">
+        <MappingFragment StoreEntitySet="SubQuestionRowHeader">
+          <ScalarProperty Name="DisplayIndex" ColumnName="DisplayIndex" />
+          <ScalarProperty Name="QuestionnaireID" ColumnName="QuestionnaireID" />
+          <ScalarProperty Name="DisplayText" ColumnName="DisplayText" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Media">
+      <EntityTypeMapping TypeName="SynergyModel.Media">
+        <MappingFragment StoreEntitySet="Media">
+          <ScalarProperty Name="Event_Id" ColumnName="Event_Id" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="TestID" ColumnName="TestID" />
+          <ScalarProperty Name="ResourceFolder" ColumnName="ResourceFolder" />
+          <ScalarProperty Name="ResourceExtension" ColumnName="ResourceExtension" />
+          <ScalarProperty Name="ResourceGUID" ColumnName="ResourceGUID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Groups">
+      <EntityTypeMapping TypeName="SynergyModel.Group">
+        <MappingFragment StoreEntitySet="Groups">
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="Hospital_id" ColumnName="Hospital_id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="HardwareCompatibilities">
+      <EntityTypeMapping TypeName="SynergyModel.HardwareCompatibility">
+        <MappingFragment StoreEntitySet="HardwareCompatibility">
+          <ScalarProperty Name="JSON" ColumnName="JSON" />
+          <ScalarProperty Name="FileSignature" ColumnName="FileSignature" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditLog">
+      <EntityTypeMapping TypeName="SynergyModel.AuditLog">
+        <MappingFragment StoreEntitySet="AuditLog">
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateDoctor" FunctionName="SynergyModel.Store.CreateDoctor" />
+    <FunctionImportMapping FunctionImportName="CreateInvestigator" FunctionName="SynergyModel.Store.CreateInvestigator" />
+    <FunctionImportMapping FunctionImportName="CreateReferral" FunctionName="SynergyModel.Store.CreateReferral" />
+    <FunctionImportMapping FunctionImportName="ReadDoctors" FunctionName="SynergyModel.Store.ReadDoctors">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.ReadDoctors_Result">
+          <ScalarProperty Name="doctor_id" ColumnName="doctor_id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReadInvestigators" FunctionName="SynergyModel.Store.ReadInvestigators">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.ReadInvestigators_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ReadReferrals" FunctionName="SynergyModel.Store.ReadReferrals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.ReadReferrals_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Visible" ColumnName="Visible" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateDoctor" FunctionName="SynergyModel.Store.UpdateDoctor" />
+    <FunctionImportMapping FunctionImportName="UpdateInvestigator" FunctionName="SynergyModel.Store.UpdateInvestigator" />
+    <FunctionImportMapping FunctionImportName="UpdateReferral" FunctionName="SynergyModel.Store.UpdateReferral" />
+    <EntitySetMapping Name="StudyPrimaryReasons">
+      <EntityTypeMapping TypeName="SynergyModel.StudyPrimaryReason">
+        <MappingFragment StoreEntitySet="StudyPrimaryReasons">
+          <ScalarProperty Name="PrimaryReasonsID" ColumnName="PrimaryReasonsID" />
+          <ScalarProperty Name="StudiesID" ColumnName="StudiesID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrimaryReasons">
+      <EntityTypeMapping TypeName="SynergyModel.PrimaryReason">
+        <MappingFragment StoreEntitySet="PrimaryReasons">
+          <ScalarProperty Name="GroupingID" ColumnName="GroupingID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReportConfigurations">
+      <EntityTypeMapping TypeName="SynergyModel.ReportConfiguration">
+        <MappingFragment StoreEntitySet="ReportConfiguration">
+          <ScalarProperty Name="Settings" ColumnName="Settings" />
+          <ScalarProperty Name="Default" ColumnName="Default" />
+          <ScalarProperty Name="InvestigationType" ColumnName="InvestigationType" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PrimaryReasonsPhasesConfigurations">
+      <EntityTypeMapping TypeName="SynergyModel.PrimaryReasonsPhasesConfiguration">
+        <MappingFragment StoreEntitySet="PrimaryReasonsPhasesConfiguration">
+          <ScalarProperty Name="PhasessID" ColumnName="PhasessID" />
+          <ScalarProperty Name="PrimaryReasonsID" ColumnName="PrimaryReasonsID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConsumableCompatibilities">
+      <EntityTypeMapping TypeName="SynergyModel.ConsumableCompatibility">
+        <MappingFragment StoreEntitySet="ConsumableCompatibility">
+          <ScalarProperty Name="JSON" ColumnName="JSON" />
+          <ScalarProperty Name="FileSignature" ColumnName="FileSignature" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChannelMappings">
+      <EntityTypeMapping TypeName="SynergyModel.ChannelMapping">
+        <MappingFragment StoreEntitySet="ChannelMapping">
+          <ScalarProperty Name="ChannelModelId" ColumnName="ChannelModelId" />
+          <ScalarProperty Name="HardwareServiceId" ColumnName="HardwareServiceId" />
+          <ScalarProperty Name="HardwareChannelId" ColumnName="HardwareChannelId" />
+          <ScalarProperty Name="HardwareDeviceId" ColumnName="HardwareDeviceId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChannelModels">
+      <EntityTypeMapping TypeName="SynergyModel.ChannelModel">
+        <MappingFragment StoreEntitySet="ChannelModel">
+          <ScalarProperty Name="ChartDownSampler" ColumnName="ChartDownSampler" />
+          <ScalarProperty Name="ChannelPosition" ColumnName="ChannelPosition" />
+          <ScalarProperty Name="ChannelCalculationType" ColumnName="ChannelCalculationType" />
+          <ScalarProperty Name="CalculationString" ColumnName="CalculationString" />
+          <ScalarProperty Name="MasterZeroChannelIndex" ColumnName="MasterZeroChannelIndex" />
+          <ScalarProperty Name="DependentChannelIndexesString" ColumnName="DependentChannelIndexesString" />
+          <ScalarProperty Name="ChannelType" ColumnName="ChannelType" />
+          <ScalarProperty Name="ChannelIndex" ColumnName="ChannelIndex" />
+          <ScalarProperty Name="LineColorInternal" ColumnName="LineColor" />
+          <ScalarProperty Name="ScaleMax" ColumnName="ScaleMax" />
+          <ScalarProperty Name="ScaleMin" ColumnName="ScaleMin" />
+          <ScalarProperty Name="DataQuantityType" ColumnName="DataQuantityType" />
+          <ScalarProperty Name="DataQuantityUnit" ColumnName="DataQuantityUnit" />
+          <ScalarProperty Name="ProtocolModel_Id" ColumnName="ProtocolModel_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Eulas">
+      <EntityTypeMapping TypeName="IsTypeOf(SynergyModel.Eula)">
+        <MappingFragment StoreEntitySet="Eula">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ActionDateTime" ColumnName="ActionDateTime" />
+          <ScalarProperty Name="NumberOfSkipped" ColumnName="NumberOfSkipped" />
+          <ScalarProperty Name="EulaState" ColumnName="EulaState" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ButtonModels">
+      <EntityTypeMapping TypeName="SynergyModel.ButtonModel">
+        <MappingFragment StoreEntitySet="ButtonModel">
+          <ScalarProperty Name="EditableButtonModelProperties" ColumnName="EditableButtonModelProperties" />
+          <ScalarProperty Name="BaseControlPreset" ColumnName="BaseControlPreset" />
+          <ScalarProperty Name="AutoGoToNext" ColumnName="AutoGoToNext" />
+          <ScalarProperty Name="AllowDropDown" ColumnName="AllowDropDown" />
+          <ScalarProperty Name="AllowRepeat" ColumnName="AllowRepeat" />
+          <ScalarProperty Name="Y" ColumnName="Y" />
+          <ScalarProperty Name="X" ColumnName="X" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="ActionRepeatCount" ColumnName="ActionRepeatCount" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="ActionIdentifier" ColumnName="ActionIdentifier" />
+          <ScalarProperty Name="ControlPanelModel_Id" ColumnName="ControlPanelModel_Id" />
+          <ScalarProperty Name="ControlType" ColumnName="ControlType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FunctionKey" ColumnName="FunctionKey" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ControlModels">
+      <EntityTypeMapping TypeName="SynergyModel.ControlModel">
+        <MappingFragment StoreEntitySet="ControlModel">
+          <ScalarProperty Name="BackGroundColor" ColumnName="BackGroundColor" />
+          <ScalarProperty Name="ControlModelIndex" ColumnName="ControlModelIndex" />
+          <ScalarProperty Name="ButtonModel_Id" ColumnName="ButtonModel_Id" />
+          <ScalarProperty Name="Label" ColumnName="Label" />
+          <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+          <ScalarProperty Name="ActionIdentifier" ColumnName="ActionIdentifier" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ReadPatients" FunctionName="SynergyModel.Store.ReadPatients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.ReadPatients_Result">
+          <ScalarProperty Name="DbId" ColumnName="DbId" />
+          <ScalarProperty Name="Uuid" ColumnName="Uuid" />
+          <ScalarProperty Name="VisibilityStatus" ColumnName="VisibilityStatus" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="GenderId" ColumnName="GenderId" />
+          <ScalarProperty Name="Height" ColumnName="Height" />
+          <ScalarProperty Name="Weight" ColumnName="Weight" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Allergy" ColumnName="Allergy" />
+          <ScalarProperty Name="PersonalNumber" ColumnName="PersonalNumber" />
+          <ScalarProperty Name="SecurityCode" ColumnName="SecurityCode" />
+          <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="SuiteNumber" ColumnName="SuiteNumber" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="State" ColumnName="State" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="PoBoxNumber" ColumnName="PoBoxNumber" />
+          <ScalarProperty Name="ContactID" ColumnName="ContactID" />
+          <ScalarProperty Name="PhoneHome" ColumnName="PhoneHome" />
+          <ScalarProperty Name="PhoneMobile" ColumnName="PhoneMobile" />
+          <ScalarProperty Name="CreateDateTime" ColumnName="CreateDateTime" />
+          <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+          <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
+          <ScalarProperty Name="InvestigatorId" ColumnName="InvestigatorId" />
+          <ScalarProperty Name="ReferringDoctorId" ColumnName="ReferringDoctorId" />
+          <ScalarProperty Name="InsuranceCompany" ColumnName="InsuranceCompany" />
+          <ScalarProperty Name="InsurancePolicyNo" ColumnName="InsurancePolicyNo" />
+          <ScalarProperty Name="InsuranceID" ColumnName="InsuranceID" />
+          <ScalarProperty Name="History" ColumnName="History" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdatePatient" FunctionName="SynergyModel.Store.UpdatePatient" />
+    <FunctionImportMapping FunctionImportName="CreatePatient" FunctionName="SynergyModel.Store.CreatePatient" />
+    <EntitySetMapping Name="UDS_TestData">
+      <EntityTypeMapping TypeName="SynergyModel.UDS_TestData">
+        <MappingFragment StoreEntitySet="UDS_TestData">
+          <ScalarProperty Name="ChannelDataType" ColumnName="ChannelDataType" />
+          <ScalarProperty Name="ResourceGUID" ColumnName="ResourceGUID" />
+          <ScalarProperty Name="DataRate" ColumnName="DataRate" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="Test_Id" ColumnName="Test_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FrameDetails">
+      <EntityTypeMapping TypeName="SynergyModel.FrameDetail">
+        <MappingFragment StoreEntitySet="FrameDetails">
+          <ScalarProperty Name="SampleTime" ColumnName="SampleTime" />
+          <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="GUID" ColumnName="GUID" />
+          <ScalarProperty Name="MediaID" ColumnName="MediaID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consumables">
+      <EntityTypeMapping TypeName="SynergyModel.Consumable">
+        <MappingFragment StoreEntitySet="Consumables">
+          <ScalarProperty Name="TagId" ColumnName="TagId" />
+          <ScalarProperty Name="EncryptedBytes" ColumnName="EncryptedBytes" />
+          <ScalarProperty Name="PatientId" ColumnName="PatientId" />
+          <ScalarProperty Name="UsedDate" ColumnName="UsedDate" />
+          <ScalarProperty Name="QualifyLevelType" ColumnName="QualifyLevelType" />
+          <ScalarProperty Name="QualifyLevel" ColumnName="QualifyLevel" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="ScanDate" ColumnName="ScanDate" />
+          <ScalarProperty Name="Serial" ColumnName="Serial" />
+          <ScalarProperty Name="Lot" ColumnName="Lot" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="ProductionDate" ColumnName="ProductionDate" />
+          <ScalarProperty Name="Gtin" ColumnName="Gtin" />
+          <ScalarProperty Name="BarcodeID" ColumnName="BarcodeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="Tests_Consumables" TypeName="SynergyModel.Tests_Consumables" StoreEntitySet="Tests_Consumables">
+      <EndProperty Name="Test">
+        <ScalarProperty Name="ID" ColumnName="Test_Id" />
+      </EndProperty>
+      <EndProperty Name="Consumable">
+        <ScalarProperty Name="BarcodeID" ColumnName="BarcodeId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="PrimaryReasonsQuestionnairesConfigurations">
+      <EntityTypeMapping TypeName="SynergyModel.PrimaryReasonsQuestionnairesConfiguration">
+        <MappingFragment StoreEntitySet="PrimaryReasonsQuestionnairesConfiguration">
+          <ScalarProperty Name="QuestionnaireID" ColumnName="QuestionnaireID" />
+          <ScalarProperty Name="PrimaryReasonsID" ColumnName="PrimaryReasonsID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QualityControlSteps">
+      <EntityTypeMapping TypeName="SynergyModel.QualityControlStep">
+        <MappingFragment StoreEntitySet="QualityControlSteps">
+          <ScalarProperty Name="StepName" ColumnName="StepName" />
+          <ScalarProperty Name="StepType" ColumnName="StepType" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QualityControlStepsWithPhases">
+      <EntityTypeMapping TypeName="SynergyModel.QualityControlStepsWithPhase">
+        <MappingFragment StoreEntitySet="QualityControlStepsWithPhase">
+          <ScalarProperty Name="QualityControlStepID" ColumnName="QualityControlStepID" />
+          <ScalarProperty Name="PhaseID" ColumnName="PhaseID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EventsHistories">
+      <EntityTypeMapping TypeName="SynergyModel.EventsHistory">
+        <MappingFragment StoreEntitySet="EventsHistory">
+          <ScalarProperty Name="DateTimeChanged" ColumnName="DateTimeChanged" />
+          <ScalarProperty Name="ChangedBy" ColumnName="ChangedBy" />
+          <ScalarProperty Name="EndTime" ColumnName="EndTime" />
+          <ScalarProperty Name="BeginTime" ColumnName="BeginTime" />
+          <ScalarProperty Name="EventID" ColumnName="EventID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PhaseTextMarkers">
+      <EntityTypeMapping TypeName="SynergyModel.PhaseTextMarker">
+        <MappingFragment StoreEntitySet="PhaseTextMarker">
+          <ScalarProperty Name="TextMarker" ColumnName="TextMarker" />
+          <ScalarProperty Name="PhaseType" ColumnName="PhaseType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PumpSpeedChanges">
+      <EntityTypeMapping TypeName="SynergyModel.PumpSpeedChange">
+        <MappingFragment StoreEntitySet="PumpSpeedChange">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ButtonModel_Id" ColumnName="ButtonModel_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PumpSpeedLevels">
+      <EntityTypeMapping TypeName="SynergyModel.PumpSpeedLevel">
+        <MappingFragment StoreEntitySet="PumpSpeedLevel">
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="ButtonModel_Id" ColumnName="ButtonModel_Id" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OffsetEvents">
+      <EntityTypeMapping TypeName="SynergyModel.OffsetEvent">
+        <MappingFragment StoreEntitySet="OffsetEvents">
+          <ScalarProperty Name="EqualChannelID" ColumnName="EqualChannelID" />
+          <ScalarProperty Name="ChannelID" ColumnName="ChannelID" />
+          <ScalarProperty Name="Offset" ColumnName="Offset" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Test_id" ColumnName="Test_id" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LoginFailureInfoes">
+      <EntityTypeMapping TypeName="SynergyModel.LoginFailureInfo">
+        <MappingFragment StoreEntitySet="LoginFailureInfo">
+          <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+          <ScalarProperty Name="TimeOfLastAttempt" ColumnName="TimeOfLastAttempt" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ImageFrameResults">
+      <EntityTypeMapping TypeName="SynergyModel.ImageFrameResult">
+        <MappingFragment StoreEntitySet="ImageFrameResults">
+          <ScalarProperty Name="Index" ColumnName="Index" />
+          <ScalarProperty Name="Burst" ColumnName="Burst" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="FrameDetails_ID" ColumnName="FrameDetails_ID" />
+          <ScalarProperty Name="ImageResult_ID" ColumnName="ImageResult_ID" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ReferenceDatas">
+      <EntityTypeMapping TypeName="SynergyModel.ReferenceData">
+        <MappingFragment StoreEntitySet="ReferenceData">
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ReferenceType" ColumnName="ReferenceType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ResultNormalValues">
+      <EntityTypeMapping TypeName="SynergyModel.ResultNormalValue">
+        <MappingFragment StoreEntitySet="ResultNormalValues">
+          <ScalarProperty Name="ReferenceNumbers" ColumnName="ReferenceNumbers" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="VisualRangeMin" ColumnName="VisualRangeMin" />
+          <ScalarProperty Name="VisualRangeMax" ColumnName="VisualRangeMax" />
+          <ScalarProperty Name="TargetGroup" ColumnName="TargetGroup" />
+          <ScalarProperty Name="MinValue" ColumnName="MinValue" />
+          <ScalarProperty Name="MaxValue" ColumnName="MaxValue" />
+          <ScalarProperty Name="RangeType" ColumnName="RangeType" />
+          <ScalarProperty Name="ResultType" ColumnName="ResultType" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="QCScores">
+      <EntityTypeMapping TypeName="SynergyModel.QCScore">
+        <MappingFragment StoreEntitySet="QCScores">
+          <ScalarProperty Name="IsScoreApplicable" ColumnName="IsScoreApplicable" />
+          <ScalarProperty Name="QCScoreValue" ColumnName="QCScoreValue" />
+          <ScalarProperty Name="QCScoreTypeId" ColumnName="QCScoreTypeId" />
+          <ScalarProperty Name="PhaseModelId" ColumnName="PhaseModelId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Licenses">
+      <EntityTypeMapping TypeName="SynergyModel.License">
+        <MappingFragment StoreEntitySet="License">
+          <ScalarProperty Name="StudyCount" ColumnName="StudyCount" />
+          <ScalarProperty Name="ByPassCount" ColumnName="ByPassCount" />
+          <ScalarProperty Name="Licenses" ColumnName="Licenses" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateAuditLog" FunctionName="SynergyModel.Store.CreateAuditLog" />
+    <EntitySetMapping Name="SpecificGravities">
+      <EntityTypeMapping TypeName="SynergyModel.SpecificGravity">
+        <MappingFragment StoreEntitySet="SpecificGravities">
+          <ScalarProperty Name="SpecificGravityValue" ColumnName="SpecificGravityValue" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="ReadAuditLog" FunctionName="SynergyModel.Store.ReadAuditLog">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="SynergyModel.ReadAuditLog_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

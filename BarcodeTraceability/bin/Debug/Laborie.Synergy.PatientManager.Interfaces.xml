@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Laborie.Synergy.PatientManager.Interfaces</name>
+    </assembly>
+    <members>
+        <member name="T:Laborie.Synergy.PatientManager.Interfaces.IPatientContext">
+            <summary>
+            Interface for the patient context
+            </summary>
+        </member>
+        <member name="P:Laborie.Synergy.PatientManager.Interfaces.IPatientContext.CurrentPatient">
+            <summary>
+            Gets or sets the current patient
+            </summary>
+        </member>
+        <member name="P:Laborie.Synergy.PatientManager.Interfaces.IPatientContext.CurrentStudy">
+            <summary>
+            Gets or sets the current study
+            </summary>
+        </member>
+        <member name="P:Laborie.Synergy.PatientManager.Interfaces.IPatientContext.SavedStudy">
+            <summary>
+            Gets or sets the saved study
+            </summary>
+        </member>
+        <member name="T:Laborie.Synergy.PatientManager.Interfaces.IStudyDetails">
+            <summary>
+            IStudyDetails
+            </summary>
+        </member>
+        <member name="M:Laborie.Synergy.PatientManager.Interfaces.IStudyDetails.GetRootImageForStudy">
+            <summary>
+            Gets the Root Image of the study
+            </summary>
+            <returns> Image Result </returns>
+        </member>
+        <member name="M:Laborie.Synergy.PatientManager.Interfaces.IStudyDetails.GetStudyInfo">
+            <summary>
+            Gets study info
+            </summary>
+            <returns> string of study info</returns>
+        </member>
+    </members>
+</doc>
